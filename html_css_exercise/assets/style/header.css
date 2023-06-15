@@ -1,0 +1,81 @@
+/* begin header */
+#pyramid {
+    position: absolute;
+    width: 0rem;
+    border-left: 5rem dotted transparent;
+    border-right: 2rem solid transparent;
+    border-bottom: 6rem solid rgba(0, 0, 0, 0.95);
+    transform: rotate(180deg);
+    left: 25rem;
+}
+
+#normal {
+    position: absolute;
+    height: 6rem;
+    width: 27rem;
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+.frame {
+    position: absolute;
+    width: 30%;
+    height: 100%;
+}
+
+header {
+    height: 10%;
+    color: white;
+    background-color: rgba(234, 234, 234, 0.1);
+}
+
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    display: flex;
+    z-index: 9999;
+}
+
+.logo i {
+    font-size: 3rem;
+    margin-right: 0.2rem;
+}
+
+.logo-content {
+    margin: auto;
+    font-size: 2.5rem;
+}
+
+.contacts {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.contacts .contact {
+    font-size: 1rem;
+    transition: 0.5s;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    margin-left: 2rem;
+}
+
+.contacts .contact a {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    height: 100%;
+    color: white;
+}
+
+.contacts .contact:hover {
+    background-color: rgba(83, 83, 83, 0.94);
+    border-radius: 0.5rem;
+}
+
+/* end header */

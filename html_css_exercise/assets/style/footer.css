@@ -1,0 +1,78 @@
+/* begin footer */
+footer {
+    height: 20%;
+    display: flex;
+    color: white;
+    background-color: rgba(40, 40, 40, 0.95);
+}
+
+.footer__content {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-team {
+    display: flex;
+}
+
+.time-counter {
+    display: flex;
+    align-items: center;
+}
+
+.info-game-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.info-team p {
+    text-align: center;
+}
+
+.vs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+}
+
+.counter {
+    margin-right: 3rem;
+}
+
+.info-game__tournament {
+    font-size: 1.5rem;
+    color: rgba(121, 121, 121, 0.95);
+    margin-bottom: 0.5rem;
+}
+
+.counter__number {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.counter__date {
+    font-size: 0.75rem;
+}
+
+.counter:nth-child(2),
+.counter:nth-child(3),
+.counter:nth-child(4) {
+    padding-left: 1rem;
+    border-left: 0.1rem black solid;
+}
+
+.ticket-buy {
+    height: 45%;
+    width: 10%;
+}
+
+.footer__link {
+    height: 100%;
+}
+
+/* end footer */

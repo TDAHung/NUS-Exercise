@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.container {
+    width: 85%;
+    height: 100%;
+    margin: auto;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+}
+
+body {
+    height: 100vh;
+    background-image: url('../images/batman.webp');
+}
+
+/* begin main */
+
+main {
+    height: 70%;
+}
+
+.main__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main__title {
+    font-weight: bold;
+    font-size: 3.5rem;
+    color: white;
+}
+
+.main__content p {
+    color: white;
+    margin: 1rem 0;
+}
+
+.main__links {
+    display: flex;
+    height: 3rem;
+    z-index: 999;
+    margin: 1rem;
+}
+
+#watch__link,
+#ticket-buy__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.3rem;
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+    text-align: center;
+    width: 8rem;
+    color: white;
+    transition: 0.5s
+}
+
+#watch__link {
+    background-color: rgba(123, 233, 235, 1);
+}
+
+#watch__link:hover {
+    background-color: rgba(171, 244, 245, 0.8);
+}
+
+#ticket-buy__link {
+    background-color: rgba(68, 237, 40, 1);
+}
+
+#ticket-buy__link:hover {
+    background-color: rgba(178, 246, 166, 0.8);
+}
+
+/* end main */
+
+.info-team__image {
+    width: 5rem;
+    height: 5rem;
+}
+
+.info-team__image img {
+    border-radius: 50%;
+}
