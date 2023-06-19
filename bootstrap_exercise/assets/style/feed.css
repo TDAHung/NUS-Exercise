@@ -1,0 +1,62 @@
+.navbar {
+    height: 88vh;
+}
+
+.navbar-nav .nav-link.active {
+    color: blue;
+}
+
+.navbar {
+    width: 20%;
+}
+
+.main__content__album {
+    height: 85vh;
+    width: 65%;
+    border-radius: 8px;
+}
+
+.album {
+    height: 200px;
+
+}
+
+.main__album {
+    height: 65vh;
+}
+
+.photo {
+    width: 10%;
+}
+
+.photo:nth-child(1) {
+    transform: rotate(8deg);
+}
+
+.photo:nth-child(2) {
+    transform: rotate(4deg);
+}
+
+.photo__title {
+    overflow: hidden;
+}
+
+.photo__description {
+    height: 35%;
+    font-size: 12px;
+    overflow: hidden;
+    line-height: 18px;
+}
+
+.photo__liked {
+    font-size: 12px;
+}
+
+.photo__liked .active {
+    color: blue;
+}
+
+.photo__time {
+    font-size: 10px;
+    font-weight: 100;
+}

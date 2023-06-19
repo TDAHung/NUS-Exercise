@@ -1,0 +1,17 @@
+form {
+    height: 100%;
+    border-radius: 1rem;
+}
+
+main {
+    height: 65vh;
+
+}
+
+.avatar {
+    width: 30%;
+}
+
+.avatar img {
+    border-radius: 50%;
+}
