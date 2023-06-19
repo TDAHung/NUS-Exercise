@@ -30,7 +30,7 @@
 }
 
 .photo:nth-child(1) {
-    transform: rotate(8deg);
+    transform: rotate(10deg);
 }
 
 .photo:nth-child(2) {

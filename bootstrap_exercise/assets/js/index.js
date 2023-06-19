@@ -6,3 +6,10 @@ btnActive.forEach(element => {
     });
 });
 
+const pageLinks = document.querySelectorAll(".page-link");
+pageLinks.forEach(element => {
+    element.addEventListener("click", () => {
+        document.querySelector(".page-link.active").classList.remove("active");
+        element.classList.add("active");
+    });
+});
