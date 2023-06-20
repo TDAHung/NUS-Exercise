@@ -36,26 +36,53 @@
     </header>
     <main class="d-flex w-75 justify-content-center flex-column align-items-center m-auto">
         <span class="form__title fs-1 text-primary mt-5 mb-3">Fotobook Signup</span>
-        <form class="w-50 bg-body-tertiary d-flex flex-column align-items-center py-4 border border-top-0">
+        <form
+            class="w-50 bg-body-tertiary d-flex flex-column align-items-center py-4 border border-top-0 needs-validation"
+            novalidate>
             <div class="mb-3 w-75">
                 <label for="firstName" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Pls type in!
+                </div>
             </div>
             <div class="mb-3 w-75">
                 <label for="lastName" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Pls type in!
+                </div>
             </div>
             <div class="mb-3 w-75">
                 <label for="password" class="form-label">New Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password">
+                <input type="password" class="form-control" id="password" placeholder="Password" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Pls type in!
+                </div>
             </div>
             <div class="mb-3 w-75">
                 <label for="passwordConfirm" class="form-label">Password Confirmation</label>
-                <input type="password" class="form-control" id="passwordConfirm" placeholder="Password">
+                <input type="password" class="form-control" id="passwordConfirm" placeholder="Password" required>
+                <div class="valid-feedback need-confirm">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback need-confirm">
+                    Pls type in
+                </div>
             </div>
             <button type="submit" class="btn btn-primary w-25">Signup</button>
         </form>
     </main>
+    <script src="../assets/js/signup.js"></script>
 </body>
 
 </html>
