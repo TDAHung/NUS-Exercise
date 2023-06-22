@@ -23,6 +23,48 @@
 </head>
 
 <body>
+    <template id="template__carousel__img">
+        <div class="carousel-item">
+            <img src="./assets/images/courage.webp" class="d-block w-100" alt="...">
+        </div>
+    </template>
+    <template id="template__button__album">
+        <button class="col-sm-12 col-md-6 mx-3 my-2 album bg-body-tertiary shadow border-0 button-modal child-node"
+            data-bs-toggle="modal" data-bs-target="#albumModal">
+            <div class="row pt-2 ps-2 justify-content-between">
+                <div class="photo__wrapper d-flex align-items-center col-md-5 postion-relative">
+                    <div class="photo position-absolute"><img src="./assets/images/courage.webp" alt="">
+                    </div>
+                </div>
+                <div class="col-md-7 photo__info d-flex flex-column justify-content-between">
+                    <div class="photo__author d-flex align-items-center">
+                        <div class="header-box__info__img">
+                            <img src="./assets/images/courage.webp" alt="courage-dog">
+                        </div>
+                        <div class="photo__author__name ms-3 text-primary">Hieu Nguyen</div>
+                    </div>
+                    <h5 class="photo__title fw-bold">Bla Bla</h5>
+                    <p class="photo__description text-start">Lorem ipsum dolor, sit amet consectetur
+                        adipisicing
+                        elit. Non molestiae veniam, atque amet magnam quis? Dicta similique sequi
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ratione
+                        saepe
+                        odio sint repudiandae ab molestiae porro amet quidem laudantium id minima
+                        quos
+                        neque, dolorum maiores in. Inventore, excepturi ex?
+                    </p>
+                    <div class="photo__liked d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fa-regular fa-heart"></i>
+                            <span class="text-primary">123</span>
+                        </div>
+                        <p class="photo__time m-0">4:56 pm 01/04/2018</p>
+                    </div>
+                </div>
+            </div>
+        </button>
+    </template>
+
     <header class="bg-primary text-white sticky-top fw-semibold">
         <div class="container">
             <div class="header__content d-flex justify-content-between align-items-center p-2">
@@ -31,12 +73,12 @@
                     <input type="email" class="form-control w-75" id="inputSearch" placeholder="Search Photo / Album">
                 </div>
                 <div class="header-box d-flex">
-                    <div class="header-box__info d-flex">
+                    <a href="./pages/user/edit-user.html" class="header-box__info d-flex">
                         <div class="header-box__info__img me-4">
                             <img src="./assets/images/courage.webp" alt="courage-dog">
                         </div>
-                        <div class="m-auto me-5">Hieu Nguyen</div>
-                    </div>
+                        <div class="m-auto user__name text-end">Hieu Nguyen</div>
+                    </a>
                     <a class="ms-5 text-white text-decoration-none m-auto" href="./pages/login.html"
                         id="link-logout">Logout</a>
                 </div>
@@ -45,13 +87,18 @@
     </header>
 
     <main>
-        <div class="main__content d-flex bg-body-tertiary">
+        <div class="main__content d-flex bg-body-tertiary position-relative">
             <nav class="navbar navbar-expand-lg bg-body-tertiary align-items-start mt-4">
-                <div class="container-fluid justify-content-center">
-                    <div class="navbar-nav flex-column">
+                <div class="container-fluid justify-content-center mt-4 pb-4">
+                    <div class="navbar-nav navbar-responsive flex-column">
+                        <div class="line mb-1 bg-black"></div>
+                        <div class="line mb-1 bg-black"></div>
+                        <div class="line mb-1 bg-black"></div>
+                    </div>
+                    <div class="navbar-nav navbar-normal flex-column">
                         <a class="nav-link active" aria-current="page" href="/">Feeds</a>
-                        <a class="nav-link" href="./pages/photo.html">My Photos</a>
-                        <a class="nav-link" href="./pages/album.html">My Albums</a>
+                        <a class="nav-link" href="./pages/photo/photo.html">My Photos</a>
+                        <a class="nav-link" href="./pages/album/album.html">My Albums</a>
                     </div>
                 </div>
             </nav>
@@ -60,166 +107,25 @@
                     <button type="button" class="btn btn-outline-primary">PHOTO</button>
                     <button type="button" class="btn btn-outline-primary active">ALBUM</button>
                 </div>
-                <div class="main__album d-flex flex-column justify-content-around">
-                    <div class="row justify-content-around px-4">
-                        <!-- start template -->
-                        <div class="col-6 my-3 album bg-body-tertiary shadow">
-                            <div class="row pt-2 ps-2">
-                                <div class="col-5 postion-relative">
-                                    <div class="photo position-absolute"><img src="./assets/images/courage.webp" alt="">
-                                    </div>
-                                    <div class="photo position-absolute"><img src="./assets/images/courage.webp" alt="">
-                                    </div>
-                                    <div class="photo position-absolute"><img src="./assets/images/courage.webp" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-7">
-                                    <div class="photo__author d-flex align-items-center">
-                                        <div class="header-box__info__img">
-                                            <img src="./assets/images/courage.webp" alt="courage-dog">
-                                        </div>
-                                        <div class="ms-3 text-primary">Hieu Nguyen</div>
-                                    </div>
-                                    <h5 class="photo__title fw-bold my-1">Bla Bla</h5>
-                                    <p class="photo__description my-1">Lorem ipsum dolor, sit amet consectetur
-                                        adipisicing
-                                        elit. Non molestiae veniam, atque amet magnam quis? Dicta similique sequi
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ratione saepe
-                                        odio sint repudiandae ab molestiae porro amet quidem laudantium id minima quos
-                                        neque, dolorum maiores in. Inventore, excepturi ex?
-                                    </p>
-                                    <div class="photo__liked d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <i class="fa-regular fa-heart"></i>
-                                            <span class="text-primary">123</span>
-                                        </div>
-                                        <p class="photo__time m-0">4:56 pm 01/04/2018</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end template -->
-                        <div class="col-6 my-3 album bg-body-tertiary shadow">
-                            <div class="row pt-2 ps-2">
-                                <div class="col-5 postion-relative">
-                                    <div class="photo position-absolute"><img src="./assets/images/courage.webp" alt="">
-                                    </div>
-                                    <div class="photo position-absolute"><img src="./assets/images/courage.webp" alt="">
-                                    </div>
-                                    <div class="photo position-absolute"><img src="./assets/images/courage.webp" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-7">
-                                    <div class="photo__author d-flex align-items-center">
-                                        <div class="header-box__info__img">
-                                            <img src="./assets/images/courage.webp" alt="courage-dog">
-                                        </div>
-                                        <div class="ms-3 text-primary">Hieu Nguyen</div>
-                                    </div>
-                                    <h5 class="photo__title fw-bold my-1">Bla Bla</h5>
-                                    <p class="photo__description my-1">Lorem ipsum dolor, sit amet consectetur
-                                        adipisicing
-                                        elit. Non molestiae veniam, atque amet magnam quis? Dicta similique sequi
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ratione saepe
-                                        odio sint repudiandae ab molestiae porro amet quidem laudantium id minima quos
-                                        neque, dolorum maiores in. Inventore, excepturi ex?
-                                    </p>
-                                    <div class="photo__liked d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <i class="fa-regular fa-heart"></i>
-                                            <span class="text-primary">123</span>
-                                        </div>
-                                        <p class="photo__time m-0">4:56 pm 01/04/2018</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 my-3 album bg-body-tertiary shadow">
-                            <div class="row pt-2 ps-2">
-                                <div class="col-5 postion-relative">
-                                    <div class="photo position-absolute"><img src="./assets/images/courage.webp" alt="">
-                                    </div>
-                                    <div class="photo position-absolute"><img src="./assets/images/courage.webp" alt="">
-                                    </div>
-                                    <div class="photo position-absolute"><img src="./assets/images/courage.webp" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-7">
-                                    <div class="photo__author d-flex align-items-center">
-                                        <div class="header-box__info__img">
-                                            <img src="./assets/images/courage.webp" alt="courage-dog">
-                                        </div>
-                                        <div class="ms-3 text-primary">Hieu Nguyen</div>
-                                    </div>
-                                    <h5 class="photo__title fw-bold my-1">Bla Bla</h5>
-                                    <p class="photo__description my-1">Lorem ipsum dolor, sit amet consectetur
-                                        adipisicing
-                                        elit. Non molestiae veniam, atque amet magnam quis? Dicta similique sequi
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ratione saepe
-                                        odio sint repudiandae ab molestiae porro amet quidem laudantium id minima quos
-                                        neque, dolorum maiores in. Inventore, excepturi ex?
-                                    </p>
-                                    <div class="photo__liked d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <i class="fa-regular fa-heart"></i>
-                                            <span class="text-primary">123</span>
-                                        </div>
-                                        <p class="photo__time m-0">4:56 pm 01/04/2018</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 my-3 album bg-body-tertiary shadow">
-                            <div class="row pt-2 ps-2">
-                                <div class="col-5 postion-relative">
-                                    <div class="photo position-absolute"><img src="./assets/images/courage.webp" alt="">
-                                    </div>
-                                    <div class="photo position-absolute"><img src="./assets/images/courage.webp" alt="">
-                                    </div>
-                                    <div class="photo position-absolute"><img src="./assets/images/courage.webp" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-7">
-                                    <div class="photo__author d-flex align-items-center">
-                                        <div class="header-box__info__img">
-                                            <img src="./assets/images/courage.webp" alt="courage-dog">
-                                        </div>
-                                        <div class="ms-3 text-primary">Hieu Nguyen</div>
-                                    </div>
-                                    <h5 class="photo__title fw-bold my-1">Bla Bla</h5>
-                                    <p class="photo__description my-1">Lorem ipsum dolor, sit amet consectetur
-                                        adipisicing
-                                        elit. Non molestiae veniam, atque amet magnam quis? Dicta similique sequi
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ratione saepe
-                                        odio sint repudiandae ab molestiae porro amet quidem laudantium id minima quos
-                                        neque, dolorum maiores in. Inventore, excepturi ex?
-                                    </p>
-                                    <div class="photo__liked d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <i class="fa-regular fa-heart"></i>
-                                            <span class="text-primary">123</span>
-                                        </div>
-                                        <p class="photo__time m-0">4:56 pm 01/04/2018</p>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="main__album d-flex flex-column">
+                    <div class="container">
+                        <div class="row parent-node">
+                            <!-- start template -->
+                            <!-- end template -->
                         </div>
                     </div>
+
                 </div>
 
                 <div class="content__pagination">
                     <nav aria-label="...">
                         <ul class="pagination d-flex justify-content-center">
-                            <li class="page-item disabled">
-                                <button class="page-link">Previous</button>
-                            </li>
-                            <li class="page-item"><button class="page-link active" href="#">1</button></li>
-                            <li class="page-item" aria-current="page">
-                                <button class="page-link" href="#">2</button>
-                            </li>
-                            <li class="page-item"><button class="page-link" href="#">3</button></li>
                             <li class="page-item">
-                                <button class="page-link" href="#">Next</button>
+                                <button class="page-link" id="prev-button">&lt;</button>
+                            </li>
+
+                            <li class="page-item">
+                                <button class="page-link" id="next-button">&gt;</button>
                             </li>
                         </ul>
                     </nav>
@@ -227,7 +133,44 @@
             </div>
         </div>
     </main>
-    <script src="./assets/js/index.js"></script>
+    <div class="modal fade" id="albumModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+                        <div class="carousel-inner d-flex">
+                            <!-- template modal IMG -->
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <div class="modal-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam aspernatur necessitatibus
+                        commodi distinctio in consectetur explicabo repudiandae quae qui. Vero excepturi ea eum nulla
+                        totam quae sit atque porro magnam.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./assets/js/index.mjs"></script>
+    <script src="./assets/js/button.js"></script>
 </body>
 
 </html>

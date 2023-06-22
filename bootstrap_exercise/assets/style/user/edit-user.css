@@ -1,0 +1,43 @@
+.navbar {
+    height: 88vh;
+}
+
+.navbar-nav .nav-link.active {
+    color: blue;
+}
+
+.navbar {
+    width: 20%;
+}
+
+.main__user__eidt {
+    width: 65%;
+    border-radius: 8px;
+}
+
+.main__content__edit {
+    height: 65vh;
+    font-size: 80%;
+}
+
+.form__title {
+    font-size: 20px;
+}
+
+.form__img {
+    width: 225px;
+    height: 200px;
+}
+
+.form__img img {
+    border-radius: 50%;
+}
+
+.avatar {
+    cursor: pointer;
+    transform: translateX(50%);
+    bottom: 20%;
+    height: 30px;
+    width: 25%;
+    opacity: 80%;
+}
