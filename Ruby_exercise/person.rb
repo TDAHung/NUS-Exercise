@@ -29,6 +29,15 @@ class Person
   def self.total_count
     puts "Total number of people is #{@@count}"
   end
+
+  def instance_error_catch
+    begin
+      puts self.total_count
+      raise NoMethodError
+      rescue Exception => error
+        puts error.inspect
+    end
+  end
 end
 
 # 7. Dùng hàm 'times' tạo 1 mảng 'people' gồm 20 person với name là 'Person 1' cho đến 'Person 20', age của mỗi Person random từ 10 -> 90
@@ -113,4 +122,7 @@ people_2 = people_2 + people
 people_2.each{|person| person.introduce}
 puts puts
 
-people_2.each{|person| person.total_count}
+# 17 Viết 1 instance method bất kì, raise Exception (với message bất kì) trong method đó, sau đó catch exception và in ra message của Exception đó.
+puts "# 17 Viết 1 instance method bất kì, raise Exception (với message bất kì) trong method đó, sau đó catch exception và in ra message của Exception đó."
+people_3 = Person.new("Cau 17",17)
+people_3.instance_error_catch
