@@ -14,8 +14,8 @@
         crossorigin="anonymous"></script>
 
     <!-- css style -->
-    <link rel="stylesheet" href="../../assets/style/main.css">
-    <link rel="stylesheet" href="../../assets/style/photo.css">
+    <link rel="stylesheet" href="../../../assets/style/main.css">
+    <link rel="stylesheet" href="../../../assets/style/admin_photo.css">
 
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/d9876ed7d9.js" crossorigin="anonymous"></script>
@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <input id="limit-pagination" class="d-none" value="10"></input>
+    <div class="d-none" value="10"></div>
     <header class="bg-primary text-white sticky-top fw-semibold">
         <div class="container">
             <div class="header__content d-flex justify-content-between align-items-center p-2">
@@ -34,7 +34,7 @@
                 <div class="header-box d-flex">
                     <a href="./pages/user/edit-user.html" class="header-box__info d-flex">
                         <div class="header-box__info__img me-4">
-                            <img src="../../assets/images/courage.webp" alt="courage-dog">
+                            <img src="../../../assets/images/courage.webp" alt="courage-dog">
                         </div>
                         <div class="m-auto user__name text-end">Hieu Nguyen</div>
                     </a>
@@ -55,18 +55,15 @@
                         <div class="line mb-1 bg-black"></div>
                     </div>
                     <div class="navbar-nav navbar-normal flex-column">
-                        <a class="nav-link active" aria-current="page" href="/">Feeds</a>
-                        <a class="nav-link" href="./pages/photo/photo.html">Discover</a>
+                        <a class="nav-link active" aria-current="page" href="/pages/admin/photo/admin_photo.html">Manage
+                            Photos</a>
+                        <a class="nav-link" href="/pages/admin/album/admin_album.html">Manage Albums</a>
+                        <a class="nav-link" href="/pages/admin/user/admin_user.html">Manage Users</a>
                     </div>
                 </div>
             </nav>
             <div class="main__content__album bg-white mt-4 rounded">
                 <div class="container d-flex flex-column justify-content-between">
-                    <div class="text-end">
-                        <a href="./create-photo.html" type="button" class="btn btn-outline-success active">ADD NEW
-                            PHOTO</a>
-                        <hr>
-                    </div>
                     <div class="main__album d-flex flex-column">
                         <div class="row">
                             <!-- start template -->
@@ -78,7 +75,7 @@
                                     <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
                                 </div>
                                 <div class="photo position-absolute top-0 w-100"><img
-                                        src="../../assets/images/courage.webp" alt="">
+                                        src="../../../assets/images/courage.webp" alt="">
                                 </div>
                                 <div class="album__lock px-3 text-end"><i class="fa-solid fa-lock"></i></div>
                             </div>
@@ -91,7 +88,7 @@
                                     <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
                                 </div>
                                 <div class="photo position-absolute top-0 w-100"><img
-                                        src="../../assets/images/courage.webp" alt="">
+                                        src="../../../assets/images/courage.webp" alt="">
                                 </div>
                                 <div class="album__lock px-3 text-end"><i class="fa-solid fa-lock"></i></div>
                             </div>
@@ -103,7 +100,7 @@
                                     <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
                                 </div>
                                 <div class="photo position-absolute top-0 w-100"><img
-                                        src="../../assets/images/courage.webp" alt="">
+                                        src="../../../assets/images/courage.webp" alt="">
                                 </div>
                                 <div class="album__lock px-3 text-end"><i class="fa-solid fa-lock"></i></div>
 
@@ -116,7 +113,7 @@
                                     <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
                                 </div>
                                 <div class="photo position-absolute top-0 w-100"><img
-                                        src="../../assets/images/courage.webp" alt="">
+                                        src="../../../assets/images/courage.webp" alt="">
                                 </div>
                                 <div class="album__lock px-3 text-end"><i class="fa-solid fa-lock"></i></div>
                             </div>
@@ -128,12 +125,11 @@
                                     <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
                                 </div>
                                 <div class="photo position-absolute top-0 w-100"><img
-                                        src="../../assets/images/courage.webp" alt="">
+                                        src="../../../assets/images/courage.webp" alt="">
                                 </div>
                                 <div class="album__lock px-3 text-end"><i class="fa-solid fa-lock"></i></div>
 
                             </div>
-
                         </div>
 
                     </div>
@@ -143,7 +139,7 @@
                                 <li class="page-item">
                                     <button class="page-link" id="prev-button">&lt;</button>
                                 </li>
-                                <!-- use logic to render UI of pages -->
+
                                 <li class="page-item">
                                     <button class="page-link" id="next-button">&gt;</button>
                                 </li>
@@ -153,7 +149,7 @@
                 </div>
             </div>
     </main>
-    <script src="../../assets/js/button.js"></script>
+    <script src="../../../assets/js/button.js"></script>
 </body>
 
 </html>

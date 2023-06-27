@@ -1,3 +1,16 @@
+.media {
+    width: 20%;
+    border: 2px solid rgb(189, 189, 189);
+}
+
+.media__signup {
+    width: 25%;
+}
+
+.media__signup img {
+    border-radius: 50%;
+}
+
 @media screen and (max-width:820px) {
     body {
         font-size: 170%;
@@ -5,6 +18,10 @@
 
     main {
         height: 90vh;
+    }
+
+    .media {
+        width: 40%;
     }
 
     .form__title {
@@ -34,6 +51,10 @@
 
     .form__title {
         font-size: 40px !important;
+    }
+
+    .media {
+        width: 60%;
     }
 
     .needs-validation {

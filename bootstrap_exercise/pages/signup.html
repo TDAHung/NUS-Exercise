@@ -36,47 +36,50 @@
     </header>
     <main class="d-flex w-75 justify-content-center flex-column align-items-center m-auto">
         <span class="form__title fs-1 text-primary mt-5 mb-3">Fotobook Signup</span>
+        <div class="d-flex justify-content-between media mb-3 p-3 rounded">
+            <a class="media__signup" href="#">
+                <img src="../assets/images/facebook.webp" alt="">
+            </a>
+            <a class="media__signup" href="#">
+                <img src="../assets/images/google.jpeg" alt="">
+            </a>
+            <a class="media__signup" href="#">
+                <img src="../assets/images/twitter.png" alt="">
+            </a>
+        </div>
         <form
             class="w-50 bg-body-tertiary d-flex flex-column align-items-center py-4 border border-top-0 needs-validation shadow-sm rounded"
             novalidate>
             <div class="mb-3 w-75">
                 <label for="firstName" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                <input type="text" class="form-control" id="firstName" placeholder="First Name" required
+                    name="user[first_name]">
                 <div class="valid-feedback">
                     Looks good!
-                </div>
-                <div class="invalid-feedback">
-                    Pls type in!
                 </div>
             </div>
             <div class="mb-3 w-75">
                 <label for="lastName" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" required
+                    name="user[last_name]">
                 <div class="valid-feedback">
                     Looks good!
-                </div>
-                <div class="invalid-feedback">
-                    Pls type in!
                 </div>
             </div>
             <div class="mb-3 w-75">
                 <label for="password" class="form-label">New Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" required>
+                <input type="password" class="form-control" id="password" placeholder="Password" required
+                    name="user[password]">
                 <div class="valid-feedback">
                     Looks good!
-                </div>
-                <div class="invalid-feedback">
-                    Pls type in!
                 </div>
             </div>
             <div class="mb-3 w-75">
                 <label for="passwordConfirm" class="form-label">Password Confirmation</label>
-                <input type="password" class="form-control" id="passwordConfirm" placeholder="Password" required>
+                <input type="password" class="form-control" id="passwordConfirm" placeholder="Password" required
+                    name="user[password_confirmation]">
                 <div class="valid-feedback need-confirm">
                     Looks good!
-                </div>
-                <div class="invalid-feedback need-confirm">
-                    Pls type in
                 </div>
             </div>
             <button type="submit" class="btn btn-primary w-25">Signup</button>

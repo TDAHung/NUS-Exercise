@@ -23,6 +23,7 @@
 </head>
 
 <body>
+    <input id="limit-pagination" class="d-none" value="6"></input>
     <header class="bg-primary text-white sticky-top fw-semibold">
         <div class="container">
             <div class="header__content d-flex justify-content-between align-items-center p-2">
@@ -54,9 +55,8 @@
                         <div class="line mb-1 bg-black"></div>
                     </div>
                     <div class="navbar-nav navbar-normal flex-column">
-                        <a class="nav-link" aria-current="page" href="/">Feeds</a>
-                        <a class="nav-link" href="../photo/photo.html">My Photos</a>
-                        <a class="nav-link active" href="../album/album.html">My Albums</a>
+                        <a class="nav-link active" aria-current="page" href="/">Feeds</a>
+                        <a class="nav-link" href="./pages/photo/photo.html">Discover</a>
                     </div>
                 </div>
             </nav>
@@ -69,7 +69,7 @@
 
                     </div>
                     <div class="main__album d-flex flex-column">
-                        <div class="row">
+                        <div class="row parent-node">
                             <!-- start template -->
                             <div
                                 class="child-node col-3 mb-3 p-0 mx-3 d-flex flex-column bg-body-tertiary justify-content-between shadow album position-relative">
@@ -93,7 +93,132 @@
                                 </div>
                             </div>
                             <!-- end template -->
-
+                            <div
+                                class="child-node col-3 mb-3 p-0 mx-3 d-flex flex-column bg-body-tertiary justify-content-between shadow album position-relative">
+                                <div
+                                    class="w-100 px-3 py-1 bg-secondary album__description text-white d-flex justify-content-between">
+                                    Lorem ipsum dolor sit!
+                                    <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                </div>
+                                <div class="postion-relative d-flex justify-content-center my-auto">
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="album__lock px-3 text-end bg-white"><i class="fa-solid fa-lock"></i>
+                                </div>
+                            </div>
+                            <div
+                                class="child-node col-3 mb-3 p-0 mx-3 d-flex flex-column bg-body-tertiary justify-content-between shadow album position-relative">
+                                <div
+                                    class="w-100 px-3 py-1 bg-secondary album__description text-white d-flex justify-content-between">
+                                    Lorem ipsum dolor sit!
+                                    <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                </div>
+                                <div class="postion-relative d-flex justify-content-center my-auto">
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="album__lock px-3 text-end bg-white"><i class="fa-solid fa-lock"></i>
+                                </div>
+                            </div>
+                            <div
+                                class="child-node col-3 mb-3 p-0 mx-3 d-flex flex-column bg-body-tertiary justify-content-between shadow album position-relative">
+                                <div
+                                    class="w-100 px-3 py-1 bg-secondary album__description text-white d-flex justify-content-between">
+                                    Lorem ipsum dolor sit!
+                                    <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                </div>
+                                <div class="postion-relative d-flex justify-content-center my-auto">
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="album__lock px-3 text-end bg-white"><i class="fa-solid fa-lock"></i>
+                                </div>
+                            </div>
+                            <div
+                                class="child-node col-3 mb-3 p-0 mx-3 d-flex flex-column bg-body-tertiary justify-content-between shadow album position-relative">
+                                <div
+                                    class="w-100 px-3 py-1 bg-secondary album__description text-white d-flex justify-content-between">
+                                    Lorem ipsum dolor sit!
+                                    <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                </div>
+                                <div class="postion-relative d-flex justify-content-center my-auto">
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="album__lock px-3 text-end bg-white"><i class="fa-solid fa-lock"></i>
+                                </div>
+                            </div>
+                            <div
+                                class="child-node col-3 mb-3 p-0 mx-3 d-flex flex-column bg-body-tertiary justify-content-between shadow album position-relative">
+                                <div
+                                    class="w-100 px-3 py-1 bg-secondary album__description text-white d-flex justify-content-between">
+                                    Lorem ipsum dolor sit!
+                                    <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                </div>
+                                <div class="postion-relative d-flex justify-content-center my-auto">
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="album__lock px-3 text-end bg-white"><i class="fa-solid fa-lock"></i>
+                                </div>
+                            </div>
+                            <div
+                                class="child-node col-3 mb-3 p-0 mx-3 d-flex flex-column bg-body-tertiary justify-content-between shadow album position-relative">
+                                <div
+                                    class="w-100 px-3 py-1 bg-secondary album__description text-white d-flex justify-content-between">
+                                    Lorem ipsum dolor sit!
+                                    <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                </div>
+                                <div class="postion-relative d-flex justify-content-center my-auto">
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                    <div class="photo position-absolute"><img src="../../assets/images/courage.webp"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="album__lock px-3 text-end bg-white"><i class="fa-solid fa-lock"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

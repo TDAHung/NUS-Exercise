@@ -6,12 +6,21 @@ btnActive.forEach(element => {
     });
 });
 
+const btnFollow = document.querySelectorAll(".btn.btn-follow");
+btnFollow.forEach(element => {
+    element.addEventListener('click', () => {
+        element.classList.toggle('active');
+        if (element.classList.contains('active')) element.innerText = 'Following'
+        else element.innerText = 'Follow';
+    });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const prevPage = document.querySelector("#prev-button");
     const nextPage = document.querySelector("#next-button");
     const childNode = document.querySelectorAll('.child-node');
     const paginatedNumber = document.querySelector('.pagination');
-    const pageLimit = 4;
+    const pageLimit = document.querySelector('#limit-pagination').value;
     const pageCount = Math.ceil(childNode.length / pageLimit);
     let currentPage = 1;
 

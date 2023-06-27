@@ -14,8 +14,8 @@
         crossorigin="anonymous"></script>
 
     <!-- css style -->
-    <link rel="stylesheet" href="./assets/style/main.css">
-    <link rel="stylesheet" href="./assets/style/feed.css">
+    <link rel="stylesheet" href="../../assets/style/main.css">
+    <link rel="stylesheet" href="../../assets/style/discover.css">
 
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/d9876ed7d9.js" crossorigin="anonymous"></script>
@@ -39,7 +39,7 @@
                 <div class="header-box d-flex">
                     <a href="./pages/user/edit-user.html" class="header-box__info d-flex">
                         <div class="header-box__info__img me-4">
-                            <img src="./assets/images/courage.webp" alt="courage-dog">
+                            <img src="../../assets/images/courage.webp" alt="courage-dog">
                         </div>
                         <div class="m-auto user__name text-end">Hieu Nguyen</div>
                     </a>
@@ -60,8 +60,8 @@
                         <div class="line mb-1 bg-black"></div>
                     </div>
                     <div class="navbar-nav navbar-normal flex-column">
-                        <a class="nav-link active" aria-current="page" href="/">Feeds</a>
-                        <a class="nav-link" href="./pages/discover/discover.html">Discover</a>
+                        <a class="nav-link" aria-current="page" href="/">Feeds</a>
+                        <a class="nav-link active" href="./pages/discover/discover.html">Discover</a>
                     </div>
                 </div>
             </nav>
@@ -81,21 +81,26 @@
                                         id="photo_1" data-bs-toggle="modal" data-bs-target="#photoModal">
                                         <!-- remember to add photo_id -->
                                         <div class="photo position-absolute">
-                                            <img src="./assets/images/courage.webp" alt="">
+                                            <img src="../../assets/images/courage.webp" alt="">
                                         </div>
                                         <div class="photo position-absolute">
-                                            <img src="./assets/images/courage.webp" alt="">
+                                            <img src="../../assets/images/courage.webp" alt="">
                                         </div>
                                         <div class="photo position-absolute">
-                                            <img src="./assets/images/courage.webp" alt="">
+                                            <img src="../../assets/images/courage.webp" alt="">
                                         </div>
                                     </div>
                                     <div class="col-md-7 photo__info d-flex flex-column justify-content-between">
-                                        <div class="photo__author d-flex align-items-center">
-                                            <a class="header-box__info__img" href="#">
-                                                <img src="./assets/images/courage.webp" alt="courage-dog">
+                                        <div
+                                            class="photo__author d-flex align-items-center justify-content-between w-100">
+                                            <a href="#" class="d-flex align-items-center">
+                                                <div class="header-box__info__img" href="#">
+                                                    <img src="../../assets/images/courage.webp" alt="courage-dog">
+                                                </div>
+                                                <div class="photo__author__name ms-3 text-primary" href="#">Hieu
+                                                    Nguyen</div>
                                             </a>
-                                            <a class="photo__author__name ms-3 text-primary" href="#">Hieu Nguyen</a>
+                                            <button class="btn btn-follow btn-sm">Follow</button>
                                         </div>
                                         <h5 class="photo__title fw-bold">Bla Bla</h5>
                                         <p class="photo__description text-start">Lorem ipsum dolor, sit amet consectetur
@@ -175,8 +180,8 @@
             </div>
         </div>
     </div>
-    <script src="./assets/js/index.js"></script>
-    <script src="./assets/js/button.js"></script>
+    <script src="../../assets/js/index.js"></script>
+    <script src="../../assets/js/button.js"></script>
 </body>
 
 </html>
