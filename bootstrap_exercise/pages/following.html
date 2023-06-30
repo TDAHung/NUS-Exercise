@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <!-- css style -->
+    <link rel="stylesheet" href="../assets/style/main.css">
+    <link rel="stylesheet" href="../assets/style/following.css">
+    <link rel="stylesheet" href="../assets/style/tab_user.css">
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/d9876ed7d9.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="limit-pagination" class="d-none" value="10"></input>
+    <header class="bg-primary text-white sticky-top fw-semibold">
+        <div class="container">
+            <div class="header__content d-flex justify-content-between align-items-center p-2">
+                <div class="header-box d-flex w-50">
+                    <div class="header-box__logo me-5 fs-4">Fotobook</div>
+                    <input type="email" class="form-control w-75" id="inputSearch" placeholder="Search Photo / Album">
+                </div>
+                <div class="header-box d-flex">
+                    <a href="./pages/user/edit-user.html" class="header-box__info d-flex">
+                        <div class="header-box__info__img me-4">
+                            <img src="../../assets/images/courage.webp" alt="courage-dog">
+                        </div>
+                        <div class="m-auto user__name text-end">Hieu Nguyen</div>
+                    </a>
+                    <a class="ms-5 text-white text-decoration-none m-auto" href="./pages/login.html"
+                        id="link-logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main__content d-flex bg-body-tertiary position-relative">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary align-items-start mt-4">
+                <div class="container-fluid justify-content-center mt-4 pb-4">
+                    <div class="navbar-nav navbar-responsive flex-column">
+                        <div class="line mb-1 bg-black"></div>
+                        <div class="line mb-1 bg-black"></div>
+                        <div class="line mb-1 bg-black"></div>
+                    </div>
+                    <div class="navbar-nav navbar-normal flex-column">
+                        <a class="nav-link" aria-current="page" href="/">Feeds</a>
+                        <a class="nav-link" href="./pages/discover/discover.html">Discover</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="main__content__profile bg-white mt-4 d-flex pt-3 flex-column">
+                <div class="main__album d-flex flex-column">
+                    <div class="container">
+                        <div class="profile__nav d-flex">
+                            <div class="profile__img">
+                                <img src="../assets/images/courage.webp" alt="">
+                            </div>
+                            <div class="profile__info d-flex flex-column justify-content-between ms-4">
+                                <button class="btn btn-follow btn-sm w-25">Follow</button>
+                                <h1>HanFord</h1>
+                                <nav class="tabs d-flex fs-5 p-0">
+                                    <a class="tab active ps-0 ms-0" href="#"><span>108 Photos</span></a>
+                                    <a class="tab" href="/pages/album/album.html"><span>43 Albums</span></a>
+                                    <a class="tab" href="#"><span>22 Followings</span></a>
+                                    <a class="tab" href="#"><span>13 Followers</span></a>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="row parent-node w-100 ps-4 mt-2">
+                            <!-- start template -->
+                            <div class="child-node col-3 mx-2 my-1 shadow follower bg-body-tertiary">
+                                <div class="follower__wrapper d-flex justify-content-between flex-column">
+                                    <div class="follower__img mx-auto"><img src="../assets/images/courage.webp" alt="">
+                                    </div>
+                                    <div class="follower__name text-center">Hieu Nguyen</div>
+                                    <div class="follower__counter d-flex justify-content-between text-primary">
+                                        <div class="follower__counter__photos text-center">
+                                            <div class="follower__count color-primary ">22</div>
+                                            <div class="follower__type">PHOTOS</div>
+                                        </div>
+                                        <div class="follower__counter__albums text-center">
+                                            <div class="follower__count">105</div>
+                                            <div class="follower__type">ALBUMS</div>
+                                        </div>
+                                    </div>
+                                    <button class="follower__btn btn-follow w-50 mx-auto bg-white">Following</button>
+                                </div>
+                            </div>
+                            <!-- end template -->
+                            <div class="child-node col-3 mx-2 my-1 shadow follower bg-body-tertiary">
+                                <div class="follower__wrapper d-flex justify-content-between flex-column">
+                                    <div class="follower__img mx-auto"><img src="../assets/images/courage.webp" alt="">
+                                    </div>
+                                    <div class="follower__name text-center">Hieu Nguyen</div>
+                                    <div class="follower__counter d-flex justify-content-between text-primary">
+                                        <div class="follower__counter__photos text-center">
+                                            <div class="follower__count color-primary ">22</div>
+                                            <div class="follower__type">PHOTOS</div>
+                                        </div>
+                                        <div class="follower__counter__albums text-center">
+                                            <div class="follower__count">105</div>
+                                            <div class="follower__type">ALBUMS</div>
+                                        </div>
+                                    </div>
+                                    <button class="follower__btn btn-follow w-50 mx-auto bg-white">Following</button>
+                                </div>
+                            </div>
+                            <div class="child-node col-3 mx-2 my-1 shadow follower bg-body-tertiary">
+                                <div class="follower__wrapper d-flex justify-content-between flex-column">
+                                    <div class="follower__img mx-auto"><img src="../assets/images/courage.webp" alt="">
+                                    </div>
+                                    <div class="follower__name text-center">Hieu Nguyen</div>
+                                    <div class="follower__counter d-flex justify-content-between text-primary">
+                                        <div class="follower__counter__photos text-center">
+                                            <div class="follower__count color-primary ">22</div>
+                                            <div class="follower__type">PHOTOS</div>
+                                        </div>
+                                        <div class="follower__counter__albums text-center">
+                                            <div class="follower__count">105</div>
+                                            <div class="follower__type">ALBUMS</div>
+                                        </div>
+                                    </div>
+                                    <button class="follower__btn btn-follow w-50 mx-auto bg-white">Following</button>
+                                </div>
+                            </div>
+                            <div class="child-node col-3 mx-2 my-1 shadow follower bg-body-tertiary">
+                                <div class="follower__wrapper d-flex justify-content-between flex-column">
+                                    <div class="follower__img mx-auto"><img src="../assets/images/courage.webp" alt="">
+                                    </div>
+                                    <div class="follower__name text-center">Hieu Nguyen</div>
+                                    <div class="follower__counter d-flex justify-content-between text-primary">
+                                        <div class="follower__counter__photos text-center">
+                                            <div class="follower__count color-primary ">22</div>
+                                            <div class="follower__type">PHOTOS</div>
+                                        </div>
+                                        <div class="follower__counter__albums text-center">
+                                            <div class="follower__count">105</div>
+                                            <div class="follower__type">ALBUMS</div>
+                                        </div>
+                                    </div>
+                                    <button class="follower__btn btn-follow w-50 mx-auto bg-white">Following</button>
+                                </div>
+                            </div>
+                            <div class="child-node col-3 mx-2 my-1 shadow follower bg-body-tertiary">
+                                <div class="follower__wrapper d-flex justify-content-between flex-column">
+                                    <div class="follower__img mx-auto"><img src="../assets/images/courage.webp" alt="">
+                                    </div>
+                                    <div class="follower__name text-center">Hieu Nguyen</div>
+                                    <div class="follower__counter d-flex justify-content-between text-primary">
+                                        <div class="follower__counter__photos text-center">
+                                            <div class="follower__count color-primary ">22</div>
+                                            <div class="follower__type">PHOTOS</div>
+                                        </div>
+                                        <div class="follower__counter__albums text-center">
+                                            <div class="follower__count">105</div>
+                                            <div class="follower__type">ALBUMS</div>
+                                        </div>
+                                    </div>
+                                    <button class="follower__btn btn-follow w-50 mx-auto bg-white">Following</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="content__pagination">
+                        <nav aria-label="...">
+                            <ul class="pagination d-flex justify-content-center">
+                                <li class="page-item">
+                                    <button class="page-link" id="prev-button">&lt;</button>
+                                </li>
+                                <!-- use logic to render UI of pages -->
+                                <li class="page-item">
+                                    <button class="page-link" id="next-button">&gt;</button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+    </main>
+    <script src="../assets/js/index.js"></script>
+    <script src="../assets/js/button.js"></script>
+</body>
+
+</html>
