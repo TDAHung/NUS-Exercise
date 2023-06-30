@@ -1,0 +1,43 @@
+main class="d-flex w-75 justify-content-center flex-column align-items-center"
+    span class="form__title fs-1 text-primary mt-5 mb-3"Fotobook Signup
+    div class="d-flex justify-content-between media mb-3 p-3 rounded"
+        a class="media__signup" href="#"
+            img src="/assets/facebook.webp" alt=""
+        a class="media__signup" href="#"
+            img src="/assets/google.jpeg" alt=""
+        a class="media__signup" href="#"
+            img src="/assets/twitter.png" alt=""
+    form [class="w-50 bg-body-tertiary d-flex mt-1 flex-column align-items-center py-4 border border-top-0 shadow-sm rounded"
+        method="POST" action="/sign_up"]
+
+        - if @user.errors.any?
+            - @user.errors.full_messages.each do |message|
+                div class="alert alert-danger text-start" = message
+
+        / = hidden_field_tag :authenticity_token, form_authenticity_token
+        div class="mb-3 w-75"
+            label for="email" class="form-label" Email
+            input [type="text" class="form-control" id="email" placeholder="abc@abc.com"
+                name="user[email]"]
+        - if @user.errors.messages[:email].nil?
+            div class="mb-3 w-75"
+                div class="form-control alert alert-danger" = @user.errors.full_messages[:email]
+        div class="mb-3 w-75"
+            label for="firstName" class="form-label" First Name
+            input [type="text" class="form-control" id="firstName" placeholder="First Name"
+                name="user[first_name]"]
+        div class="mb-3 w-75"
+            label for="password" class="form-label" New Password
+            input [type="password" class="form-control" id="password" placeholder="Password"
+                name="user[password]"]
+        div class="mb-3 w-75"
+            label for="passwordConfirm" class="form-label"Password Confirmation
+            input [type="password" class="form-control" id="passwordConfirm" placeholder="Password"
+                name="user[password_confirmation]"]
+        - if @user.errors.messages[:password_confirmation].nil?
+            div class="mb-3 w-75"
+                div class="form-control alert alert-danger" = @user.errors.full_messages[:password_confirmation]
+        input type="hidden" name="user[is_admin]" value="0"
+        input type="hidden" name="user[img_url]" value=""
+        input type="hidden" name="user[last_name]" value=""
+        button type="submit" class="btn btn-primary w-25" Signup
