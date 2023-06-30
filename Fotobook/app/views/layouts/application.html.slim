@@ -13,6 +13,8 @@ html
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"]
 
+    = javascript_importmap_tags
+
     / <!-- css -->
     = stylesheet_link_tag 'main.css'
     = stylesheet_link_tag 'tab_user.css'
@@ -24,8 +26,8 @@ html
         = stylesheet_link_tag 'discover.css'
       - when "feeds"
         = stylesheet_link_tag 'feed.css'
-
-    = javascript_importmap_tags
+      - when "photos"
+        = stylesheet_link_tag 'photo.css'
 
   body
     = render partial: 'shared/header'
@@ -33,12 +35,13 @@ html
       div class="main__content d-flex bg-body-tertiary position-relative"
         = render partial: 'shared/navbar'
         = yield
-    - if controller_name == "discovers" || controller_name == "feeds"
+
+    - controller = ["discovers", "feeds", "photos", "albums"]
+    - if controller.include?(controller_name)
       = render partial: "shared/modal"
 
     = javascript_include_tag 'button.js'
     - case controller_name
       - when "discovers"
         = javascript_include_tag 'discover.js'
-      - when "feeds"
-        = javascript_include_tag 'index.js'
+    = javascript_include_tag 'index.js'

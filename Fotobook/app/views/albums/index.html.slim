@@ -1,7 +1,5 @@
     div.main__content__album.bg-white.mt-4.d-flex.justify-content-around.flex-column
-        div.button-option.d-flex.justify-content-center
-            a.btn.btn-outline-primary.active type="button" href="/" ALBUM
-            a.btn.btn-outline-primary type="button" href="./pages/album/album.html" PHOTO
+        = render partial: "shared/pages"
         div.main__album.d-flex.flex-column
             div.container
                 div.row.parent-node
@@ -10,7 +8,7 @@
                         div.col-sm-12.col-md-6.mx-3.my-2.album.bg-body-tertiary.shadow.border-0.button-modal.child-node.d-flex.align-items-center id="album_#{album["id"]}"
                             / <!-- remember to add album_id -->
                             div.row.pt-2.ps-2.justify-content-between.w-100
-                                div.photo__wrapper.d-flex.align-items-center.col-md-5.postion-relative id="photo_#{album["id"]}" data-bs-toggle="modal" data-bs-target="#photoModal"
+                                div.photo__wrapper.d-flex.align-items-center.col-md-4.postion-relative id="photo_#{album["id"]}" data-bs-toggle="modal" data-bs-target="#photoModal"
                                     / <!-- remember to add photo_id -->
                                     div.photo.position-absolute
                                         img src="/assets/courage.webp" alt=""
@@ -21,7 +19,7 @@
                                     div.photo.position-absolute
                                         img src="/assets/courage.webp" alt=""
 
-                                div.col-md-7.photo__info.d-flex.flex-column.justify-content-between
+                                div.col-md-8.photo__info.d-flex.flex-column.justify-content-between
                                     div.photo__author.d-flex.align-items-center
                                         a.header-box__info__img href="#"
                                             img src="/assets/courage.webp" alt="courage-dog"
@@ -35,8 +33,6 @@
                                             span.text-primary 123
                                         p.photo__time.m-0 4:56 pm 01/04/2018
                     / <!-- end template -->
-
-
         div.content__pagination
             nav aria-label="..."
                 ul.pagination.d-flex.justify-content-center

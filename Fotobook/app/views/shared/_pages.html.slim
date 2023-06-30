@@ -1,3 +1,14 @@
 div.button-option.d-flex.justify-content-center
-    a.btn.btn-outline-primary class="#{request.path == '/' ? "active":''}" type="button" href="#{request.path}" ALBUM
-    a.btn.btn-outline-primary class="#{request.path == request.path + "/photo" ? "active":''}" type="button" href="#{request.path}/photo" PHOTO
+    / <!-- Link for "Album" -->
+    - path_album = [discover_path, root_path]
+    - if current_page?(discover_path) || current_page?(root_path)
+        = link_to "ALBUM", root_path, class: "btn btn-outline-primary #{path_album.include?(request.path) ? "active":''}"
+    - else
+        = link_to "ALBUM", discover_path, class: "btn btn-outline-primary #{path_album.include?(request.path) ? "active":''}"
+
+    / <!-- Link for "Photo" -->
+    - path_photo = [photo_path, discover_photo_path]
+    - if  current_page?(discover_photo_path) || current_page?(root_path)
+        = link_to "PHOTO", photo_path, class: "btn btn-outline-primary #{path_photo.include?(request.path) ? "active":''}"
+    - else
+        = link_to "PHOTO", discover_photo_path, class: "btn btn-outline-primary #{path_photo.include?(request.path) ? "active":''}"

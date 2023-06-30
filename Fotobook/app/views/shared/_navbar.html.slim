@@ -6,5 +6,5 @@
                 div.line.mb-1.bg-black
 
             div class="navbar-nav navbar-normal flex-column"
-                a class="nav-link #{request.path == '/' ? 'active' : ''}" aria-current="page" href="/"Feeds
-                a class="nav-link #{request.path == '/discover' ? 'active' : ''}" href="discover"Discover
+                = link_to "Feeds", root_path, class: "nav-link #{request.path == root_path || request.path == photo_path ? 'active' : ''}"
+                = link_to "Discover", discover_path, class: "nav-link #{request.path == discover_path || request.path == discover_photo_path ? 'active' : ''}"

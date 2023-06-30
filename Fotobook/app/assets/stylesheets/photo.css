@@ -1,12 +1,24 @@
-.main__content__album {
-    width: 75%;
-    height: 85vh;
-    padding: 20px 0;
+.main__user__eidt {
+    width: 65%;
     border-radius: 8px;
+}
+
+.album__description {
+    font-size: 13px;
+    opacity: 80%;
+}
+
+.album__description a {
+    font-size: 16px;
 }
 
 .wrapper {
     height: 90%;
+}
+
+.album__description,
+.album__lock {
+    z-index: 100;
 }
 
 .album {
@@ -18,24 +30,6 @@
     height: 65vh;
 }
 
-.photo {
-    width: 10%;
-    cursor: pointer;
-}
-
-.photo:nth-child(1) {
-    z-index: 10;
-}
-
-.photo:nth-child(2) {
-    transform: rotate(4deg);
-    z-index: 5;
-}
-
-.photo:nth-child(3) {
-    transform: rotate(10deg);
-    z-index: 2;
-}
 
 .photo__description {
     height: 35%;
@@ -66,43 +60,53 @@
     overflow-wrap: break-word;
 }
 
-@media screen and (max-width: 820px) {
+.photo {
+    height: 200px;
+    cursor: pointer;
+}
+
+.main__content__album {
+    width: 75%;
+    height: 85vh;
+    padding: 20px 0;
+    border-radius: 8px;
+}
+
+.container {
+    height: 100%;
+}
+
+@media screen and (max-width:820px) {
     .album {
-        height: 175px;
-        width: 95%;
+        width: 30%;
     }
 
     .main__content__album {
         width: 75%;
-        height: 85vh;
+        height: 80vh;
     }
 
-    .photo {
-        width: 15%;
+
+    .main__album {
+        height: 70%;
     }
 
-    .photo__wrapper {
-        width: 25%;
-    }
-
-    .photo__info {
-        width: 75%;
+    .main__album {
+        height: 90%;
+        margin-left: 10px;
     }
 }
 
 @media screen and (max-width: 412px) {
-
     .main__content__album {
         width: 95%;
-        height: 85vh;
-        margin: 0 auto;
     }
 
-    .photo {
-        width: 27%;
+    .album {
+        width: 45%;
     }
 
-    .photo__info {
-        width: 65%;
+    .main__album {
+        height: 70%;
     }
 }

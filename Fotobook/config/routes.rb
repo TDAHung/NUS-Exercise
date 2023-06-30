@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   delete "sign_out", to: "sessions#destroy"
 
   get "discover", to: "discovers#index"
-
   get "/discover/album", to: "albums#index"
+  get "photo", to: "photos#index"
+  get "discover/photo", to: "photos#index"
 
 end

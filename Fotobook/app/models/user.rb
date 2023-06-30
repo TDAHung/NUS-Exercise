@@ -13,4 +13,14 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
   validates :first_name, presence: true
   validates :password_digest, presence: true
+
+  before_destroy :cleanup_associated_records
+
+  private
+
+  def cleanup_associated_records
+    albums.destroy_all
+    photos.destroy_all
+  end
+
 end

@@ -1,5 +1,7 @@
 .main__content__album {
-    width: 65%;
+    width: 75%;
+    height: 85vh;
+    padding: 20px 0;
     border-radius: 8px;
 }
 
@@ -12,10 +14,18 @@
     height: 65vh;
 }
 
+.wrapper {
+    height: 90%;
+}
+
 .photo {
     width: 10%;
     cursor: pointer;
 }
+
+/* .photo__wrapper {
+    width: 25%;
+} */
 
 .photo:nth-child(1) {
     z-index: 10;
@@ -32,7 +42,7 @@
 }
 
 .photo__description {
-    height: 35%;
+    height: 45%;
     font-size: 11px;
     line-height: 18px;
     overflow-wrap: break-word;

@@ -5,5 +5,5 @@ class Photo < ApplicationRecord
   has_many :liking_users, through: :likes, source: :user
 
   validates :img_url, presence: true
-  validates :is_public, presence: true
+  validates :is_public, inclusion: { in: [true, false], allow_nil: true }
 end

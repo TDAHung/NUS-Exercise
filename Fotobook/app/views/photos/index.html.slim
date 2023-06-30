@@ -1,0 +1,73 @@
+div class="main__content__album bg-white mt-4 rounded"
+    = render partial: "shared/pages"
+    div class="container d-flex flex-column justify-content-between"
+        div class="main__album d-flex flex-column"
+            div class="row"
+                / <!-- start template -->
+                div class="col-sm-12 col-md-6 mx-3 my-2 album bg-body-tertiary shadow border-0 button-modal child-node" id="album_1"
+                    / <!-- remember to add album_id-->
+                    div class="row justify-content-between wrapper"
+                        div class="photo__wrapper d-flex align-items-center col-md-4 p-0" id="photo_1" data-bs-toggle="modal" data-bs-target="#photoModal"
+                            / <!-- remember to add photo_id -->
+                            div class="photo"
+                                img src="/assets/courage.webp" alt=""
+                        div class="col-md-8 photo__info d-flex flex-column justify-content-between py-3"
+                            div class="photo__author d-flex align-items-center justify-content-between w-100"
+                                a href="#" class="d-flex align-items-center"
+                                    div class="header-box__info__img" href="#"
+                                        img src="/assets/courage.webp" alt="courage-dog"
+                                    div class="photo__author__name ms-3 text-primary" href="#"Hieu Nguyen
+                            h5 class="photo__title fw-bold"Bla Bla
+                            p class="photo__description text-start"Lorem ipsum dolor, sit amet consectetur
+                                |adipisicing
+                                |elit. Non molestiae veniam, atque amet magnam quis? Dicta similique sequi
+                                |Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ratione
+                                |saepe
+                                |odio sint repudiandae ab molestiae porro amet quidem laudantium id minima
+                                |quos
+                                |sneque, dolorum maiores in. Inventore, excepturi ex?
+                            div class="photo__liked d-flex justify-content-between align-items-center"
+                                a class="photo_heart" href="#"
+                                    i class="fa-regular fa-heart"
+                                    span class="text-primary"123
+                                p class="photo__time m-0"4:56 pm 01/04/2018
+                / <!-- end template -->
+                div class="col-sm-12 col-md-6 mx-3 my-2 album bg-body-tertiary shadow border-0 button-modal child-node" id="album_1"
+                    / <!-- remember to add album_id-->
+                    div class="row justify-content-between"
+                        div class="photo__wrapper d-flex align-items-center col-md-4 p-0" id="photo_1" data-bs-toggle="modal" data-bs-target="#photoModal"
+                            / <!-- remember to add photo_id -->
+                            div class="photo"
+                                img src="/assets/courage.webp" alt=""
+                        div class="col-md-8 photo__info d-flex flex-column justify-content-between py-3"
+                            div class="photo__author d-flex align-items-center justify-content-between w-100"
+                                a href="#" class="d-flex align-items-center"
+                                    div class="header-box__info__img" href="#"
+                                        img src="/assets/courage.webp" alt="courage-dog"
+                                    div class="photo__author__name ms-3 text-primary" href="#"Hieu Nguyen
+                            h5 class="photo__title fw-bold"Bla Bla
+                            p class="photo__description text-start"Lorem ipsum dolor, sit amet consectetur
+                                |adipisicing
+                                |elit. Non molestiae veniam, atque amet magnam quis? Dicta similique sequi
+                                |Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ratione
+                                |saepe
+                                |odio sint repudiandae ab molestiae porro amet quidem laudantium id minima
+                                |quos
+                                |sneque, dolorum maiores in. Inventore, excepturi ex?
+                            div class="photo__liked d-flex justify-content-between align-items-center"
+                                a class="photo_heart" href="#"
+                                    i class="fa-regular fa-heart"
+                                    span class="text-primary"123
+                                p class="photo__time m-0"4:56 pm 01/04/2018
+
+        div class="content__pagination"
+            nav aria-label="..."
+                ul class="pagination d-flex justify-content-center"
+                    li class="page-item"
+                        button class="page-link" id="prev-button" &lt;
+                    / <!-- use logic to render UI of pages -->
+                    li class="page-item"
+                        button class="page-link" id="next-button" &gt;
+
+template id="limit_paging_template"
+    input value="6"
