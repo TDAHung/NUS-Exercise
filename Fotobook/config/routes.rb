@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   root "feeds#index"
+  get "feeds/photos", to: "feed_photos#index"
 
   get "sign_up", to: "registrations#new"
   post "sign_up", to: "registrations#create"
@@ -14,9 +15,13 @@ Rails.application.routes.draw do
 
   delete "sign_out", to: "sessions#destroy"
 
-  get "discover", to: "discovers#index"
-  get "/discover/album", to: "albums#index"
-  get "photo", to: "photos#index"
-  get "discover/photo", to: "photos#index"
+  scope "discover" do
+    get "/", to: "discovers#index", as: "discover"
+    get "/photos", to: "discover_photos#index", as: "discover_photos"
+    get "/photos/:id", to: "discover_user_photos#index"
+    get "/albums/:id", to: "discover_user_albums#index"
+    get "/followees/:id", to: "discover_user_followees#index"
+    get "/followers/:id", to: "discover_user_followers#index"
+  end
 
 end

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user.present? && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to album_path
+      redirect_to discover_path
     else
       flash[:error] = "Invalid email or password"
       redirect_to sign_in_path

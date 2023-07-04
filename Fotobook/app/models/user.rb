@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :albums, dependent: :destroy
-  has_many :photos, dependent: :destroy
+  has_many :albums, dependent: :delete_all
+  has_many :photos, dependent: :delete_all
   has_many :received_follows, foreign_key: :following_user_id, class_name: 'Follow', dependent: :destroy
   has_many :followers, through: :received_follows, source: :follower
   has_many :given_follows, foreign_key: :follower_id, class_name: 'Follow', dependent: :destroy

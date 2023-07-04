@@ -24,10 +24,18 @@ html
     - case controller_name
       - when "discovers"
         = stylesheet_link_tag 'discover.css'
+      - when "discover_photos"
+        = stylesheet_link_tag 'photo.css'
       - when "feeds"
         = stylesheet_link_tag 'feed.css'
-      - when "photos"
+      - when "feed_photos"
         = stylesheet_link_tag 'photo.css'
+      - when "discover_user_photos"
+        = stylesheet_link_tag 'discover_user.css'
+      - when "discover_user_albums"
+        = stylesheet_link_tag 'album.css'
+      - when "discover_user_followees", "discover_user_followers"
+        = stylesheet_link_tag 'followee.css'
 
   body
     = render partial: 'shared/header'
@@ -40,8 +48,8 @@ html
     - if controller.include?(controller_name)
       = render partial: "shared/modal"
 
+    = javascript_include_tag 'index.js'
     = javascript_include_tag 'button.js'
     - case controller_name
       - when "discovers"
         = javascript_include_tag 'discover.js'
-    = javascript_include_tag 'index.js'

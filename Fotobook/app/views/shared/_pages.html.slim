@@ -1,14 +1,14 @@
 div.button-option.d-flex.justify-content-center
     / <!-- Link for "Album" -->
     - path_album = [discover_path, root_path]
-    - if current_page?(discover_path) || current_page?(root_path)
+    - if current_page?(feeds_photos_path) || current_page?(root_path)
         = link_to "ALBUM", root_path, class: "btn btn-outline-primary #{path_album.include?(request.path) ? "active":''}"
     - else
         = link_to "ALBUM", discover_path, class: "btn btn-outline-primary #{path_album.include?(request.path) ? "active":''}"
 
     / <!-- Link for "Photo" -->
-    - path_photo = [photo_path, discover_photo_path]
-    - if  current_page?(discover_photo_path) || current_page?(root_path)
-        = link_to "PHOTO", photo_path, class: "btn btn-outline-primary #{path_photo.include?(request.path) ? "active":''}"
+    - path_photo = [feeds_photos_path, discover_photos_path]
+    - if  current_page?(discover_photos_path) || current_page?(root_path)
+        = link_to "PHOTO", feeds_photos_path, class: "btn btn-outline-primary #{path_photo.include?(request.path) ? "active":''}"
     - else
-        = link_to "PHOTO", discover_photo_path, class: "btn btn-outline-primary #{path_photo.include?(request.path) ? "active":''}"
+        = link_to "PHOTO", discover_photos_path, class: "btn btn-outline-primary #{path_photo.include?(request.path) ? "active":''}"
