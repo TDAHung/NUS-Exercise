@@ -1,0 +1,21 @@
+    - user = Current.user
+    - album_count = user.albums.count
+    - photo_count = user.photos.count
+    - follower_count = Follower.where(follower_id: user.id).count
+    - followee_count = Follower.where(following_user_id: user.id).count
+
+    div class="profile__nav d-flex"
+        div class="profile__img"
+            img src="#{user.img_url.present? ? user.img_url.url : '/assets/avatar.png'}" alt=""
+        div class="profile__info d-flex flex-column justify-content-between ms-4"
+            a class="btn btn-follow btn-sm w-25" href="#{profiles_path}/#{Current.user.id}/edit" Edit Profile
+            h1 = user["first_name"] + ' ' + user["last_name"]
+            nav class="tabs d-flex fs-5 p-0"
+                a class="tab #{request.path == photos_path ? 'active':''} ps-0 ms-0" href="#{photos_path}"
+                    span #{photo_count} Photos
+                a class="tab #{request.path == albums_path ? 'active':''}" href="#{albums_path}"
+                    span #{album_count} Albums
+                a class="tab #{request.path == followees_path ? 'active':''}" href="#{followees_path}"
+                    span #{follower_count} Followings
+                a class="tab #{request.path == followers_path ? 'active':''}" href="#{followers_path}"
+                    span #{followee_count} Followers

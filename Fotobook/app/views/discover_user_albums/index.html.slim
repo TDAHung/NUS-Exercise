@@ -1,0 +1,22 @@
+    div.main__content__profile.bg-white.mt-4.d-flex.pt-3.flex-column.ps-5
+        div.main__album.d-flex.flex-column
+            div.container.content-wrapper
+                = render partial: "shared/user_navbar"
+                div.row.parent-node
+                    - @albums.each do |album|
+                        / <!-- start template -->
+                        div.child-node.col-3.p-0.d-flex.flex-column.justify-content-end.album.position-relative.
+                            div.postion-relative.d-flex.justify-content-center
+                                div.photo-count.position-absolute.d-flex.justify-content-center.align-items-center.text-white.text-center
+                                    | #{album.album_attachments.all.count.to_s}
+                                    | <br>
+                                    | Photos
+                                - album.album_attachments.each do |album|
+                                    div class="photo shadow position-absolute"
+                                        img src="#{album.img_url.url}" alt=""
+                            div class="w-100 album__description text-center" = album["title"]
+                        / <!-- end template -->
+            = render partial: "shared/pagination"
+
+        template id="limit_paging_template"
+            input.d-none value="8"
