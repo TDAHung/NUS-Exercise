@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :album_attachments
+  get 'rails/destroy'
+  get 'rails/controller'
+  get 'rails/ProfilePhotos'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -23,5 +27,10 @@ Rails.application.routes.draw do
     get "/followees/:id", to: "discover_user_followees#index"
     get "/followers/:id", to: "discover_user_followers#index"
   end
+  resources :profiles
+  resources :photos
+  resources :albums
+  resources :followees
+  resources :followers
 
 end

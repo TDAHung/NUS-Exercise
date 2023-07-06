@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   before_destroy :cleanup_associated_records
 
+  mount_uploader :img_url, AvatarUploader
+
   private
 
   def cleanup_associated_records

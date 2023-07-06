@@ -4,28 +4,22 @@ div class="main__content__album bg-white mt-4 d-flex justify-content-around flex
         div class="container"
             div class="row parent-node"
                 / <!-- start template -->
-
                 - @albums.each do |album|
-                    div class="col-sm-12 col-md-6 mx-3 my-2 album bg-body-tertiary shadow border-0 button-modal child-node d-flex align-items-center" id="album_#{album["id"]}"
+                    div class="col-sm-12 col-md-6 mx-3 my-2 p-0 album bg-body-tertiary shadow border-0 button-modal child-node d-flex align-items-center" id="album_#{album["id"]}"
                         / <!-- remember to add album_id -->
-                        div.row.w-100.wrapper
+                        div.row.w-100.wrapper.justify-content-between
                             div class="photo__wrapper d-flex align-items-center col-md-4 postion-relative" id="photo_#{album["id"]}" data-bs-toggle="modal" data-bs-target="#photoModal"
                                 / <!-- remember to add photo_id -->
-                                div.photo.position-absolute
-                                    img src="/assets/courage.webp" alt=""
+                                - album.album_attachments.each do |image|
+                                    div.photo.position-absolute
+                                        img src="#{image.img_url.url}" alt=""
 
-                                div.photo.position-absolute
-                                    img src="/assets/courage.webp" alt=""
-
-                                div.photo.position-absolute
-                                    img src="/assets/courage.webp" alt=""
-
-                            div class="col-md-8 photo__info d-flex flex-column justify-content-between"
+                            div class="col-md-7 photo__info d-flex flex-column justify-content-between"
                                 div class="photo__author d-flex align-items-center justify-content-between"
-                                    a href="#" class="d-flex align-items-center"
+                                    a href="#{discover_photos_path}/#{album.user.id}" class="d-flex align-items-center"
                                         div class="header-box__info__img" href="#"
-                                            img src="/assets/courage.webp" alt="courage-dog"
-                                        div class="photo__author__name ms-2 text-primary"  = album[:user_first_name] + album[:user_last_name]
+                                            img src="#{album.user.img_url.present? ? album.user.img_url.url : '/assets/avatar.png'}" alt="courage-dog"
+                                        div class="photo__author__name ms-3 text-primary" = album.user.first_name + ' ' + album.user.last_name
                                     a class="btn btn-follow" Follow
                                 h5.photo__title.fw-bold = album["title"]
                                 p.photo__description.text-start = album["description"]
@@ -33,17 +27,12 @@ div class="main__content__album bg-white mt-4 d-flex justify-content-around flex
                                     a.photo_heart href="#"
                                         i.fa-regular.fa-heart
                                         span.text-primary 123
-                                    p.photo__time.m-0 4:56 pm 01/04/2018
+                                    - created_at = album["created_at"].to_s
+                                    - formatted_time = DateTime.strptime(created_at, "%Y-%m-%d %H:%M:%S %Z").strftime("%l:%M %P %d/%m/%Y")
+                                    p.photo__time.m-0 = formatted_time
                 / <!-- end template -->
 
-    div class="content__pagination"
-        nav aria-label="..."
-            ul class="pagination d-flex justify-content-center"
-                li class="page-item"
-                    button class="page-link" id="prev-button"&lt;
-                / <!-- use logic to render UI of pages -->
-                li class="page-item"
-                    button class="page-link" id="next-button"&gt;
+    = render partial: "shared/pagination"
 
     template id="limit_paging_template"
         input.d-none value="4"

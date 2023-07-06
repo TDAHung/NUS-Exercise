@@ -1,47 +1,22 @@
-    div.main__content__album.bg-white.mt-4.d-flex.justify-content-around.flex-column
-        = render partial: "shared/pages"
+    div.main__content__profile.bg-white.mt-4.d-flex.pt-3.flex-column.ps-5
         div.main__album.d-flex.flex-column
-            div.container
-                div.row.parent-node
+            div.container.content-wrapper
+                = render partial: "shared/profile_navbar"
+                = link_to "ADD NEW ALBUMS", new_album_path, class: "btn btn-success w-25 float-end"
+                div class="row parent-node w-100"
                     - @albums.each do |album|
                         / <!-- start template -->
-                        div.col-sm-12.col-md-6.mx-3.my-2.album.bg-body-tertiary.shadow.border-0.button-modal.child-node.d-flex.align-items-center id="album_#{album["id"]}"
-                            / <!-- remember to add album_id -->
-                            div.row.pt-2.ps-2.justify-content-between.w-100
-                                div.photo__wrapper.d-flex.align-items-center.col-md-4.postion-relative id="photo_#{album["id"]}" data-bs-toggle="modal" data-bs-target="#photoModal"
-                                    / <!-- remember to add photo_id -->
-                                    div.photo.position-absolute
-                                        img src="/assets/courage.webp" alt=""
-
-                                    div.photo.position-absolute
-                                        img src="/assets/courage.webp" alt=""
-
-                                    div.photo.position-absolute
-                                        img src="/assets/courage.webp" alt=""
-
-                                div.col-md-8.photo__info.d-flex.flex-column.justify-content-between
-                                    div.photo__author.d-flex.align-items-center
-                                        a.header-box__info__img href="#"
-                                            img src="/assets/courage.webp" alt="courage-dog"
-                                        a.photo__author__name.ms-3.text-primary href="#"  = album[:user_first_name]
-
-                                    h5.photo__title.fw-bold = album["title"]
-                                    div.photo__description.text-start = album["description"]
-                                    div.photo__liked.d-flex.justify-content-between.align-items-center.mt-3
-                                        a.photo_heart href="#"
-                                            i.fa-regular.fa-heart
-                                            span.text-primary 123
-                                        p.photo__time.m-0 4:56 pm 01/04/2018
-                    / <!-- end template -->
-        div.content__pagination
-            nav aria-label="..."
-                ul.pagination.d-flex.justify-content-center
-                    li.page-item
-                        button.page-link id="prev-button"&lt;
-                    / <!-- use logic to render UI of pages -->
-                    li.page-item
-                        button.page-link id="next-button"&gt;
-
+                        div.child-node.col-3.p-0.d-flex.flex-column.justify-content-end.album.position-relative.
+                            div.postion-relative.d-flex.justify-content-center
+                                div.photo-count.position-absolute.d-flex.justify-content-center.align-items-center.text-white.text-center
+                                    | #{album.album_attachments.all.count.to_s}
+                                    | <br>
+                                    | Photos
+                                - album.album_attachments.each do |album|
+                                    div class="photo shadow position-absolute"
+                                        img src="#{album.img_url.url}" alt=""
+                            div class="w-100 album__description text-center" = album["title"]
+                        / <!-- end template -->
+            = render partial: "shared/pagination"
     template id="limit_paging_template"
-        input.d-none value="4"
-
+        input.d-none value="10"

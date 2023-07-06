@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_27_140043) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_05_084242) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "album_attachments", force: :cascade do |t|
+    t.bigint "album_id"
+    t.string "img_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_album_attachments_on_album_id"
+  end
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
@@ -50,10 +58,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_140043) do
     t.boolean "is_public", null: false
     t.string "img_url", null: false
     t.bigint "user_id", null: false
-    t.bigint "album_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["album_id"], name: "index_photos_on_album_id"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
@@ -68,10 +74,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_140043) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "album_attachments", "albums"
   add_foreign_key "albums", "users"
   add_foreign_key "followers", "users", column: "follower_id"
   add_foreign_key "followers", "users", column: "following_user_id"
   add_foreign_key "likes", "users"
-  add_foreign_key "photos", "albums"
   add_foreign_key "photos", "users"
 end

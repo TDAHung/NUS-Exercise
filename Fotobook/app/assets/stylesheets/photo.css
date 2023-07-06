@@ -72,10 +72,6 @@
     border-radius: 8px;
 }
 
-.container {
-    height: 100%;
-}
-
 @media screen and (max-width:820px) {
     .album {
         width: 30%;

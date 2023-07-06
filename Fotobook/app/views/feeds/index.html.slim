@@ -1,45 +1,37 @@
-    div.main__content__album.bg-white.mt-4.d-flex.justify-content-around.flex-column
-        = render partial: 'shared/pages'
-        div.main__album.d-flex.flex-column
-            div.container
-                div.row.parent-node
-                    / <!-- start template -->
-                    - @albums.each do |album|
-                        - if album["is_public"]
-                            div class="col-sm-12 col-md-6 mx-3 my-2 album bg-body-tertiary shadow border-0 button-modal child-node d-flex align-items-center" id="album_#{album["id"]}"
-                                / <!-- remember to add album_id -->
-                                div.row.w-100.wrapper
-                                    div class="photo__wrapper d-flex align-items-center col-md-4 postion-relative" id="photo_#{album["id"]}" data-bs-toggle="modal" data-bs-target="#photoModal"
-                                        / <!-- remember to add photo_id -->
-                                        div.photo.position-absolute
-                                            img src="/assets/courage.webp" alt=""
+div class="main__content__album bg-white mt-4 d-flex justify-content-around flex-column"
+    = render partial: "shared/pages"
+    div class="main__album d-flex flex-column"
+        div class="container"
+            div class="row parent-node"
+                / <!-- start template -->
+                - @albums.each do |album|
+                    div class="col-sm-12 col-md-6 mx-3 my-2 p-0 album bg-body-tertiary shadow border-0 button-modal child-node d-flex align-items-center" id="album_#{album["id"]}"
+                        / <!-- remember to add album_id -->
+                        div.row.w-100.wrapper.justify-content-between
+                            div class="photo__wrapper d-flex align-items-center col-md-4 postion-relative" id="photo_#{album["id"]}" data-bs-toggle="modal" data-bs-target="#photoModal"
+                                / <!-- remember to add photo_id -->
+                                - album.album_attachments.each do |image|
+                                    div.photo.position-absolute
+                                        img src="#{image.img_url.url}" alt=""
 
-                                        div.photo.position-absolute
-                                            img src="/assets/courage.webp" alt=""
+                            div class="col-md-7 photo__info d-flex flex-column justify-content-between"
+                                div class="photo__author d-flex align-items-center justify-content-between"
+                                    a href="#{discover_photos_path}/#{album.user.id}" class="d-flex align-items-center"
+                                        div class="header-box__info__img" href="#"
+                                            img src="#{album.user.img_url.present? ? album.user.img_url.url : '/assets/avatar.png'}" alt="courage-dog"
+                                        div class="photo__author__name ms-3 text-primary" = album.user.first_name + ' ' + album.user.last_name
+                                h5.photo__title.fw-bold = album["title"]
+                                p.photo__description.text-start = album["description"]
+                                div.photo__liked.d-flex.justify-content-between.align-items-center
+                                    a.photo_heart href="#"
+                                        i.fa-regular.fa-heart
+                                        span.text-primary 123
+                                    - created_at = album["created_at"].to_s
+                                    - formatted_time = DateTime.strptime(created_at, "%Y-%m-%d %H:%M:%S %Z").strftime("%l:%M %P %d/%m/%Y")
+                                    p.photo__time.m-0 = formatted_time
+                / <!-- end template -->
 
-                                        div.photo.position-absolute
-                                            img src="/assets/courage.webp" alt=""
-
-                                    div class="col-md-8 photo__info d-flex flex-column justify-content-between"
-                                        div class="photo__author d-flex align-items-center"
-                                            a href="#" class="d-flex align-items-center"
-                                                div class="header-box__info__img" href="#"
-                                                    img src="/assets/courage.webp" alt="courage-dog"
-                                                div class="photo__author__name ms-3 text-primary"  = album[:user_first_name] + album[:user_last_name]
-                                        h5.photo__title.fw-bold = album["title"]
-                                        div.photo__description.text-start = album["description"]
-                                        div.photo__liked.d-flex.justify-content-between.align-items-center
-                                            a.photo_heart href="#"
-                                                i.fa-regular.fa-heart
-                                                span.text-primary 123
-                                            - created_at = album["created_at"].to_s
-                                            - formatted_time = DateTime.strptime(created_at, "%Y-%m-%d %H:%M:%S %Z").strftime("%l:%M %P %d/%m/%Y")
-                                            p.photo__time.m-0 = formatted_time
-                    / <!-- end template -->
-
-
-        = render partial: "shared/pagination"
+    = render partial: "shared/pagination"
 
     template id="limit_paging_template"
         input.d-none value="4"
-

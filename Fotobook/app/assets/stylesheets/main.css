@@ -27,7 +27,8 @@ body {
 }
 
 .header-box__info__img {
-    width: 40px;
+    width: 35px;
+    height: 35px;
 }
 
 .header-box__info__img img {

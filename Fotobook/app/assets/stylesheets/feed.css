@@ -19,13 +19,11 @@
 }
 
 .photo {
-    width: 10%;
+    margin-left: 10px;
+    width: 175px;
+    height: 150px;
     cursor: pointer;
 }
-
-/* .photo__wrapper {
-    width: 25%;
-} */
 
 .photo:nth-child(1) {
     z-index: 10;
