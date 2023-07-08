@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  resources :album_attachments
-  get 'rails/destroy'
-  get 'rails/controller'
-  get 'rails/ProfilePhotos'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -19,7 +15,7 @@ Rails.application.routes.draw do
 
   delete "sign_out", to: "sessions#destroy"
 
-  scope "discover" do
+  scope "discovers" do
     get "/", to: "discovers#index", as: "discover"
     get "/photos", to: "discover_photos#index", as: "discover_photos"
     get "/photos/:id", to: "discover_user_photos#index"
@@ -27,10 +23,9 @@ Rails.application.routes.draw do
     get "/followees/:id", to: "discover_user_followees#index"
     get "/followers/:id", to: "discover_user_followers#index"
   end
-  resources :profiles
-  resources :photos
-  resources :albums
-  resources :followees
-  resources :followers
+  resources :album_attachments, :profiles, :photos, :albums
+  resources :followees, only: [:index, :create, :destroy]
+  resources :followers, only: [:index, :create, :destroy]
+  resources :likes, only: [:create, :destroy]
 
 end

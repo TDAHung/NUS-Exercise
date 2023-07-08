@@ -1,6 +1,6 @@
 class CreateFollows < ActiveRecord::Migration[7.0]
   def up
-    create_table :followers, id: false do |t|
+    create_table :followers,id: false do |t|
       t.references :follower, null: false, foreign_key: { to_table: :users }
       t.references :following_user, null:false, foreign_key: { to_table: :users }
 

@@ -9,7 +9,7 @@
                             div.follower__wrapper.d-flex.justify-content-between.flex-column
                                 div.follower__img.mx-auto
                                     a href="#{discover_photos_path}/#{follower_info["id"]}"
-                                        img src="/assets/courage.webp" alt=""
+                                        img src="#{follower_info[:img_url].present? ? follower_info[:img_url].url : "/assets/avatar.png"}" alt=""
                                 div.follower__name.text-center = follower_info["first_name"] + follower_info["last_name"]
                                 div.follower__counter.d-flex.justify-content-between.text-primary
                                     div.follower__counter__photos.text-center
@@ -19,7 +19,7 @@
                                     div.follower__counter__albums.text-center
                                         div.follower__count = follower_info[:photo_count]
                                         div.follower__type ALBUMS
-                                button.follower__btn.btn-follow.w-50.mx-auto.bg-white Following
+                                = render partial: "shared/button_follow_user", locals: { user: follower_info}
                         / <!-- end template -->
             = render partial: "shared/pagination"
     template id="limit_paging_template"
