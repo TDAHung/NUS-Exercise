@@ -62,6 +62,15 @@ body {
     display: none;
 }
 
+.photo_heart {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    outline: inherit;
+}
+
 @media screen and (max-width: 820px) {
     .navbar-normal {
         display: block;

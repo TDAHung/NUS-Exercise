@@ -10,7 +10,7 @@ div class="main__content__album bg-white mt-4 d-flex justify-content-around flex
                         div.row.w-100.wrapper.justify-content-between
                             div class="photo__wrapper d-flex align-items-center col-md-4 postion-relative" id="photo_#{album["id"]}" data-bs-toggle="modal" data-bs-target="#photoModal"
                                 / <!-- remember to add photo_id -->
-                                - album.album_attachments.each do |image|
+                                - album.album_attachments.find_each do |image|
                                     div.photo.position-absolute
                                         img src="#{image.img_url.url}" alt=""
 
@@ -20,12 +20,11 @@ div class="main__content__album bg-white mt-4 d-flex justify-content-around flex
                                         div class="header-box__info__img" href="#"
                                             img src="#{album.user.img_url.present? ? album.user.img_url.url : '/assets/avatar.png'}" alt="courage-dog"
                                         div class="photo__author__name ms-3 text-primary" = album.user.first_name + ' ' + album.user.last_name
+
                                 h5.photo__title.fw-bold = album["title"]
                                 p.photo__description.text-start = album["description"]
                                 div.photo__liked.d-flex.justify-content-between.align-items-center
-                                    a.photo_heart href="#"
-                                        i.fa-regular.fa-heart
-                                        span.text-primary 123
+                                    = render partial: "shared/button/button_like_asset", locals: { asset: album, type: "Album" }
                                     - created_at = album["created_at"].to_s
                                     - formatted_time = DateTime.strptime(created_at, "%Y-%m-%d %H:%M:%S %Z").strftime("%l:%M %P %d/%m/%Y")
                                     p.photo__time.m-0 = formatted_time

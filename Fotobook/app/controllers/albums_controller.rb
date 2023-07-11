@@ -22,6 +22,11 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def discover_user_index
+    @albums = Album.includes(:user).includes(:album_attachments).order(updated_at: :desc).where(is_public: true)
+    render "discover_user/discover_user_albums/index"
+  end
+
   private
     def album_params
       params.require(:album).permit(:title, :description, :is_public, :user_id, album_attachments_attributes:

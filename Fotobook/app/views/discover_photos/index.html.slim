@@ -19,14 +19,13 @@ div class="main__content__album bg-white mt-4 rounded"
                                         div class="header-box__info__img" href="#"
                                             img src="#{photo.user.img_url.present? ? photo.user.img_url.url : '/assets/avatar.png'}" alt="courage-dog"
                                         div class="photo__author__name ms-3 text-primary" href="#" = photo.user.first_name + ' ' + photo.user.last_name
-                                    = render partial: "shared/button_follow_asset", locals: { asset: photo }
+                                    = render partial: "shared/button/button_follow_asset", locals: { asset: photo }
 
                                 h5 class="photo__title fw-bold" = photo["title"]
                                 p class="photo__description text-start" = photo["description"]
                                 div class="photo__liked d-flex justify-content-between align-items-center"
-                                    a class="photo_heart" href="#"
-                                        i class="fa-regular fa-heart"
-                                        span class="text-primary"123
+                                    = render partial: "shared/button/button_like_asset", locals: { asset: photo, type: "Photo"}
+
                                     - created_at = photo["created_at"].to_s
                                     - formatted_time = DateTime.strptime(created_at, "%Y-%m-%d %H:%M:%S %Z").strftime("%l:%M %P %d/%m/%Y")
                                     p.photo__time.m-0 = formatted_time

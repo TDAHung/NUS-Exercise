@@ -24,15 +24,9 @@ html
     - case controller_name
       - when "discovers"
         = stylesheet_link_tag 'discover.css'
-      - when "discover_photos", "feed_photos"
+      - when "discover_photos"
         = stylesheet_link_tag 'photo.css'
-      - when "feeds"
-        = stylesheet_link_tag 'feed.css'
-      - when "discover_user_photos"
-        = stylesheet_link_tag 'discover_user.css'
-      - when "discover_user_albums"
-        = stylesheet_link_tag 'album.css'
-      - when "discover_user_followees", "discover_user_followers", "followees", "followers"
+      - when "followees", "followers"
         = stylesheet_link_tag 'followee.css'
       - when "profiles"
         = stylesheet_link_tag 'edit_user.css'
@@ -40,8 +34,8 @@ html
         = stylesheet_link_tag 'album.css'
         - if controller.action_name == 'new'
           = stylesheet_link_tag 'create_album.css'
-      - when "photos"
-        - if controller.action_name == 'new'
+      - when "photos", "discover_user_photos"
+        - if controller.action_name == 'new' || controller.action_name == 'edit'
           = stylesheet_link_tag 'create_photo.css'
         = stylesheet_link_tag 'discover_user.css'
 
@@ -52,7 +46,7 @@ html
         = render partial: 'shared/navbar'
         = yield
 
-    - controller_modal = ["discovers", "feeds", "feed_photos", "discover_photos"]
+    - controller_modal = ["discovers" "discover_photos"]
     - if controller_modal.include?(controller_name)
       = render partial: "shared/modal"
 
@@ -64,7 +58,7 @@ html
       - when "profiles"
         = javascript_include_tag 'drag_file.js'
       - when "photos"
-        - if controller.action_name == 'new'
+        - if controller.action_name == 'new' || controller.action_name == 'edit'
           = javascript_include_tag 'input_photo.js'
       - when "albums"
         - if controller.action_name == 'new'

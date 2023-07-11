@@ -7,7 +7,9 @@
                     - @photos.each do |photo|
                         - photo = Photo.find(photo["id"])
                         / <!-- start template -->
-                        div.child-node.my-2.user__images.mx-3
+                        div.child-node.my-2.user__images.mx-3.position-relative
+                            a.position-absolute.edit__btn href="#{edit_photo_path(photo["id"])}"
+                                <i class="fa-regular fa-pen-to-square"></i>
                             div
                                 img src="#{photo.img_url.url}" alt="avatar"
                             div.user__images__title.text-center = photo.title

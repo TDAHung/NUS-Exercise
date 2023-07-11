@@ -1,8 +1,3 @@
-    - original_path = request.path
-    - transformed_photo_path = original_path.sub(/discover\/[^\/]+/, "discover/photos")
-    - transformed_album_path = original_path.sub(/discover\/[^\/]+/, "discover/albums")
-    - transformed_followee_path = original_path.sub(/discover\/[^\/]+/, "discover/followees")
-    - transformed_follower_path = original_path.sub(/discover\/[^\/]+/, "discover/followers")
     - user = User.find_by(id: params["id"])
     - album_count = user.albums.count
     - photo_count = user.photos.count
@@ -25,11 +20,11 @@
 
             h1 = user["first_name"] + ' ' + user["last_name"]
             nav class="tabs d-flex fs-5 p-0"
-                a class="tab #{request.path == transformed_photo_path ? 'active':''} ps-0 ms-0" href="#{transformed_photo_path}"
+                a class="tab #{request.path == discover_photo_path(params["id"]) ? 'active':''} ps-0 ms-0" href="#{discover_photo_path(params["id"])}"
                     span #{photo_count} Photos
-                a class="tab #{request.path == transformed_album_path ? 'active':''}" href="#{transformed_album_path}"
+                a class="tab #{request.path == discover_album_path(params["id"]) ? 'active':''}" href="#{discover_album_path(params["id"])}"
                     span #{album_count} Albums
-                a class="tab #{request.path == transformed_followee_path ? 'active':''}" href="#{transformed_followee_path}"
+                a class="tab #{request.path == discover_followee_path(params["id"]) ? 'active':''}" href="#{discover_followee_path(params["id"])}"
                     span #{follower_count} Followings
-                a class="tab #{request.path == transformed_follower_path ? 'active':''}" href="#{transformed_follower_path}"
+                a class="tab #{request.path == discover_follower_path(params["id"]) ? 'active':''}" href="#{discover_follower_path(params["id"])}"
                     span #{followee_count} Followers

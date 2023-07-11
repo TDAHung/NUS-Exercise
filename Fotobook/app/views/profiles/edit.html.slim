@@ -3,53 +3,58 @@
             div class="container container-md container-sm"
                 div class="user__tile" Edit User Profile
                 hr
-                form action="#{profiles_path}/#{Current.user.id}" method="post" enctype="multipart/form-data" accept-charset="UTF-8"
-                    input type="hidden" name="_method" value="patch" autocomplete="off"
-                    = hidden_field_tag :authenticity_token, form_authenticity_token
-                    div class="row mb-3"
-                        div class="col-sm-2 col-form-label my-auto input-group-sm position-relative"
-                            input type="file" class="form-control d-none" id="avatar" accept="image/gif, image/jpeg, image/png, image/jpg" name="user[img_url]"
-                        div class="col-sm-10 form__img position-relative"
-                            label for="avatar" class="avatar position-absolute bg-white rounded end-50 d-flex align-items-center justify-content-center" Change
-                            img src="#{@profile.img_url.present? ? @profile.img_url.url : '/assets/avatar.png'}" alt="avatar"
-                    div class="row"
-                        div class="col-sm-12 col-md-5"
-                            div class="row mb-3"
-                                div class="col-sm-3 col-form-label"
-                                div class="col-sm-9 text-primary form__title" Basic Information
-                            div class="row mb-3"
-                                label for="firstName" class="col-sm-3 col-form-label text-end" First Name
-                                div class="col-sm-9 input-group-sm input-group-sm"
-                                    input type="text" class="form-control" id="firstName" name="user[first_name]" value="#{@profile.first_name}" placeholder="First Name"
-                            div class="row mb-3"
-                                label for="lastName" class="col-sm-3 col-form-label text-end" Last Name
-                                div class="col-sm-9 input-group-sm"
-                                    input type="text" class="form-control" id="lastName" name="user[last_name]" value="#{@profile.last_name}" placeholder="Last Name"
-                            div class="row mb-3"
-                                label for="email" class="col-sm-3 col-form-label text-end" Email
-                                div class="col-sm-9 input-group-sm"
-                                    input type="email" class="form-control" id="email" name="user[email]" value="#{@profile.email}" placeholder="someone@example.com"
-                            div class="row mb-3 "
-                                div class="col-sm-3 col-form-label"
-                                div class="col-sm-9 input-group-sm text-primary form__title"
-                                    button type="submit" class="btn btn-success" Save
-                        div class="col-sm-12 col-md-7"
-                            div class="row mb-3 "
-                                div class="col-2 col-sm-4 col-form-label"
-                                div class="col-10 col-sm-8 input-group-sm text-primary form__title"  Password
-                            div class="row mb-3"
-                                label for="currentPassword" class="col-2 col-sm-4 col-form-label text-end" Current Password
-                                div class="col-10 col-sm-8 input-group-sm"
-                                    input type="password" class="form-control" id="currentPassword" name="user[currentPassword]" value="" placeholder="Current Password"
-                            div class="row mb-3"
-                                label for="password" class="col-sm-4 col-form-label text-end" New Password
-                                div class="col-sm-8 input-group-sm"
-                                    input type="password" class="form-control" id="password" name="user[password]" value="" placeholder="New Password"
-                            div class="row mb-3"
-                                label for="confirmPassword" class="col-sm-4 col-form-label text-end" Confirm Password
-                                div class="col-sm-8 input-group-sm"
-                                    input type="password" class="form-control" id="confirmPassword" name="user[password_confirmation]" value="" placeholder="Confirm Password"
-                            div class="row mb-3 "
-                                div class="col-sm-4 col-form-label"
-                                div class="col-sm-8 input-group-sm text-primary form__title"
-                                    button type="submit" class="btn btn-success" Save
+                div.d-flex
+                    form.w-50 action="#{profile_path(@profile.id)}" method="post" enctype="multipart/form-data" accept-charset="UTF-8"
+                        input type="hidden" name="_method" value="patch" autocomplete="off"
+                        = hidden_field_tag :authenticity_token, form_authenticity_token
+                        div class="row mb-3"
+                            div class="col-sm-2 col-form-label my-auto input-group-sm position-relative"
+                                input type="file" class="form-control d-none" id="avatar" accept="image/gif, image/jpeg, image/png, image/jpg" name="user[img_url]"
+                            div class="col-sm-10 form__img position-relative"
+                                label for="avatar" class="avatar position-absolute bg-white rounded end-50 d-flex align-items-center justify-content-center" Change
+                                img src="#{@profile.img_url.present? ? @profile.img_url.url : '/assets/avatar.png'}" alt="avatar"
+                        div class="row"
+                            div.col-10
+                                div class="row mb-3"
+                                    div class="col-sm-3 col-form-label"
+                                    div class="col-sm-9 text-primary form__title" Basic Information
+                                div class="row mb-3"
+                                    label for="firstName" class="col-sm-3 col-form-label text-end" First Name
+                                    div class="col-sm-9 input-group-sm input-group-sm"
+                                        input type="text" class="form-control" id="firstName" name="user[first_name]" value="#{@profile.first_name}" placeholder="First Name"
+                                div class="row mb-3"
+                                    label for="lastName" class="col-sm-3 col-form-label text-end" Last Name
+                                    div class="col-sm-9 input-group-sm"
+                                        input type="text" class="form-control" id="lastName" name="user[last_name]" value="#{@profile.last_name}" placeholder="Last Name"
+                                div class="row mb-3"
+                                    label for="email" class="col-sm-3 col-form-label text-end" Email
+                                    div class="col-sm-9 input-group-sm"
+                                        input type="email" class="form-control" id="email" name="user[email]" value="#{@profile.email}" placeholder="someone@example.com"
+                                div class="row mb-3 "
+                                    div class="col-sm-3 col-form-label"
+                                    div class="col-sm-9 input-group-sm text-primary form__title"
+                                        button type="submit" class="btn btn-success" Save
+
+                    form.w-50.form_password action="#{password_path(@profile.id)}" method="post" accept-charset="UTF-8"
+                        input type="hidden" name="_method" value="patch" autocomplete="off"
+                        = hidden_field_tag :authenticity_token, form_authenticity_token
+                        div class="row"
+                                div class="row mb-3 "
+                                    div class="col-2 col-sm-4 col-form-label"
+                                    div class="col-10 col-sm-8 input-group-sm text-primary form__title" Password
+                                div class="row mb-3"
+                                    label for="currentPassword" class="col-2 col-sm-4 col-form-label text-end" Current Password
+                                    div class="col-10 col-sm-8 input-group-sm"
+                                        input type="password" class="form-control" id="currentPassword" name="user[currentPassword]" value="" placeholder="Current Password"
+                                div class="row mb-3"
+                                    label for="password" class="col-sm-4 col-form-label text-end" New Password
+                                    div class="col-sm-8 input-group-sm"
+                                        input type="password" class="form-control" id="password" name="user[password]" value="" placeholder="New Password"
+                                div class="row mb-3"
+                                    label for="confirmPassword" class="col-sm-4 col-form-label text-end" Confirm Password
+                                    div class="col-sm-8 input-group-sm"
+                                        input type="password" class="form-control" id="confirmPassword" name="user[password_confirmation]" value="" placeholder="Confirm Password"
+                                div class="row mb-3 "
+                                    div class="col-sm-4 col-form-label"
+                                    div class="col-sm-8 input-group-sm text-primary form__title"
+                                        button type="submit" class="btn btn-success" Save

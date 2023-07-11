@@ -19,7 +19,7 @@
                                     div.follower__counter__albums.text-center
                                         div.follower__count = followee_info[:photo_count]
                                         div.follower__type ALBUMS
-                                = render partial: "shared/button_follow_user", locals: {user: followee_info}
+                                = render partial: "shared/button/button_follow_user", locals: {user: followee_info}
 
                         / <!-- end template -->
             = render partial: "shared/pagination"
