@@ -7,21 +7,13 @@ main class="d-flex w-75 justify-content-center flex-column align-items-center"
             img src="/assets/google.jpeg" alt=""
         a class="media__signup" href="#"
             img src="/assets/twitter.png" alt=""
-    form [class="w-50 bg-body-tertiary d-flex mt-1 flex-column align-items-center py-4 border border-top-0 shadow-sm rounded"
-        method="POST" action="/sign_up"]
-
-        - if @user.errors.any?
-            - @user.errors.full_messages.each do |message|
-                div class="alert alert-danger text-start" = message
-
-        / = hidden_field_tag :authenticity_token, form_authenticity_token
+    form [class="w-50 bg-body-tertiary d-flex mt-1 flex-column align-items-center py-4 border border-top-0 shadow-sm rounded" action="#{user_registration_path}"
+        method="POST" ]
+        = hidden_field_tag :authenticity_token, form_authenticity_token
         div class="mb-3 w-75"
             label for="email" class="form-label" Email
             input [type="text" class="form-control" id="email" placeholder="abc@abc.com"
                 name="user[email]"]
-        - if @user.errors.messages[:email].nil?
-            div class="mb-3 w-75"
-                div class="form-control alert alert-danger" = @user.errors.full_messages[:email]
         div class="mb-3 w-75"
             label for="firstName" class="form-label" First Name
             input [type="text" class="form-control" id="firstName" placeholder="First Name"
@@ -34,9 +26,6 @@ main class="d-flex w-75 justify-content-center flex-column align-items-center"
             label for="passwordConfirm" class="form-label"Password Confirmation
             input [type="password" class="form-control" id="passwordConfirm" placeholder="Password"
                 name="user[password_confirmation]"]
-        - if @user.errors.messages[:password_confirmation].nil?
-            div class="mb-3 w-75"
-                div class="form-control alert alert-danger" = @user.errors.full_messages[:password_confirmation]
         input type="hidden" name="user[is_admin]" value="0"
         input type="hidden" name="user[img_url]" value=""
         input type="hidden" name="user[last_name]" value=""

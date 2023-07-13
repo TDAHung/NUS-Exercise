@@ -10,20 +10,22 @@
                 img src="/assets/twitter.png" alt=""
         form [
             class="py-5 bg-body-tertiary d-flex flex-column align-items-center justify-content-center shadow-sm rounded border border-top-0"
-            action="sign_in" method="POST"]
+            action="#{user_session_path}" method="POST"]
+            = hidden_field_tag :authenticity_token, form_authenticity_token
             div class="avatar d-flex justify-content-center"
                 img src="/assets/avatar.png" alt="avatar"
-            = render partial: "shared/flash"
             div class="w-75 mt-2"
                 label for="email" Email
-                input [type="text" class="form-control" id="email" placeholder="abc@abc.com" required name="email"]
+                input [type="text" class="form-control" id="email" placeholder="abc@abc.com" required name="user[email]"]
             div class="w-75"
                 label for="email" Password
-                input [type="password" class="form-control" id="password" placeholder="Password" required name="password"]
+                input [type="password" class="form-control" id="password" placeholder="Password" required name="user[password]"]
+
             div class="w-75 d-flex flex-column justify-content-center align-items-center mt-3"
                 button type="submit" class="btn btn-primary w-25"Login
                 a class="text-primary" href="#"Forgot password?
         div class=""
-            a class="text-primary" href="sign_up" Create an account
+            a class="text-primary" href="#{new_user_registration_path}" Create an account
 
-    
+
+
