@@ -1,6 +1,6 @@
 class PasswordsController < ApplicationController
   def update
-    @profile = User.find(Current.user.id)
+    @profile = User.find(current_user.id)
     if @profile.update(user_params)
       redirect_to discover_path
     else

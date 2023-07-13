@@ -32,9 +32,10 @@
                                 div class="row imgGroup position-relative"
 
                                     - @album.album_attachments.find_each do |photo|
-                                        div class="preview pb-3"
-                                            img [src="#{photo.img_url.url}" alt="Psreview" id="image-preview"
-                                                class="image-preview"]
+                                        / div class="preview pb-3"
+                                        /     img [src="#{photo.img_url.url}" alt="Psreview" id="image-preview"
+                                        /         class="image-preview"]
+                                        input class="photoUrl" type="hidden" value="#{photo.img_url.url}"
 
 
                                             template id="deleteButton"

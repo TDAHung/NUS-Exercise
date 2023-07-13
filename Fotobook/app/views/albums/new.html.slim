@@ -28,13 +28,13 @@
                                     accept="image/gif, image/jpeg, image/png, image/jpg" name="album_attachments[img_url][]" required]
 
                             div class="col-12"
-                                div class="row imgGroup position-relative"
-                                    div class="col-12 preview pb-3"
+                                div class="row imgGroup"
+                                    div class="col-12 preview pb-3 position-relative"
                                         img [src="/assets/camera.png" alt="Psreview" id="image-preview"
                                             class="image-preview"]
-                                        template id="deleteButton"
-                                            div class="position-absolute top-0 m-3 text-danger" role="button"
-                                                i class="fs-2 fa-solid fa-x"
-                            input type="hidden" name="album[user_id]" value="#{Current.user.id}"
+                            template id="deleteButton"
+                                div class="position-absolute top-0 m-3 text-danger" role="button"
+                                    i class="fs-2 fa-solid fa-x"
+                            input type="hidden" name="album[user_id]" value="#{current_user.id}"
                             div class="col-12 button-group my-0"
                                 button type="submit" class="btn btn-success" Save

@@ -23,6 +23,7 @@
 
 .user__images {
     width: 15%;
+    cursor: pointer;
 }
 
 .user__images img {
@@ -30,7 +31,12 @@
 }
 
 .edit__btn {
-    left: 75%;
+    left: 70%;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (max-width: 820px) {

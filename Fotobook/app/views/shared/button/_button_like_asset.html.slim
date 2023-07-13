@@ -1,10 +1,10 @@
 - like_found = @like_id.where(likeable_id: asset["id"])
-- is_found = @like_id.exists?(user_id: Current.user.id, likeable_id: asset["id"])
-form action="#{!is_found ? likes_path : like_path(Current.user.id)}" method="post"
+- is_found = @like_id.exists?(user_id: current_user.id, likeable_id: asset["id"])
+form action="#{!is_found ? likes_path : like_path(current_user.id)}" method="post"
     = hidden_field_tag :authenticity_token, form_authenticity_token
     - if is_found
         input type="hidden" name="_method" value="delete" autocomplete="off"
-    input type="hidden" name="like[user_id]" value="#{Current.user.id}"
+    input type="hidden" name="like[user_id]" value="#{current_user.id}"
     input type="hidden" name="like[likeable_type]" value="#{type}"
     input type="hidden" name="like[likeable_id]" value="#{asset["id"]}"
     button type="submit" class="photo_heart"

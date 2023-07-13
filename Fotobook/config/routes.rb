@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  devise_for :users, path: '', path_names: {
+    sign_in: 'sign_in',
+    sign_out: 'sign_out',
+    password: 'password',
+    confirmation: 'confirmation',
+    unlock: 'unlock',
+    registration: 'registration',
+    sign_up: 'sign_up'
+  }, controllers: {
+    sessions: 'sessions',
+    registrations: 'registrations',
+    # passwords: 'custom_passwords',
+    # confirmations: 'custom_confirmations',
+    # unlocks: 'custom_unlocks'
+  }
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -6,15 +22,6 @@ Rails.application.routes.draw do
 
   root "discovers#index_feed"
   get "feeds/photos", to: "discover_photos#feed_photos_index"
-
-  get "sign_up", to: "registrations#new"
-  post "sign_up", to: "registrations#create"
-
-  get "sign_in", to: "sessions#new"
-  post "sign_in", to: "sessions#create"
-
-  delete "sign_out", to: "sessions#destroy"
-
   get "pending", to: "pending_users#index"
 
   scope "discovers" do

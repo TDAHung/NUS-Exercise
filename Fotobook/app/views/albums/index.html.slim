@@ -4,18 +4,20 @@
                 = render partial: "shared/profile_navbar"
                 = link_to "ADD NEW ALBUMS", new_album_path, class: "btn btn-success w-25 float-end"
                 div class="row parent-node w-100"
+                    input type="hidden" id="type" value="albums"
                     - @albums.each do |album|
                         / <!-- start template -->
-                        div.child-node.col-3.p-0.d-flex.flex-column.justify-content-end.album.position-relative.
+                        div.child-node.col-3.p-0.d-flex.flex-column.justify-content-end.album.position-relative.photo__wrapper id="photo_#{album["id"]}" data-bs-toggle="modal" data-bs-target="#photoModal"
                             div.postion-relative.d-flex.justify-content-center
                                 div.photo-count.position-absolute.d-flex.justify-content-center.align-items-center.text-white.text-center
                                     | #{album.album_attachments.all.count.to_s}
                                     | <br>
                                     | Photos
                                 - album.album_attachments.each do |album|
-                                    div class="photo shadow position-absolute"
+                                    div class="photo shadow position-absolute user_image"
                                         img src="#{album.img_url.url}" alt=""
-                            div class="w-100 album__description text-center" = album["title"]
+                            div.w-100.user__image__title.text-center = album["title"]
+                            div.d-none.user__image__description = album.description
                         / <!-- end template -->
             = render partial: "shared/pagination"
     template id="limit_paging_template"

@@ -3,7 +3,7 @@ class Admin::AuthorizationsController < ApplicationController
   layout "admin_layout"
   private
   def authorize_admin
-    unless Current.user.is_admin
+    unless current_user.is_admin
       redirect_to discover_path
     end
   end

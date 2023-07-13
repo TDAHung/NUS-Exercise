@@ -32,7 +32,7 @@ html
         = stylesheet_link_tag 'edit_user.css'
       - when "albums"
         = stylesheet_link_tag 'album.css'
-        - if controller.action_name == 'new'
+        - if controller.action_name == 'new' || controller.action_name == 'edit'
           = stylesheet_link_tag 'create_album.css'
       - when "photos", "discover_user_photos"
         - if controller.action_name == 'new' || controller.action_name == 'edit'
@@ -46,20 +46,31 @@ html
         = render partial: 'shared/navbar'
         = yield
 
-    - controller_modal = ["discovers" "discover_photos"]
-    - if controller_modal.include?(controller_name)
-      = render partial: "shared/modal"
 
-    = javascript_include_tag 'index.js'
+
+    - controller_modal = ["discovers", "discover_photos"]
+    - controller_asset = ["photos", "albums"]
+    - if controller_modal.include?(controller_name)
+      = render partial: "shared/modal/modal"
+
+    - if controller_asset.include?(controller_name)
+      - if controller.action_name == 'index'
+        = render partial: "shared/modal/modal_profile"
+        = javascript_include_tag 'modal_user.js'
+
     = javascript_include_tag 'button.js'
     - case controller_name
       - when "discovers"
         = javascript_include_tag 'discover.js'
+        = javascript_include_tag 'index.js'
+      - when "discover_photos"
+        = javascript_include_tag 'index.js'
       - when "profiles"
         = javascript_include_tag 'drag_file.js'
+        = javascript_include_tag 'index.js'
       - when "photos"
         - if controller.action_name == 'new' || controller.action_name == 'edit'
           = javascript_include_tag 'input_photo.js'
       - when "albums"
-        - if controller.action_name == 'new'
+        - if controller.action_name == 'new' || controller.action_name == 'edit'
           = javascript_include_tag 'input_multiple.js'

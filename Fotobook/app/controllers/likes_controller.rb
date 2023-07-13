@@ -9,7 +9,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    like_id = Current.user.id
+    like_id = current_user.id
     type = params[:like][:likeable_type]
     likeable_id = params[:like][:likeable_id]
     sql_query = "DELETE FROM likes WHERE user_id = #{like_id} AND likeable_type = '#{type}' AND likeable_id = #{likeable_id}"

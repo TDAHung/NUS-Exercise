@@ -3,7 +3,7 @@
     - photo_count = user.photos.count
     - follower_count = Follower.where(follower_id: params["id"]).count
     - followee_count = Follower.where(following_user_id: params["id"]).count
-    - follower_id_current =  Follower.where(follower_id: Current.user.id)
+    - follower_id_current =  Follower.where(follower_id: current_user.id)
 
     div class="profile__nav d-flex"
         div class="profile__img"
@@ -13,7 +13,7 @@
                 form action="#{followers_path}" method="post"
                     = hidden_field_tag :authenticity_token, form_authenticity_token
                     input type="hidden" value="#{user.id}" name="follower[following_user_id]"
-                    input type="hidden" value="#{Current.user.id}" name="follower[follower_id]"
+                    input type="hidden" value="#{current_user.id}" name="follower[follower_id]"
                     button type="submit" class="btn btn-follow btn-sm w-25" Follow
             - else
                 = button_to 'Following', followee_path(user.id), method: :delete, class: 'btn btn-follow btn-sm w-25" active'

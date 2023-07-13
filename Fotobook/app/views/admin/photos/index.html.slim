@@ -8,12 +8,12 @@
                                 div.w-100.px-3.py-1.bg-secondary.album__description.text-white.d-flex.justify-content-between
                                     = photo.title
                                     a href="#{edit_admin_photo_path(photo.id)}"
-                                        i.fa-solid.fa-pen-to-square
+                                       i.fa-solid.fa-lock
 
                                 div.photo.position-absolute.top-0.w-100
                                     img src="#{photo.img_url}" alt=""
 
-                                div.album__lockp.px-3.text-end
+                                div.album__lock.px-3.text-end
                                     i.fa-solid.fa-lock
                             / <!-- end template -->
             = render partial: "shared/pagination"

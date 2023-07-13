@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.where(user_id: Current.user.id).includes(:album_attachments)
+    @albums = Album.where(user_id: current_user.id).includes(:album_attachments)
   end
 
   def new
@@ -19,6 +19,18 @@ class AlbumsController < ApplicationController
       else
         format.html { render 'new' }
       end
+    end
+  end
+
+  def edit
+    @album = Album.find(params["id"])
+  end
+
+  def destroy
+    @album = Album.find(params["id"])
+    @album.destroy
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
     end
   end
 

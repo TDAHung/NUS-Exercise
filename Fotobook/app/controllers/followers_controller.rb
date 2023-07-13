@@ -1,11 +1,11 @@
 class FollowersController < ApplicationController
   def index
-    @followees = Follower.where(following_user_id: Current.user.id)
+    @followees = Follower.where(following_user_id: current_user.id)
     @followers_infos = @followees.map do |user|
       followee = User.find_by(id: user.follower_id)
       followee.attributes.merge(album_count: followee.albums.count, photo_count: followee.photos.count, img_url: followee.img_url)
     end
-    @follower_id = Follower.where(follower_id: Current.user.id)
+    @follower_id = Follower.where(follower_id: current_user.id)
   end
 
   def create
@@ -23,7 +23,7 @@ class FollowersController < ApplicationController
       followee = User.find_by(id: user.follower_id)
       followee.attributes.merge(album_count: followee.albums.count, photo_count: followee.photos.count, img_url: followee.img_url)
     end
-    @follower_id = Follower.where(follower_id: Current.user.id)
+    @follower_id = Follower.where(follower_id: current_user.id)
     render "discover_user/discover_user_followers/index"
   end
 

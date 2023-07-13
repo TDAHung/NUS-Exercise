@@ -4,15 +4,18 @@
                 = render partial: "shared/profile_navbar"
                 = link_to "ADD NEW PHOTO", new_photo_path, class: "btn btn-success w-25 float-end"
                 div class="row parent-node w-100"
+                    input type="hidden" id="type" value="photos"
                     - @photos.each do |photo|
                         - photo = Photo.find(photo["id"])
                         / <!-- start template -->
-                        div.child-node.my-2.user__images.mx-3.position-relative
-                            a.position-absolute.edit__btn href="#{edit_photo_path(photo["id"])}"
-                                <i class="fa-regular fa-pen-to-square"></i>
-                            div
+                        div.child-node.my-2.user__images.mx-3.position-relative.photo__wrapper id="photo_#{photo["id"]}" data-bs-toggle="modal" data-bs-target="#photoModal"
+                            - if !photo.is_public
+                                div.position-absolute.edit__btn.bg-white.d-flex
+                                    i.fa-solid.fa-lock
+                            div.user_image
                                 img src="#{photo.img_url.url}" alt="avatar"
-                            div.user__images__title.text-center = photo.title
+                            div.user__image__title.text-center = photo.title
+                            div.d-none.user__image__description = photo.description
                         / <!-- end template -->
 
             = render partial: "shared/pagination"

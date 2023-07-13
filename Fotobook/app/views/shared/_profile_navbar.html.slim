@@ -1,4 +1,4 @@
-    - user = Current.user
+    - user = current_user
     - album_count = user.albums.count
     - photo_count = user.photos.count
     - follower_count = Follower.where(follower_id: user.id).count
@@ -8,8 +8,8 @@
         div class="profile__img"
             img src="#{user.img_url.present? ? user.img_url.url : '/assets/avatar.png'}" alt=""
         div class="profile__info d-flex flex-column justify-content-between ms-4"
-            a class="btn btn-follow btn-sm w-25" href="#{edit_profile_path(Current.user.id)}" Edit Profile
-            h1 = user["first_name"] + ' ' + user["last_name"]
+            a class="btn btn-follow btn-sm w-25" href="#{edit_profile_path(current_user.id)}" Edit Profile
+            h1 = user.first_name.to_s + ' ' + user.last_name.to_s
             nav class="tabs d-flex fs-5 p-0"
                 a class="tab #{request.path == photos_path ? 'active':''} ps-0 ms-0" href="#{photos_path}"
                     span #{photo_count} Photos

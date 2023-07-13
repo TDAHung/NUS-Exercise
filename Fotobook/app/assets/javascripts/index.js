@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const albumNode = document.querySelectorAll(".child-node");
-    let string = '';
     albumNode.forEach(element => {
         const descriptionNode = element.querySelector(".photo__description");
 
@@ -29,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             modal.querySelector(".modal-description").innerText = album.querySelector(".photo__description").innerText;
             const imgElement = album.querySelectorAll(".photo img");
             const carouselInner = modal.querySelector(".carousel-inner");
+            carouselInner.innerHTML = '';
             imgElement.forEach(img => {
                 carouselInner.appendChild(handleShowModal(img));
             });
@@ -36,14 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    console.log(buttonModal);
+
     const navbarResponsive = document.querySelector(".navbar-responsive");
     const navbarNormal = document.querySelector(".navbar-normal");
     navbarResponsive.addEventListener("click", () => {
         navbarNormal.classList.add("active");
         navbarResponsive.classList.add("d-none");
     });
-
-
 });
 
 
