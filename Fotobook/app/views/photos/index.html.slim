@@ -2,7 +2,7 @@
         div.main__album.d-flex.flex-column
             div.container.content-wrapper
                 = render partial: "shared/profile_navbar"
-                = link_to "ADD NEW PHOTO", new_photo_path, class: "btn btn-success w-25 float-end"
+                = link_to "ADD NEW PHOTO", new_photo_path, class: "btn btn-success btn-new float-end"
                 div class="row parent-node w-100"
                     input type="hidden" id="type" value="photos"
                     - @photos.each do |photo|
@@ -14,6 +14,7 @@
                                     i.fa-solid.fa-lock
                             div.user_image
                                 img src="#{photo.img_url.url}" alt="avatar"
+                            input type="hidden" class="PhotoUrl" value="#{photo.img_url.url}"
                             div.user__image__title.text-center = photo.title
                             div.d-none.user__image__description = photo.description
                         / <!-- end template -->

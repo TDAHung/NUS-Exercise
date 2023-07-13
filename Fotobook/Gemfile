@@ -74,3 +74,4 @@ end
 gem 'slim', '~> 5.1', '>= 5.1.1'
 gem 'carrierwave', '~> 3.0'
 gem "devise", "~> 4.9"
+gem 'pry'

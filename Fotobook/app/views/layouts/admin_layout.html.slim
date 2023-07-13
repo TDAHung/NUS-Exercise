@@ -58,3 +58,6 @@ html
       - when "photos"
         - if controller.action_name == 'edit'
           = javascript_include_tag 'input_photo.js'
+      - when "albums"
+        - if controller_action_name = 'edit'
+          = javascript_include_tag 'edit_album.js'

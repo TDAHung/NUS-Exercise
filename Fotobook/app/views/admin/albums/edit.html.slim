@@ -26,20 +26,19 @@
                             div class="col-12"
                                 label for="imageSrc" class="form-label" Photo
                                 input [type="file" class="form-control" id="file-upload" multiple="multiple"
-                                    accept="image/gif, image/jpeg, image/png, image/jpg" name="album_attachments[img_url][]" required]
+                                    accept="image/gif, image/jpeg, image/png, image/jpg" name="album_attachments[img_url][]"]
 
                             div class="col-12"
-                                div class="row imgGroup position-relative"
-
+                                div class="row imgGroup"
+                                    div class="preview pb-3 position-relative"
+                                        img [src="/assets/camera.png" alt="Psreview" id="image-preview"
+                                            class="image-preview"]
                                     - @album.album_attachments.find_each do |photo|
-                                        / div class="preview pb-3"
-                                        /     img [src="#{photo.img_url.url}" alt="Psreview" id="image-preview"
-                                        /         class="image-preview"]
-                                        input class="photoUrl" type="hidden" value="#{photo.img_url.url}"
+                                        input class="photoUrl" type="hidden" value="#{photo.img_url.url}" name="#{photo.img_url.identifier}"
 
 
-                                            template id="deleteButton"
-                                                div class="position-absolute top-0 m-3 text-danger" role="button"
-                                                    i class="fs-2 fa-solid fa-x"
+                            template id="deleteButton"
+                                div class="position-absolute top-0 m-3 text-danger" role="button"
+                                    i class="fs-2 fa-solid fa-x"
                             div class="col-12 button-group my-0"
                                 button type="submit" class="btn btn-success" Save

@@ -8,12 +8,12 @@
                         div.child-node.col-3.p-0.d-flex.flex-column.justify-content-end.album.position-relative.
                             div.postion-relative.d-flex.justify-content-center
                                 div.photo-count.position-absolute.d-flex.justify-content-center.align-items-center.text-white.text-center
-                                    | #{album.album_attachments.all.count.to_s}
+                                    | #{album.album_attachments.count.to_s}
                                     | <br>
                                     | Photos
                                 - album.album_attachments.each do |album|
                                     div class="photo shadow position-absolute"
-                                        img src="#{album.img_url.url}" alt=""
+                                        img src="#{album.url}" alt=""
                             div class="w-100 album__description text-center" = album["title"]
                         / <!-- end template -->
             = render partial: "shared/pagination"

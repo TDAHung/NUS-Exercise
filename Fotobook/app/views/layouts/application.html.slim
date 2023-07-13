@@ -58,19 +58,28 @@ html
         = render partial: "shared/modal/modal_profile"
         = javascript_include_tag 'modal_user.js'
 
-    = javascript_include_tag 'button.js'
     - case controller_name
       - when "discovers"
         = javascript_include_tag 'discover.js'
         = javascript_include_tag 'index.js'
+        = javascript_include_tag 'button.js'
       - when "discover_photos"
         = javascript_include_tag 'index.js'
+        = javascript_include_tag 'button.js'
       - when "profiles"
         = javascript_include_tag 'drag_file.js'
         = javascript_include_tag 'index.js'
+        = javascript_include_tag 'button.js'
+
       - when "photos"
         - if controller.action_name == 'new' || controller.action_name == 'edit'
           = javascript_include_tag 'input_photo.js'
+        - else
+          = javascript_include_tag 'button.js'
       - when "albums"
-        - if controller.action_name == 'new' || controller.action_name == 'edit'
+        - if controller.action_name == 'new'
           = javascript_include_tag 'input_multiple.js'
+        - elsif  controller.action_name == 'edit'
+          = javascript_include_tag 'edit_album.js'
+        - else
+          = javascript_include_tag 'button.js'

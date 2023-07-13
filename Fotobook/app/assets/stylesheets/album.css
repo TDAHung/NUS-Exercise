@@ -62,6 +62,24 @@
     border-radius: 50%;
 }
 
+.edit__btn {
+    left: 70%;
+    top: 15%;
+    z-index: 9;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-new {
+    width: 15%;
+    font-size: 12px;
+    padding: auto 0;
+}
+
+
 @media screen and (max-width:820px) {
     .album {
         width: 40%;

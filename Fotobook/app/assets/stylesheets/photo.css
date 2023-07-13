@@ -76,7 +76,11 @@
 
 @media screen and (max-width:820px) {
     .album {
-        width: 30%;
+        width: 93%;
+    }
+
+    .container {
+        height: 95%;
     }
 
     .main__content__album {

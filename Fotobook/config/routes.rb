@@ -23,8 +23,10 @@ Rails.application.routes.draw do
   root "discovers#index_feed"
   get "feeds/photos", to: "discover_photos#feed_photos_index"
   get "pending", to: "pending_users#index"
-
-  scope "discovers" do
+  scope module: "admin" do
+    get "authorizations", to: "authorizations#index"
+  end
+    scope "discovers" do
     get "/", to: "discovers#index", as: "discover"
     get "/photos", to: "discover_photos#index", as: "discover_photos"
     get "/photos/:id", to: "photos#discover_user_photos_index", as: "discover_photo"

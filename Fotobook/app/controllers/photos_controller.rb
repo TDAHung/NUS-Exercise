@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     if @photo.save
-      redirect_to discover_path, notice: "Successfully created"
+      redirect_to discover_photo_path(@photo.user_id)
     else
       render :new
     end
@@ -56,7 +56,7 @@ class PhotosController < ApplicationController
   end
 
   def check_user
-    if params["id"] === current_user.id.to_s
+    if params["id"] === current_user.id.to_s && action_name != 'edit'
       redirect_to photos_path
     end
   end

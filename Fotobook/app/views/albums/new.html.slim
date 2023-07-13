@@ -19,14 +19,15 @@
                             div class="col-md-3"
                                 label for="photoMode" class="form-label" Sharing Mode
                                 select [class="form-select" id="photoMode" name="album[is_public]" required]
-                                    option [value="1" selected] Public
-                                    option value="0" Private
+                                    option [value="true" selected] Public
+                                    option value="false" Private
 
                             div class="col-12"
                                 label for="imageSrc" class="form-label" Photo
+                                / input [type="file" class="form-control" id="file-upload" multiple="multiple"
+                                /     accept="image/gif, image/jpeg, image/png, image/jpg" name="album_attachments[img_url][]" required]
                                 input [type="file" class="form-control" id="file-upload" multiple="multiple"
-                                    accept="image/gif, image/jpeg, image/png, image/jpg" name="album_attachments[img_url][]" required]
-
+                                    accept="image/gif, image/jpeg, image/png, image/jpg" name="album[album_attachments][]" required]
                             div class="col-12"
                                 div class="row imgGroup"
                                     div class="col-12 preview pb-3 position-relative"
@@ -35,6 +36,5 @@
                             template id="deleteButton"
                                 div class="position-absolute top-0 m-3 text-danger" role="button"
                                     i class="fs-2 fa-solid fa-x"
-                            input type="hidden" name="album[user_id]" value="#{current_user.id}"
                             div class="col-12 button-group my-0"
                                 button type="submit" class="btn btn-success" Save
