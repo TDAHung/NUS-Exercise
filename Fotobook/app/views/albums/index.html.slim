@@ -3,12 +3,12 @@
             div.container.content-wrapper
                 = render partial: "shared/profile_navbar"
                 = link_to "ADD NEW ALBUMS", new_album_path, class: "btn btn-success btn-new float-end"
+                input type="hidden" id="type" value="albums"
                 div class="row parent-node w-100"
-                    input type="hidden" id="type" value="albums"
                     - @albums.each do |album|
                         / <!-- start template -->
                         div.child-node.col-3.p-0.d-flex.flex-column.justify-content-end.album.position-relative.photo__wrapper id="photo_#{album["id"]}" data-bs-toggle="modal" data-bs-target="#photoModal"
-                            - if !album.is_public
+                            - if album.is_public == false
                                 div.position-absolute.edit__btn.bg-white.d-flex
                                     i.fa-solid.fa-lock
                             div.postion-relative.d-flex.justify-content-center
@@ -22,6 +22,4 @@
                             div.w-100.user__image__title.text-center = album["title"]
                             div.d-none.user__image__description = album.description
                         / <!-- end template -->
-            = render partial: "shared/pagination"
-    template id="limit_paging_template"
-        input.d-none value="10"
+            = render partial: "shared/pagination", locals: {asset: @albums}

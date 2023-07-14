@@ -12,6 +12,6 @@
                             div.user__images__title.text-center = photo.title
                         / <!-- end template -->
 
-            = render partial: "shared/pagination"
+            = render partial: "shared/pagination", locals: {asset: @photos}
     template id="limit_paging_template"
         input.d-none value="10"

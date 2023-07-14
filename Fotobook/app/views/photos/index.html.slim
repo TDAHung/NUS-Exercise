@@ -19,6 +19,4 @@
                             div.d-none.user__image__description = photo.description
                         / <!-- end template -->
 
-            = render partial: "shared/pagination"
-    template id="limit_paging_template"
-        input.d-none value="10"
+            = render partial: "shared/pagination", locals: {asset: @photos}

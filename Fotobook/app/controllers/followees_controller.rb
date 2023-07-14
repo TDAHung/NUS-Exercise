@@ -1,11 +1,7 @@
 class FolloweesController < ApplicationController
   def index
-    @followers = Follower.where(follower_id: current_user.id)
-    @followees_infos = @followers.map do |user|
-      follower = User.find_by(id: user.following_user_id)
-      follower.attributes.merge(album_count: follower.albums.count, photo_count: follower.photos.count, img_url: follower.img_url)
-    end
-    @follower_id = Follower.where(follower_id: current_user.id)
+    @followers = Follower.where(follower_id: current_user.id).page(params[:page]).per(10)
+    @follower_id = Follower.where(follower_id: current_user.id).page(params[:page]).per(10)
   end
 
   def destroy
@@ -20,12 +16,8 @@ class FolloweesController < ApplicationController
   end
 
   def discover_followee_index
-    @followers = Follower.where(follower_id: params["id"])
-    @followees_infos = @followers.map do |user|
-      follower = User.find_by(id: user.following_user_id)
-      follower.attributes.merge(album_count: follower.albums.count, photo_count: follower.photos.count, img_url: follower.img_url)
-    end
-    @follower_id = Follower.where(follower_id: current_user.id)
+    @followers = Follower.where(follower_id: params["id"]).page(params[:page]).per(10)
+    @follower_id = Follower.where(follower_id: current_user.id).page(params[:page]).per(10)
     render "discover_user/discover_user_followees/index"
   end
 end

@@ -71,6 +71,10 @@ body {
     outline: inherit;
 }
 
+.carousel-item {
+    transition: 1.5s;
+}
+
 @media screen and (max-width: 820px) {
     .navbar-normal {
         display: block;

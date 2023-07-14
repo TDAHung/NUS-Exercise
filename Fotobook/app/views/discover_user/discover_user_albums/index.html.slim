@@ -16,7 +16,7 @@
                                         img src="#{album.url}" alt=""
                             div class="w-100 album__description text-center" = album["title"]
                         / <!-- end template -->
-            = render partial: "shared/pagination"
+            = render partial: "shared/pagination", locals: {asset: @albums}
 
         template id="limit_paging_template"
             input.d-none value="8"

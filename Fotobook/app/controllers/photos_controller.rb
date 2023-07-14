@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
   before_action :check_user
   def index
-    @photos = Photo.where(user_id: current_user.id).order(updated_at: :desc)
+    @photos = Photo.where(user_id: current_user.id).order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   def new
@@ -38,7 +38,7 @@ class PhotosController < ApplicationController
   end
 
   def discover_user_photos_index
-    @photos = Photo.where(user_id: params["id"]).order(updated_at: :desc).where(is_public: true)
+    @photos = Photo.where(user_id: params["id"]).order(updated_at: :desc).where(is_public: true).page(params[:page]).per(10)
     render "discover_user/discover_user_photos/index"
   end
 

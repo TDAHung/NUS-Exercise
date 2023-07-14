@@ -3,24 +3,28 @@
             div.container.content-wrapper
                 = render partial: "shared/user_navbar"
                 div.row.parent-node.w-100.ps-4.mt-2
-                    - @followers_infos.each do |followee_info|
+                    - @followees.each do |follower_info|
+                        - user = User.find(follower_info.follower_id)
+                        - album_count = Album.where(user_id: user.id).count
+                        - photo_count = Photo.where(user_id: user.id).count
                         / <!-- start template -->
                         div.child-node.col-3.mx-2.my-1.shadow.follower.bg-body-tertiary
                             div.follower__wrapper.d-flex.justify-content-between.flex-column
                                 div.follower__img.mx-auto
-                                    a href="#{discover_photos_path}/#{followee_info["id"]}"
-                                        img src="#{followee_info[:img_url].present? ? followee_info[:img_url].url : "/assets/avatar.png"}" alt=""
-                                a.follower__name.text-center href="#{discover_photos_path}/#{followee_info["id"]}" = followee_info["first_name"] + followee_info["last_name"]
+                                    a href="#{discover_photos_path}/#{user.id}"
+                                        img src="#{user.img_url.present? ? user.img_url.url : "/assets/avatar.png"}" alt=""
+                                a.follower__name.text-center href="#{discover_photos_path}/#{user.id}" = user.first_name.to_s + user.last_name.to_s
                                 div.follower__counter.d-flex.justify-content-between.text-primary
                                     div.follower__counter__photos.text-center
-                                        div.follower__count.color-primary = followee_info[:album_count]
+                                        div.follower__count.color-primary = album_count
                                         div.follower__type PHOTOS
 
                                     div.follower__counter__albums.text-center
-                                        div.follower__count = followee_info[:photo_count]
+                                        div.follower__count = photo_count
                                         div.follower__type ALBUMS
-                                = render partial: "shared/button/button_follow_user", locals: { user: followee_info}
+                                = render partial: "shared/button/button_follow_user", locals: { user_id: user.id}
                         / <!-- end template -->
-            = render partial: "shared/pagination"
+            = render partial: "shared/pagination", locals: {asset: @followees}
     template id="limit_paging_template"
         input.d-none value="8"
+

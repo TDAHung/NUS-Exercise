@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
   before_action :check_user
   def index
-    @albums = Album.where(user_id: current_user.id).order(updated_at: :desc)
+    @albums = Album.where(user_id: current_user.id).order(updated_at: :desc).page(params[:page]).per(8)
   end
 
   def new
@@ -36,7 +36,7 @@ class AlbumsController < ApplicationController
   end
 
   def discover_user_index
-    @albums = Album.includes(:user).order(updated_at: :desc).where(is_public: true)
+    @albums = Album.includes(:user).order(updated_at: :desc).where(is_public: true).page(params[:page]).per(10)
     render "discover_user/discover_user_albums/index"
   end
 
