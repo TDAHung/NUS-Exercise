@@ -26,7 +26,8 @@ main class="d-flex w-75 justify-content-center flex-column align-items-center"
             label for="passwordConfirm" class="form-label"Password Confirmation
             input [type="password" class="form-control" id="passwordConfirm" placeholder="Password"
                 name="user[password_confirmation]"]
-        input type="hidden" name="user[is_admin]" value="0"
+        input type="hidden" name="user[user_type]" value="1"
         input type="hidden" name="user[img_url]" value=""
         input type="hidden" name="user[last_name]" value=""
+        input type="hidden" name="user[status]" value="1"
         button type="submit" class="btn btn-primary w-25" Signup

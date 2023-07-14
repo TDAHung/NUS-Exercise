@@ -25,6 +25,16 @@ Rails.application.routes.draw do
   get "pending", to: "pending_users#index"
   scope module: "admin" do
     get "authorizations", to: "authorizations#index"
+    get "unauthorized", to: "unauthorizations#index"
+  end
+  # scope "guest" do
+  #   get "authorizations", to: "authorizations#index", as: "guest_authorizations"
+  #   get "unauthorized", to: "unauthorizations#index", as: "guest_unauthorizations"
+  # end
+
+  namespace :guest do
+    get "authorizations", to: "authorizations#index"
+    get "unauthorized", to: "unauthorizations#index"
   end
     scope "discovers" do
     get "/", to: "discovers#index", as: "discover"

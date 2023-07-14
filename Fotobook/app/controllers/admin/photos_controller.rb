@@ -6,5 +6,4 @@ class Admin::PhotosController < Admin::AuthorizationsController
   def edit
     @photo = Photo.find_by(id: params["id"])
   end
-
 end

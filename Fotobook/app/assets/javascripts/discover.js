@@ -1,8 +1,3 @@
-
-document.addEventListener("DOMContentLoaded", () => {
-
-});
-
 const albumNode = document.querySelectorAll(".child-node");
 let string = '';
 albumNode.forEach(element => {

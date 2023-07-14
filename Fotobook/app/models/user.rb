@@ -14,5 +14,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
   validates :first_name, presence: true
   mount_uploader :img_url, AvatarUploader
+  enum user_type: { guest: 0, user: 1, admin: 2 }
 
 end

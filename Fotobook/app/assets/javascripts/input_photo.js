@@ -4,15 +4,6 @@ const imagePreview = document.getElementById('image-preview');
 const buttonGroup = document.querySelector('.button-group');
 const deleteButtonNode = document.querySelector('#btn-remove');
 
-// const deleteButton = () => {
-//     const button = document.createElement('button');
-//     button.classList.add('btn-delete');
-//     button.classList.add('btn');
-//     button.classList.add('btn-danger');
-//     button.innerHTML = '<i class="fa-solid fa-trash"></i>Delete';
-//     return button;
-// }
-
 fileInput.addEventListener('change', () => {
     if (fileInput.files.length > 0) {
         const reader = new FileReader();

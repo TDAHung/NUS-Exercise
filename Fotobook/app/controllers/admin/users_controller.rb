@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::AuthorizationsController
   def index
-    @users = User.where(is_admin: false)
+    @users = User.where(user_type: 2)
   end
 
   def destroy

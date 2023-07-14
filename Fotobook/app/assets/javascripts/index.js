@@ -35,9 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
             carouselInner.querySelector(".carousel-item").classList.add("active");
         });
     });
-
-    console.log(buttonModal);
-
     const navbarResponsive = document.querySelector(".navbar-responsive");
     const navbarNormal = document.querySelector(".navbar-normal");
     navbarResponsive.addEventListener("click", () => {
