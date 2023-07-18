@@ -16,6 +16,6 @@
                                 div.album__lock.px-3.text-end
                                     i.fa-solid.fa-lock
                             / <!-- end template -->
-            = render partial: "shared/pagination"
+            = render partial: "shared/pagination", locals: {asset: @photos}
     template id="limit_paging_template"
         input.d-none value="10"

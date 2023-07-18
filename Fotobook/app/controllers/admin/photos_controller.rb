@@ -1,6 +1,6 @@
 class Admin::PhotosController < Admin::AuthorizationsController
   def index
-    @photos = Photo.order(updated_at: :desc)
+    @photos = Photo.order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   def edit

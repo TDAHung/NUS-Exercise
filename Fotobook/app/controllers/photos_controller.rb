@@ -2,6 +2,9 @@ class PhotosController < ApplicationController
   before_action :check_user
   def index
     @photos = Photo.where(user_id: current_user.id).order(updated_at: :desc).page(params[:page]).per(10)
+    @user = User.find(current_user.id)
+    @followees_navbar = Follower.where(following_user_id: current_user.id)
+    @followers_navbar = Follower.where(follower_id: current_user.id)
   end
 
   def new
@@ -22,7 +25,7 @@ class PhotosController < ApplicationController
 
   def update
     @photo = Photo.find_by(id: params["id"])
-    if @photo.update(photo_params_update)
+    if @photo.update(photo_params)
       redirect_to discover_photo_path(@photo.user_id)
     else
       render 'edit'
@@ -38,21 +41,29 @@ class PhotosController < ApplicationController
   end
 
   def discover_user_photos_index
-    @photos = Photo.where(user_id: params["id"]).order(updated_at: :desc).where(is_public: true).page(params[:page]).per(10)
-    render "discover_user/discover_user_photos/index"
+    @photos = Photo.where(user_id: params["id"]).order(updated_at: :desc).page(params[:page]).per(10)
+    @user = User.find(params["id"])
+    @followees_navbar = Follower.where(following_user_id: params["id"])
+    @followers_navbar = Follower.where(follower_id: params["id"])
+    render "photos/discover_user_photos/index"
+  end
+
+  def index_discover
+    @photos = Photo.includes(:user).order(updated_at: :desc).where(is_public: true).page(params[:page]).per(4)
+    @followers = Follower.where(follower_id: current_user.id)
+    @likes = Like.where(likeable_type: 'Photo')
+    render "public/discover_photos/index"
+  end
+
+  def index_feed
+    @photos = Photo.includes(:user).order(created_at: :desc).where(is_public: true).page(params["page"]).per(4)
+    @likes = Like.where(likeable_type: 'Photo')
+    render "public/feed_photos/index"
   end
 
   private
   def photo_params
     params.require(:photo).permit(:title, :img_url, :description, :is_public, :user_id)
-  end
-
-  def photo_params_update
-    if params.require(:photo)["img_url"].nil? == true
-      params.require(:photo).permit(:title, :description, :is_public, :user_id)
-    else
-      photo_params
-    end
   end
 
   def check_user

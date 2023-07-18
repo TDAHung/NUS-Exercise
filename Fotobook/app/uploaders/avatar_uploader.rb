@@ -44,4 +44,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  def deduplicated_filename
+    filename
+  end
 end

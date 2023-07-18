@@ -31,6 +31,10 @@
                                     div class="col-sm-9 input-group-sm"
                                         input type="email" class="form-control" id="email" name="user[email]" value="#{@profile.email}" placeholder="someone@example.com"
                                 div class="row mb-3"
+                                    label for="password" class="col-sm-3 col-form-label text-end" Email
+                                    div class="col-sm-9 input-group-sm"
+                                        input type="text" class="form-control" id="email" name="user[password]" placeholder="123456"
+                                div class="row mb-3"
                                     label for="status" class="col-sm-3 col-form-label text-end" Active
                                     div class="col-sm-9 input-group-sm d-flex"
                                         input type="checkbox" id="status" name="user[status]" checked="#{@profile.status == 'active'}" value="active"

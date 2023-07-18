@@ -19,6 +19,6 @@
                                     | <br>
                                     | Photos
                         / <!-- end template -->
-        = render partial: "shared/pagination"
+        = render partial: "shared/pagination", locals: {asset: @albums}
     template id="limit_paging_template"
         input.d-none value="6"

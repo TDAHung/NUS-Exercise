@@ -31,9 +31,10 @@
                                 label for="imageSrc" class="form-label"Photo
                                 input [type="file" class="form-control" id="file-upload"
                                     accept="image/gif, image/jpeg, image/png, image/jpg" name="photo[img_url]"]
+                                input class="photoUrl" type="hidden" value="#{@photo.img_url.url}" name="#{@photo.img_url.identifier}"
 
                             div class="col-12"
-                                div class="preview"
+                                div class="preview imgGroup"
                                     img [src="#{@photo.img_url.url}" alt="Preview" id="image-preview"
                                         class="image-preview"]
                             input type="hidden" name="photo[user_id]" value="#{current_user.id}"

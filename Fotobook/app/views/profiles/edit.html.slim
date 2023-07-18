@@ -9,10 +9,12 @@
                         = hidden_field_tag :authenticity_token, form_authenticity_token
                         div class="row mb-3"
                             div class="col-sm-2 col-form-label my-auto input-group-sm position-relative"
-                                input type="file" class="form-control d-none" id="avatar" accept="image/gif, image/jpeg, image/png, image/jpg" name="user[img_url]"
-                            div class="col-sm-10 form__img position-relative"
-                                label for="avatar" class="avatar position-absolute bg-white rounded end-50 d-flex align-items-center justify-content-center" Change
-                                img src="#{@profile.img_url.present? ? @profile.img_url.url : '/assets/avatar.png'}" alt="avatar"
+                                input type="file" class="form-control d-none" id="file-upload" accept="image/gif, image/jpeg, image/png, image/jpg" name="user[img_url]"
+                                input class="photoUrl" type="hidden" value="#{@profile.img_url.url}" name="#{@profile.img_url.identifier}"
+                            div class="col-sm-10 form__img position-relative imgGroup"
+                                label for="file-upload" class="avatar position-absolute bg-white rounded end-50 d-flex align-items-center justify-content-center" Change
+                                label class="avatar_delete position-absolute bg-danger rounded end-50 d-flex align-items-center justify-content-center" id="btn-remove" Delete
+                                img id="image-preview" src="" alt="avatar"
                         div class="row"
                             div.col-10
                                 div class="row mb-3"

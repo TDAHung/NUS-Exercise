@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::AuthorizationsController
   def index
-    @users = User.where(user_type: 2)
+    @users = User.where(user_type: 2).page(params[:page]).per(4)
   end
 
   def destroy

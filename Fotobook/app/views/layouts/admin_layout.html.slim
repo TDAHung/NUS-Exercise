@@ -49,7 +49,6 @@ html
       = render partial: "shared/modal"
 
     = javascript_include_tag 'index.js'
-    = javascript_include_tag 'button.js'
 
     - case controller_name
       - when "users"
@@ -57,7 +56,7 @@ html
           = javascript_include_tag 'drag_file.js'
       - when "photos"
         - if controller.action_name == 'edit'
-          = javascript_include_tag 'input_photo.js'
+          = javascript_include_tag 'edit_photo.js'
       - when "albums"
         - if controller_action_name = 'edit'
           = javascript_include_tag 'edit_album.js'

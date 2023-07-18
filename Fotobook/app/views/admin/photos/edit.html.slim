@@ -28,6 +28,7 @@
                                 label for="imageSrc" class="form-label"Photo
                                 input [type="file" class="form-control" id="file-upload" value="#{@photo.img_url}"
                                     accept="image/gif, image/jpeg, image/png, image/jpg" name="photo[img_url]"]
+                                input class="photoUrl" type="hidden" value="#{@photo.img_url.url}" name="#{@photo.img_url.identifier}"
 
                             div class="col-12"
                                 div class="preview"

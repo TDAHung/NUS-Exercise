@@ -59,12 +59,10 @@ const uploadFiles = files => {
         imagePreview.src = '#';
         fileLabel.textContent = 'No file selected';
     }
-    console.log(fileInput.files);
 }
 
 fileInput.addEventListener('change', () => {
     uploadFiles(fileInput.files);
-    console.log(fileInput.files);
 });
 
 window.addEventListener('DOMContentLoaded', () => {

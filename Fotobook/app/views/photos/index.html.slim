@@ -1,7 +1,10 @@
     div.main__content__profile.bg-white.mt-4.d-flex.pt-3.flex-column.ps-5
         div.main__album.d-flex.flex-column
             div.container.content-wrapper
-                = render partial: "shared/profile_navbar"
+                = render partial: "shared/navbar/profile_navbar", locals: {user: @user, album_count: @user.albums.count,
+                    photo_count: @user.photos.count,
+                    followees: @followees_navbar,
+                    followers: @followers_navbar}
                 = link_to "ADD NEW PHOTO", new_photo_path, class: "btn btn-success btn-new float-end"
                 div class="row parent-node w-100"
                     input type="hidden" id="type" value="photos"

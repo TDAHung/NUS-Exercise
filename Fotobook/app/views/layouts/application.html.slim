@@ -12,7 +12,6 @@ html
     script [src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"]
-
     = javascript_importmap_tags
 
     / <!-- css -->
@@ -22,8 +21,6 @@ html
     script src="https://kit.fontawesome.com/d9876ed7d9.js" crossorigin="anonymous"
 
     - case controller_name
-      - when "discovers"
-        = stylesheet_link_tag 'discover.css'
       - when "discover_photos"
         = stylesheet_link_tag 'photo.css'
       - when "followees", "followers"
@@ -31,32 +28,40 @@ html
       - when "profiles"
         = stylesheet_link_tag 'edit_user.css'
       - when "albums"
-        = stylesheet_link_tag 'album.css'
-        - if controller.action_name == 'new' || controller.action_name == 'edit'
-          = stylesheet_link_tag 'create_album.css'
-      - when "photos", "discover_user_photos"
-        - if controller.action_name == 'new' || controller.action_name == 'edit'
-          = stylesheet_link_tag 'create_photo.css'
-        = stylesheet_link_tag 'discover_user.css'
+        - case controller.action_name
+          - when "index_discover", "index_feed"
+            = stylesheet_link_tag 'discover.css'
+          - when 'new', 'edit'
+            = stylesheet_link_tag 'album.css'
+            = stylesheet_link_tag 'create_album.css'
+          - else
+            = stylesheet_link_tag 'album.css'
+      - when "photos"
+        - case controller.action_name
+          - when "index_discover", "index_feed"
+            = stylesheet_link_tag 'discover_user.css'
+            = stylesheet_link_tag 'photo.css'
+          - when 'new', 'edit'
+            = stylesheet_link_tag 'album.css'
+            = stylesheet_link_tag 'create_photo.css'
+          - else
+            = stylesheet_link_tag 'discover_user.css'
+            = stylesheet_link_tag 'photo.css'
+
+        / - if controller.action_name == 'new' || controller.action_name == 'edit'
+        /   = stylesheet_link_tag 'create_photo.css'
+        / = stylesheet_link_tag 'discover_user.css'
 
   body
     = render partial: 'shared/header'
     main
       div class="main__content d-flex bg-body-tertiary position-relative"
-        = render partial: 'shared/navbar'
+        = render partial: 'shared/navbar/index'
         = yield
 
-
-
     - controller_modal = ["discovers", "discover_photos"]
-    - controller_asset = ["photos", "albums"]
     - if controller_modal.include?(controller_name)
       = render partial: "shared/modal/modal"
-
-    - if controller_asset.include?(controller_name)
-      - if controller.action_name == 'index'
-        = render partial: "shared/modal/modal_profile"
-        = javascript_include_tag 'modal_user.js'
 
     - case controller_name
       - when "discovers"
@@ -67,18 +72,29 @@ html
         = javascript_include_tag 'index.js'
 
       - when "profiles"
-        = javascript_include_tag 'drag_file.js'
+        = javascript_include_tag 'edit_photo.js'
         = javascript_include_tag 'index.js'
 
-
       - when "photos"
-        - if controller.action_name == 'new' || controller.action_name == 'edit'
-          = javascript_include_tag 'input_photo.js'
-        - else
+        - case controller.action_name
+          - when 'index'
+            = render partial: "shared/modal/modal_profile"
+            = javascript_include_tag 'modal_user.js'
+          - when 'new'
+            = javascript_include_tag 'input_photo.js'
+          - when 'edit'
+            = javascript_include_tag 'edit_photo.js'
 
       - when "albums"
-        - if controller.action_name == 'new'
-          = javascript_include_tag 'input_multiple.js'
-        - elsif  controller.action_name == 'edit'
-          = javascript_include_tag 'edit_album.js'
+        - case controller.action_name
+          - when 'index'
+            = render partial: "shared/modal/modal_profile"
+            = javascript_include_tag 'modal_user.js'
+          - when 'new'
+            = javascript_include_tag 'input_multiple.js'
+          - when 'edit'
+            = javascript_include_tag 'edit_album.js'
+          - when 'index_discover'
+            = render partial: "shared/modal/modal"
+
 

@@ -36,7 +36,16 @@
 .avatar {
     cursor: pointer;
     transform: translateX(50%);
-    bottom: 20%;
+    bottom: 18%;
+    height: 30px;
+    width: 25%;
+    opacity: 80%;
+}
+
+.avatar_delete {
+    cursor: pointer;
+    transform: translateX(50%);
+    bottom: 2%;
     height: 30px;
     width: 25%;
     opacity: 80%;
