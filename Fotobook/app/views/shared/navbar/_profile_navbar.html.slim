@@ -1,9 +1,3 @@
-    - user = current_user
-    - album_count = user.albums.count
-    - photo_count = user.photos.count
-    - follower_count = Follower.where(follower_id: user.id).count
-    - followee_count = Follower.where(following_user_id: user.id).count
-
     div class="profile__nav d-flex"
         div class="profile__img"
             img src="#{user.img_url.present? ? user.img_url.url : '/assets/avatar.png'}" alt=""
@@ -16,6 +10,10 @@
                 a class="tab #{request.path == albums_path ? 'active':''}" href="#{albums_path}"
                     span #{album_count} Albums
                 a class="tab #{request.path == followees_path ? 'active':''}" href="#{followees_path}"
-                    span #{follower_count} Followings
+                    = render partial: "shared/navbar/followee_navbar", locals: { followers_count: followers.count }
                 a class="tab #{request.path == followers_path ? 'active':''}" href="#{followers_path}"
-                    span #{followee_count} Followers
+                    span #{followees.count} Followers
+                / = render partial: "shared/profile_navbar", locals: {user: , album_count:,
+                /     photo_count: ,
+                /     followees: ,
+                /     followers: }

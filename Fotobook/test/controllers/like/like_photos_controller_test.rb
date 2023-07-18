@@ -1,6 +1,6 @@
 require "test_helper"
 
-class DiscoverPhotosControllerTest < ActionDispatch::IntegrationTest
+class Like::LikePhotosControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
