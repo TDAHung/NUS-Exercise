@@ -28,7 +28,3 @@ div class="main__content__album bg-white mt-4 rounded"
                                     p.photo__time.m-0 = formatted_time
                     / <!-- end template -->
         = render partial: "shared/pagination", locals: {asset: @photos}
-
-
-template id="limit_paging_template"
-    input value="4"

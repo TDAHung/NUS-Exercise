@@ -14,7 +14,8 @@
                     span #{followers.count} Followings
                 a class="tab #{request.path == discover_follower_path(params["id"]) ? 'active':''}" href="#{discover_follower_path(params["id"])}"
                     = render partial: "shared/navbar/follower_navbar", locals: { followees_count: followees.count }
-                / = render partial: "shared/user_navbar", locals: {user: , album_count:,
-                /     photo_count: ,
-                /     followees: ,
-                /     followers: @followers}
+                / usage
+                / = render partial: "shared/user_navbar", locals: {user: @class_variable, album_count: instance_variable,
+                /     photo_count: instance_variable,
+                /     followees: @class_variable,
+                /     followers: @class_variable}

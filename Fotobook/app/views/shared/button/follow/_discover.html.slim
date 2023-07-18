@@ -14,3 +14,6 @@
             class_form: "follow-#{asset.user.id}"
     - else
         a class="btn btn-follow" href="#{discover_photos_path}/#{asset.user.id}"My Profile
+        / usage
+        / = render partial: "shared/button/follow/discover",
+        /locals: {followers: @class_variable, user_id: instance_variable}

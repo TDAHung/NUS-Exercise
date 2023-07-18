@@ -12,4 +12,8 @@ class Admin::UsersController < Admin::AuthorizationsController
   def edit
     @profile = User.find(params[:id])
   end
+
+  def update
+    puts params
+  end
 end

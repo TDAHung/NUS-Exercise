@@ -4,7 +4,7 @@
                 div class="user__tile" Edit User Profile
                 hr
                 div.d-flex
-                    form.w-50.mx-auto action="#{profile_path(@profile.id)}" method="post" enctype="multipart/form-data" accept-charset="UTF-8"
+                    form.w-50.mx-auto action="#{admin_user_path(@profile.id)}" method="post" enctype="multipart/form-data" accept-charset="UTF-8"
                         input type="hidden" name="_method" value="patch" autocomplete="off"
                         = hidden_field_tag :authenticity_token, form_authenticity_token
                         div class="row mb-3"
@@ -31,7 +31,7 @@
                                     div class="col-sm-9 input-group-sm"
                                         input type="email" class="form-control" id="email" name="user[email]" value="#{@profile.email}" placeholder="someone@example.com"
                                 div class="row mb-3"
-                                    label for="password" class="col-sm-3 col-form-label text-end" Email
+                                    label for="password" class="col-sm-3 col-form-label text-end" Password
                                     div class="col-sm-9 input-group-sm"
                                         input type="text" class="form-control" id="email" name="user[password]" placeholder="123456"
                                 div class="row mb-3"

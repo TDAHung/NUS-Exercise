@@ -16,4 +16,6 @@
         div.photo_heart
             i class="fa-regular fa-heart text-primary"
             span.text-primary = like_found.count
-
+    / usage
+    / = render partial: "shared/button/like", locals: { asset: instance_variable,
+    / likes: @class_variable, type_asset: "Album" or "Photo" }

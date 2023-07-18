@@ -39,7 +39,6 @@ html
       - when "photos"
         - case controller.action_name
           - when "index_discover", "index_feed"
-            = stylesheet_link_tag 'discover_user.css'
             = stylesheet_link_tag 'photo.css'
           - when 'new', 'edit'
             = stylesheet_link_tag 'album.css'
@@ -48,29 +47,13 @@ html
             = stylesheet_link_tag 'discover_user.css'
             = stylesheet_link_tag 'photo.css'
 
-        / - if controller.action_name == 'new' || controller.action_name == 'edit'
-        /   = stylesheet_link_tag 'create_photo.css'
-        / = stylesheet_link_tag 'discover_user.css'
-
   body
     = render partial: 'shared/header'
     main
       div class="main__content d-flex bg-body-tertiary position-relative"
         = render partial: 'shared/navbar/index'
         = yield
-
-    - controller_modal = ["discovers", "discover_photos"]
-    - if controller_modal.include?(controller_name)
-      = render partial: "shared/modal/modal"
-
     - case controller_name
-      - when "discovers"
-        = javascript_include_tag 'discover.js'
-        = javascript_include_tag 'index.js'
-
-      - when "discover_photos"
-        = javascript_include_tag 'index.js'
-
       - when "profiles"
         = javascript_include_tag 'edit_photo.js'
         = javascript_include_tag 'index.js'
@@ -84,6 +67,9 @@ html
             = javascript_include_tag 'input_photo.js'
           - when 'edit'
             = javascript_include_tag 'edit_photo.js'
+          - when 'index_discover', 'index_feed', 'discover_user_photos_index'
+            = render partial: "shared/modal/modal"
+            = javascript_include_tag 'modal_user.js'
 
       - when "albums"
         - case controller.action_name
@@ -94,7 +80,6 @@ html
             = javascript_include_tag 'input_multiple.js'
           - when 'edit'
             = javascript_include_tag 'edit_album.js'
-          - when 'index_discover'
+          - when 'index_discover', 'index_feed', 'discover_user_index'
             = render partial: "shared/modal/modal"
-
-
+            = javascript_include_tag 'modal_user.js'

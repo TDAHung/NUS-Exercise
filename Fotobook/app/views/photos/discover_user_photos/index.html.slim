@@ -7,14 +7,11 @@
                     followers: @followers_navbar}
                 div class="row parent-node w-100"
                     - @photos.each do |photo|
-                        - photo = Photo.find(photo["id"])
                         / <!-- start template -->
-                        div.child-node.my-2.user__images.mx-3
-                            div
+                        div.child-node.my-2.user__images.mx-3.photo__wrapper id="photo_#{photo.id}" data-bs-toggle="modal" data-bs-target="#photoModal"
+                            div.user_image
                                 img src="#{photo.img_url.url}" alt="avatar"
-                            div.user__images__title.text-center = photo.title
+                            div.user__image__title.text-center = photo.title
+                            div.d-none.user__image__description = photo.description
                         / <!-- end template -->
-
             = render partial: "shared/pagination", locals: {asset: @photos}
-    template id="limit_paging_template"
-        input.d-none value="10"

@@ -1,6 +1,6 @@
 class FolloweesController < ApplicationController
   def index
-    @followers = Follower.where(follower_id: current_user.id).page(params[:page]).per(10)
+    @followers = Follower.where(follower_id: current_user.id).includes(:following_user).page(params[:page]).per(10)
     @followees = Follower.where(following_user_id: current_user.id).page(params[:page]).per(10)
     @user = User.find(current_user.id)
     @followees_navbar = Follower.where(following_user_id: current_user.id)
@@ -53,7 +53,7 @@ class FolloweesController < ApplicationController
   end
 
   def discover_followee_index
-    @followers = Follower.where(follower_id: params["id"]).page(params[:page]).per(10)
+    @followers = Follower.where(follower_id: params["id"]).includes(:following_user).page(params[:page]).per(10)
     @followees = Follower.where(follower_id: current_user.id).page(params[:page]).per(10)
     @user = User.find(params["id"])
     @followees_navbar = Follower.where(following_user_id: params["id"])

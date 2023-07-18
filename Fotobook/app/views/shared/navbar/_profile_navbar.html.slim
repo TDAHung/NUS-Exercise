@@ -13,7 +13,8 @@
                     = render partial: "shared/navbar/followee_navbar", locals: { followers_count: followers.count }
                 a class="tab #{request.path == followers_path ? 'active':''}" href="#{followers_path}"
                     span #{followees.count} Followers
-                / = render partial: "shared/profile_navbar", locals: {user: , album_count:,
-                /     photo_count: ,
-                /     followees: ,
-                /     followers: }
+                / usage
+                / = render partial: "shared/profile_navbar", locals: {user: @class_variable, album_count: instance_variable,
+                /     photo_count: instance_variable,
+                /     followees: @class_variable,
+                /     followers: @class_variable}

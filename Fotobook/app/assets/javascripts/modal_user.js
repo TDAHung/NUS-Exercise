@@ -23,11 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 carouselInner.appendChild(handleShowModal(img));
             });
             carouselInner.querySelector(".carousel-item").classList.add("active");
-            const editBtn = modal.querySelector(".btn-success");
-            const deleteBtn = modal.querySelector(".btn-danger");
-            const type = document.querySelector("#type");
-            editBtn.href = `/${type.value}/${element.getAttribute("id").substring(6)}/edit`;
-            deleteBtn.href = `/${type.value}/${element.getAttribute("id").substring(6)}`;
+            try {
+                const editBtn = modal.querySelector(".btn-success");
+                const deleteBtn = modal.querySelector(".btn-danger");
+                const type = document.querySelector("#type");
+                editBtn.href = `/${type.value}/${element.getAttribute("id").substring(6)}/edit`;
+                deleteBtn.href = `/${type.value}/${element.getAttribute("id").substring(6)}`;
+            } catch (error) {
+                console.log(error);
+            }
         });
     });
 

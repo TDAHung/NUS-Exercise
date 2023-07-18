@@ -7,8 +7,8 @@
                     followers: @followers_navbar}
                 div.row.parent-node.w-100.ps-4.mt-2
                     - @followees.each do |followee_info|
-                        - user = User.find(followee_info.follower_id)
                         / <!-- start template -->
+                        - user = followee_info.follower
                         div.child-node.col-3.mx-2.my-1.shadow.follower.bg-body-tertiary
                             div.follower__wrapper.d-flex.justify-content-between.flex-column
                                 div.follower__img.mx-auto
@@ -23,8 +23,8 @@
                                     div.follower__counter__albums.text-center
                                         div.follower__count = user.photos.count
                                         div.follower__type ALBUMS
-                                = render partial: "shared/button/follow/user", locals: {followees: @followers, user_id: user.id}
-
+                                div.w-100.d-flex.justify-content-center
+                                    = render partial: "shared/button/follow/user", locals: {followees: @followers, user_id: user.id}
                         / <!-- end template -->
             = render partial: "shared/pagination", locals: {asset: @followers}
 

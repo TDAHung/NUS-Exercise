@@ -9,3 +9,5 @@
                 = link_to "Manage Photos", admin_photos_path, class: "nav-link #{request.path == admin_photos_path ? 'active' : ''}"
                 = link_to "Manage Albums", admin_albums_path, class: "nav-link #{request.path == admin_albums_path ? 'active' : ''}"
                 = link_to "Manage Users", admin_users_path, class: "nav-link #{request.path == admin_users_path ? 'active' : ''}"
+        / usage
+        / = render partial: 'shared/admin/navbar'
