@@ -33,9 +33,8 @@
                                     div class="preview pb-3 position-relative"
                                         img [src="/assets/camera.png" alt="Psreview" id="image-preview"
                                             class="image-preview"]
-                                    - @album.album_attachments.find_each do |photo|
-                                        input class="photoUrl" type="hidden" value="#{photo.img_url.url}" name="#{photo.img_url.identifier}"
-
+                                    - @album.album_attachments.each do |photo|
+                                        input class="photoUrl" type="hidden" value="#{photo.url}" name="#{photo.identifier}"
 
                             template id="deleteButton"
                                 div class="position-absolute top-0 m-3 text-danger" role="button"

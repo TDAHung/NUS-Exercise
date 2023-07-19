@@ -3,9 +3,7 @@ class PhotosController < ApplicationController
   before_action :check_user
   def index
     @photos = Photo.where(user_id: current_user.id).order(updated_at: :desc).page(params[:page]).per(10)
-    @user = User.find(current_user.id)
-    @followees_navbar = Follower.where(following_user_id: current_user.id)
-    @followers_navbar = Follower.where(follower_id: current_user.id)
+    query_navbar(current_user.id)
   end
 
   def new
@@ -43,9 +41,7 @@ class PhotosController < ApplicationController
 
   def discover_user_photos_index
     @photos = Photo.where(user_id: params["id"]).order(updated_at: :desc).page(params[:page]).per(10)
-    @user = User.find(params["id"])
-    @followees_navbar = Follower.where(following_user_id: params["id"])
-    @followers_navbar = Follower.where(follower_id: params["id"])
+    query_navbar(params[:id])
     render "photos/discover_user_photos/index"
   end
 
@@ -57,7 +53,7 @@ class PhotosController < ApplicationController
   end
 
   def index_feed
-    @photos = Photo.includes(:user).order(created_at: :desc).where(is_public: true).page(params["page"]).per(4)
+    @photos = Photo.includes(:user).order(created_at: :desc).where(is_public: true).page(params[:page]).per(4)
     @likes = Like.where(likeable_type: 'Photo')
     render "public/feed_photos/index"
   end
@@ -73,4 +69,9 @@ class PhotosController < ApplicationController
     end
   end
 
+  def query_navbar(id)
+    @user = User.find(id)
+    @followees_navbar = Follower.where(following_user_id: id)
+    @followers_navbar = Follower.where(follower_id: id)
+  end
 end

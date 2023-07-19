@@ -17,11 +17,11 @@
                                 div.follower__name.text-center = user.first_name.to_s + user.last_name.to_s
                                 div.follower__counter.d-flex.justify-content-between.text-primary
                                     div.follower__counter__photos.text-center
-                                        div.follower__count.color-primary = user.albums.count
+                                        div.follower__count.color-primary = user.photos.count
                                         div.follower__type PHOTOS
 
                                     div.follower__counter__albums.text-center
-                                        div.follower__count = user.photos.count
+                                        div.follower__count = user.albums.count
                                         div.follower__type ALBUMS
                                 div.w-100.d-flex.justify-content-center
                                     = render partial: "shared/button/follow/user", locals: {followees: @followees, user_id: user.id}

@@ -48,8 +48,6 @@ html
     - if controller_modal.include?(controller_name)
       = render partial: "shared/modal"
 
-    = javascript_include_tag 'index.js'
-
     - case controller_name
       - when "users"
         - if controller.action_name == 'edit'

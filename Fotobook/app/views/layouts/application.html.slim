@@ -67,9 +67,13 @@ html
             = javascript_include_tag 'input_photo.js'
           - when 'edit'
             = javascript_include_tag 'edit_photo.js'
-          - when 'index_discover', 'index_feed', 'discover_user_photos_index'
+          - when 'index_discover', 'index_feed'
             = render partial: "shared/modal/modal"
+            = javascript_include_tag 'index.js'
+          - when 'discover_user_photos_index'
             = javascript_include_tag 'modal_user.js'
+            = render partial: "shared/modal/modal"
+
 
       - when "albums"
         - case controller.action_name
@@ -80,6 +84,11 @@ html
             = javascript_include_tag 'input_multiple.js'
           - when 'edit'
             = javascript_include_tag 'edit_album.js'
-          - when 'index_discover', 'index_feed', 'discover_user_index'
+          - when 'index_discover', 'index_feed'
             = render partial: "shared/modal/modal"
+            = javascript_include_tag 'index.js'
+          - when 'discover_user_index'
             = javascript_include_tag 'modal_user.js'
+            = render partial: "shared/modal/modal"
+
+

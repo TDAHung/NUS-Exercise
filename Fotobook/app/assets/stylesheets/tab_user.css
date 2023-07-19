@@ -24,6 +24,7 @@
     border-radius: 10px;
     color: rgb(255, 146, 20);
     padding: 0 5px;
+    transition: 0.5s;
 }
 
 .btn-follow:hover {
@@ -36,4 +37,24 @@
     border: solid rgb(255, 146, 20);
     color: white;
     background-image: linear-gradient(to top right, yellow, red);
+}
+
+.btn-edit-profile {
+    border: solid rgb(3, 195, 255);
+    border-radius: 10px;
+    color: rgb(3, 195, 255);
+    padding: 0 5px;
+    transition: 0.5s;
+}
+
+.btn-edit-profile:hover {
+    border: solid rgb(3, 195, 255);
+    color: white;
+    background-image: linear-gradient(to top right, rgb(3, 195, 255), red);
+}
+
+.btn-edit-profile.active {
+    border: solid rgb(3, 195, 255);
+    color: white;
+    background-image: linear-gradient(to top right, rgb(3, 195, 255), red);
 }

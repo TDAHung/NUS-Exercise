@@ -4,9 +4,7 @@ class AlbumsController < ApplicationController
 
   def index
     @albums = Album.where(user_id: current_user.id).order(updated_at: :desc).page(params[:page]).per(8)
-    @user = User.find(current_user.id)
-    @followees_navbar = Follower.where(following_user_id: current_user.id)
-    @followers_navbar = Follower.where(follower_id: current_user.id)
+    query_navbar(current_user.id)
   end
 
   def new
@@ -43,9 +41,7 @@ class AlbumsController < ApplicationController
   def discover_user_index
     @albums = Album.where(user_id: params["id"]).where(is_public: true).includes(:user)
     .order(updated_at: :desc).page(params[:page]).per(8)
-    @user = User.find(params["id"])
-    @followees_navbar = Follower.where(following_user_id: params["id"])
-    @followers_navbar = Follower.where(follower_id: params["id"])
+    query_navbar(params[:id])
     render "albums/discover_user_albums/index"
   end
 
@@ -73,4 +69,9 @@ class AlbumsController < ApplicationController
       end
     end
 
+    def query_navbar(id)
+      @user = User.find(id)
+      @followees_navbar = Follower.where(following_user_id: id)
+      @followers_navbar = Follower.where(follower_id: id)
+    end
 end
