@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 deleteButtonNode.addEventListener('click', (event) => {
     event.preventDefault();
-    imagePreview.src = '/assets/camera.png';
+    imagePreview.src = '/assets/avatar.png';
     const data = new DataTransfer();
     fileInput.files = data.files;
 });

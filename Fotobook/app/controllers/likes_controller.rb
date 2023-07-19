@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+  before_action :check_user_status
+
   def create
     @like = Like.new(like_params)
     likeable_id = params[:like][:likeable_id]

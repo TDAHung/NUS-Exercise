@@ -6,7 +6,7 @@ header.bg-primary.text-white.sticky-top.fw-semibold
                 input.form-control.w-75 type="email" id="inputSearch" placeholder="Search Photo / Album"
             div.header-box.d-flex
                 - if current_user.nil? == false
-                    a.header-box__info.d-flex href="#{current_user["user_type"] == 'admin' ? admin_photos_path : photos_path}"
+                    a.header-box__info.d-flex href="#{current_user.user_type == 'admin' ? admin_photos_path : photos_path}"
                         div.header-box__info__img.me-4
                             img[src="#{current_user.img_url.present? ? current_user.img_url.url : '/assets/avatar.png'}"
                              alt="courage-dog"]

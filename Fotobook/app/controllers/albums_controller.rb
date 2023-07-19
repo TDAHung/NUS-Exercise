@@ -1,5 +1,7 @@
 class AlbumsController < ApplicationController
+  before_action :check_user_status
   before_action :check_user
+
   def index
     @albums = Album.where(user_id: current_user.id).order(updated_at: :desc).page(params[:page]).per(8)
     @user = User.find(current_user.id)

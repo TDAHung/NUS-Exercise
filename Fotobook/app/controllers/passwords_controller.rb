@@ -1,4 +1,6 @@
 class PasswordsController < ApplicationController
+  before_action :check_user_status
+
   def update
     @profile = User.find(current_user.id)
     if @profile.update(user_params)

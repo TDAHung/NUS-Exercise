@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :check_user_status
   def edit
     @profile = current_user
   end

@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   protected
-
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :user_type, :last_name, :status, :img_url])
   end
@@ -11,4 +10,9 @@ class ApplicationController < ActionController::Base
     new_user_session_path
   end
 
+  def check_user_status
+    if current_user && current_user.status != 'active'
+      redirect_to pending_path
+    end
+  end
 end

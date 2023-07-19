@@ -1,12 +1,12 @@
 class Admin::UsersController < Admin::AuthorizationsController
   def index
-    @users = User.where(user_type: 2).page(params[:page]).per(4)
+    @users = User.where(user_type: 'user').page(params[:page]).per(4)
   end
 
   def destroy
     user = User.find(params[:id])
     user.destroy
-    redirect_to admin_photos_path
+    redirect_to admin_users_path
   end
 
   def edit
@@ -14,6 +14,20 @@ class Admin::UsersController < Admin::AuthorizationsController
   end
 
   def update
-    puts params
+    user = User.find(params[:id])
+    if user.update(user_params)
+      redirect_to admin_users_path
+    else
+      render 'edit'
+    end
+  end
+
+  private
+  def user_params
+    if params[:user][:password] == ''
+      params.require(:user).permit(:img_url, :first_name, :last_name, :email, :status)
+    else
+      params.require(:user).permit(:img_url, :first_name, :last_name, :email, :password, :status)
+    end
   end
 end

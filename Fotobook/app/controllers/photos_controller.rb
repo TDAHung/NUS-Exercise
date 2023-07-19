@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  before_action :check_user_status
   before_action :check_user
   def index
     @photos = Photo.where(user_id: current_user.id).order(updated_at: :desc).page(params[:page]).per(10)

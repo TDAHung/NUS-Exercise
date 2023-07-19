@@ -1,4 +1,6 @@
 class FollowersController < ApplicationController
+  before_action :check_user_status
+
   def index
     @followees = Follower.where(following_user_id: current_user.id).includes(:follower).page(params[:page]).per(10)
     @followers = Follower.where(follower_id: current_user.id).page(params[:page]).per(10)
