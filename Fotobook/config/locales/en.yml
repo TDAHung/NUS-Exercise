@@ -30,4 +30,19 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "nhap Email vao "
+              taken: "Email nay ngta lay roi"
+              invalid: "sai dinh dang Email ne"
+            password:
+              blank: "nhap cai Password vao"
+              too_short: "6 chu lan, nhap them di"
+            password_confirmation:
+              confirmation: "Password ko khop ne"
+            first_name:
+              blank: "Nhap Ten vao"

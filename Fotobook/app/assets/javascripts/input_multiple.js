@@ -36,14 +36,18 @@ const handleAddImg = (src, index) => {
 const removeImg = (imgID, index) => {
     const imgPreview = document.querySelector(`#${imgID}`);
     imgGroup.removeChild(imgPreview);
-    const data = new DataTransfer();
+    // const data = new DataTransfer();
 
     for (let i = 0; i < fileInput.files.length; i++) {
         const file = fileInput.files[i]
-        if (index !== i)
-            data.items.add(file)
+        if (index !== i) {
+            // data.items.add(file)
+            dataGlobal.items.remove(file)
+        }
+
     }
-    fileInput.files = data.files;
+    console.log(dataGlobal);
+    fileInput.files = dataGlobal.files;
 }
 
 
@@ -60,7 +64,6 @@ fileInput.addEventListener('change', () => {
         imgGroup.innerHTML = middleImgGroup;
         srcs.forEach((element, index) => {
             const children = handleAddImg(element, index);
-            console.log(children);
             imgGroup.insertBefore(handleAddImg(element, index), document.querySelector('.preview'));
         });
     } else {

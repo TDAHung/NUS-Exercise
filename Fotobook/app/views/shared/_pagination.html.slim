@@ -1,8 +1,8 @@
 div class="content__pagination"
     nav aria-label="..."
-        ul class="pagination d-flex justify-content-center"
+        ul class="pagination d-flex justify-content-center my-0"
             / <!-- use logic to render UI of pages -->
             li.page-item
-                = paginate asset
+                = paginate asset, outer_window: 2, inner_window: 2
         / usage
         / = render partial: "shared/pagination", locals: {asset: @class_variable }

@@ -26,9 +26,12 @@
     height: 100%;
 }
 
-.follower {
-    height: 190px;
-    width: 23%;
+.parent-node {
+    height: 75%;
+}
+
+.child-node {
+    height: 50%;
 }
 
 .follower__wrapper {
@@ -36,7 +39,8 @@
 }
 
 .follower__img {
-    width: 30%;
+    width: 50px;
+    height: 50px;
 }
 
 .follower__img img {
@@ -78,21 +82,9 @@
     .photo__info {
         width: 75%;
     }
-}
 
-@media screen and (max-width: 412px) {
 
-    .main__content__profile {
-        width: 95%;
-        height: 85vh;
-        margin: 0 auto;
-    }
-
-    .photo {
-        width: 27%;
-    }
-
-    .photo__info {
-        width: 65%;
+    .child-node {
+        height: 28%;
     }
 }

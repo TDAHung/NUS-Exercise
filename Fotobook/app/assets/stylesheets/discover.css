@@ -91,20 +91,3 @@
         width: 75%;
     }
 }
-
-@media screen and (max-width: 412px) {
-
-    .main__content__album {
-        width: 95%;
-        height: 85vh;
-        margin: 0 auto;
-    }
-
-    .photo {
-        width: 27%;
-    }
-
-    .photo__info {
-        width: 65%;
-    }
-}

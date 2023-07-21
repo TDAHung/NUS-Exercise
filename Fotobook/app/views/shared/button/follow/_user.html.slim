@@ -1,6 +1,6 @@
 - if current_user.id != user_id
     = turbo_frame_tag "follow-#{user_id}"
-        - if followees.find_by(follower_id: current_user.id, following_user_id: user_id) == nil
+        - if Follower.find_by(follower_id: current_user.id, following_user_id: user_id) == nil
             form action="#{followers_path}" method="post" class="mx-auto"
                 = hidden_field_tag :authenticity_token, form_authenticity_token
                 input type="hidden" value="#{user_id}" name="follower[following_user_id]"

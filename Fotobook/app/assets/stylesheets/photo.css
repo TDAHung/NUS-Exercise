@@ -27,7 +27,7 @@
 }
 
 .main__album {
-    height: 65vh;
+    height: 80vh;
 }
 
 
@@ -79,36 +79,12 @@
         width: 93%;
     }
 
-    .container {
-        height: 95%;
-    }
-
     .main__content__album {
         width: 75%;
-        height: 80vh;
-    }
-
-
-    .main__album {
-        height: 70%;
+        height: 85vh;
     }
 
     .main__album {
-        height: 90%;
-        margin-left: 10px;
-    }
-}
-
-@media screen and (max-width: 412px) {
-    .main__content__album {
-        width: 95%;
-    }
-
-    .album {
-        width: 45%;
-    }
-
-    .main__album {
-        height: 70%;
+        height: 100%;
     }
 }

@@ -2,19 +2,23 @@ class PhotosController < ApplicationController
   before_action :check_user_status
   before_action :check_user
   def index
-    @photos = Photo.where(user_id: current_user.id).order(updated_at: :desc).page(params[:page]).per(10)
+    @photos = Photo.where(user_id: current_user.id).order(updated_at: :desc).page(params[:page]).per(8)
     query_navbar(current_user.id)
+    @albums = Album.where(user_id: params["id"])
   end
 
   def new
+    @photo = Photo.new
   end
 
   def create
     @photo = Photo.new(photo_params)
     if @photo.save
-      redirect_to discover_photo_path(@photo.user_id)
+      redirect_to discover_photo_path(@photo.user_id), notice: "Photo created successfully"
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'new' }
+      end
     end
   end
 
@@ -40,8 +44,9 @@ class PhotosController < ApplicationController
   end
 
   def discover_user_photos_index
-    @photos = Photo.where(user_id: params["id"]).order(updated_at: :desc).page(params[:page]).per(10)
+    @photos = Photo.where(user_id: params["id"]).where(is_public: true).order(updated_at: :desc).page(params[:page]).per(8)
     query_navbar(params[:id])
+    @albums = Album.where(user_id: params["id"]).where(is_public: true)
     render "photos/discover_user_photos/index"
   end
 
@@ -53,7 +58,7 @@ class PhotosController < ApplicationController
   end
 
   def index_feed
-    @photos = Photo.includes(:user).order(created_at: :desc).where(is_public: true).page(params[:page]).per(4)
+    @photos = Photo.includes(:user).order(created_at: :desc).where(is_public: true).where(user_id: current_user.followees).page(params[:page]).per(4)
     @likes = Like.where(likeable_type: 'Photo')
     render "public/feed_photos/index"
   end

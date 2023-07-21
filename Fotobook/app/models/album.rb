@@ -5,4 +5,6 @@ class Album < ApplicationRecord
   mount_uploaders :album_attachments, PhotoUploader
 
   validates :is_public, inclusion: { in: [true, false], allow_nil: true }
+  validates :title, presence: { message: "Title of album is required" }
+  validates :album_attachments, presence: { message: "Album is required"}
 end

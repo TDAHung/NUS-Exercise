@@ -1,7 +1,7 @@
-div class="main__content__album bg-white mt-4 rounded"
+div class="main__content__album bg-white mt-4 rounded d-flex justify-content-around flex-column"
     = render partial: "shared/pages"
-    div class="container d-flex flex-column justify-content-between"
-        div class="main__album d-flex flex-column"
+    div class="main__album d-flex flex-column"
+        div class="container d-flex flex-column justify-content-between"
             div class="row"
                 - @photos.each do |photo|
                     - photo_url = Photo.find(photo["id"]).img_url.url
@@ -18,7 +18,7 @@ div class="main__content__album bg-white mt-4 rounded"
                                     a href="#{discover_photos_path}/#{photo[:user_id]}" class="d-flex align-items-center"
                                         div class="header-box__info__img" href="#"
                                             img src="#{photo.user.img_url.present? ? photo.user.img_url.url : '/assets/avatar.png'}" alt="courage-dog"
-                                        div class="photo__author__name ms-3 text-primary" href="#" = photo.user.first_name.to_s + ' ' + photo.user.last_name.to_s
+                                        div class="photo__author__name ms-3 text-primary" href="#" = photo.user.first_name.to_s.humanize + ' ' + photo.user.last_name.to_s.humanize
                                     = render partial: "shared/button/follow/discover", locals: { asset: photo, followers: @followers, type_asset: "Photo" }
                                 h5 class="photo__title fw-bold" = photo["title"]
                                 p class="photo__description text-start" = photo["description"]
@@ -29,5 +29,5 @@ div class="main__content__album bg-white mt-4 rounded"
                                     - formatted_time = DateTime.strptime(created_at, "%Y-%m-%d %H:%M:%S %Z").strftime("%l:%M %P %d/%m/%Y")
                                     p.photo__time.m-0 = formatted_time
                     / <!-- end template -->
-        = render partial: "shared/pagination", locals: {asset: @photos}
+    = render partial: "shared/pagination", locals: {asset: @photos}
         / == render partial: 'pagy/nav', locals: {pagy: @photos}

@@ -4,17 +4,18 @@
                         h4 New Photo
                     hr
                     div class="main__album d-flex flex-column"
-                        form class="row g-3" action="/photos" method="post" enctype="multipart/form-data" accept-charset="UTF-8"
+                        form class="row g-3" action="/photos" method="POST" enctype="multipart/form-data" accept-charset="UTF-8"
                             = hidden_field_tag :authenticity_token, form_authenticity_token
+
                             div class="col-md-6 input__photo"
                                 label for="photoTitle" class="form-label"Title
                                 input [type="text" class="form-control" id="photoTitle"
-                                    placeholder="Photo Title" name="photo[title]" required]
+                                    placeholder="Photo Title" name="photo[title]"]
 
                             div class="col-md-6 input__photo"
                                 label for="photoDescription" class="form-label" Description
                                 textarea [class="form-control" id="photoDescription" rows="3"
-                                    placeholder="Photo Description" name="photo[description]" required]
+                                    placeholder="Photo Description" name="photo[description]"]
 
                             div class="col-md-3"
                                 label for="photoMode" class="form-label" Sharing Mode
@@ -25,8 +26,10 @@
                             div class="col-12"
                                 label for="imageSrc" class="form-label"Photo
                                 input [type="file" class="form-control" id="file-upload"
-                                    accept="image/gif, image/jpeg, image/png, image/jpg, image/webp" name="photo[img_url]" required]
-
+                                    accept="image/gif, image/jpeg, image/png, image/jpg, image/webp" name="photo[img_url]"]
+                            - if @photo.errors.any?
+                                div.alert.alert-danger
+                                    - puts @photo.errors.messages[:img_url]
                             div class="col-12"
                                 div class="preview"
                                     img [src="/assets/camera.png" alt="Preview" id="image-preview"

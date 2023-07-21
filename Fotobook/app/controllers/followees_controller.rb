@@ -2,11 +2,7 @@ class FolloweesController < ApplicationController
   before_action :check_user_status
 
   def index
-    @followers = Follower.where(follower_id: current_user.id).includes(:following_user).page(params[:page]).per(10)
-    @followees = Follower.where(following_user_id: current_user.id).page(params[:page]).per(10)
-    @user = User.find(current_user.id)
-    @followees_navbar = Follower.where(following_user_id: current_user.id)
-    @followers_navbar = Follower.where(follower_id: current_user.id)
+    query(current_user.id)
   end
 
   def destroy
@@ -27,8 +23,8 @@ class FolloweesController < ApplicationController
       following_user = Photo.where(user_id: params[:id]).first
     end
     followers = Follower.where(follower_id: current_user.id)
-    sql_query = "DELETE FROM followers WHERE follower_id = #{follower_id} AND following_user_id = #{following_user_id}"
-    if ActiveRecord::Base.connection.execute(sql_query)
+    query = Follower.where(follower_id: follower_id,following_user_id: following_user_id).delete_all
+    if query
         if params[:type_asset]
           respond_to do |format|
             format.turbo_stream { render turbo_stream: turbo_stream.replace_all(".follow-#{following_user_id}", partial: 'shared/button/follow/discover',
@@ -55,11 +51,16 @@ class FolloweesController < ApplicationController
   end
 
   def discover_followee_index
-    @followers = Follower.where(follower_id: params["id"]).includes(:following_user).page(params[:page]).per(10)
-    @followees = Follower.where(follower_id: current_user.id).page(params[:page]).per(10)
-    @user = User.find(params["id"])
-    @followees_navbar = Follower.where(following_user_id: params["id"])
-    @followers_navbar = Follower.where(follower_id: params["id"])
+    query(params["id"])
     render "followees/discover_user_followees/index"
   end
+
+  private
+    def query(id)
+      @followers = Follower.where(follower_id: id).includes(:following_user).page(params[:page]).per(8)
+      @followees = Follower.where(following_user_id: current_user.id).page(params[:page]).per(8)
+      @user = User.find(id)
+      @followees_navbar = Follower.where(following_user_id: id)
+      @followers_navbar = Follower.where(follower_id: id)
+    end
 end

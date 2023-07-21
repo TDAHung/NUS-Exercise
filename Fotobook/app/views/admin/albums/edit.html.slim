@@ -1,7 +1,7 @@
             div class="main__content__album bg-white mt-4 d-flex flex-column"
                 div class="container"
                     div class="text-start fw-3 mt-3"
-                        h4 New Album
+                        h4 Edit Album
                     hr
                     div class="main__album d-flex flex-column"
                         form class="row g-3" enctype="multipart/form-data" method="post" action="#{album_path(@album.id)}"
@@ -26,7 +26,7 @@
                             div class="col-12"
                                 label for="imageSrc" class="form-label" Photo
                                 input [type="file" class="form-control" id="file-upload" multiple="multiple"
-                                    accept="image/gif, image/jpeg, image/png, image/jpg" name="album_attachments[img_url][]"]
+                                    accept="image/gif, image/jpeg, image/png, image/jpg" name="album[album_attachments][]"]
 
                             div class="col-12"
                                 div class="row imgGroup"

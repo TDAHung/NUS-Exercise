@@ -37,17 +37,18 @@
                                     div class="col-sm-9 input-group-sm text-primary form__title"
                                         button type="submit" class="btn btn-success" Save
 
-                    form.w-50.form_password action="#{edit_user_password_path(@profile.id)}" method="post" accept-charset="UTF-8"
-                        input type="hidden" name="_method" value="patch" autocomplete="off"
+                    form.w-50.form_password action="#{user_registration_path}" method="post" accept-charset="UTF-8"
+                        input type="hidden" name="_method" value="put" autocomplete="off"
                         = hidden_field_tag :authenticity_token, form_authenticity_token
                         div class="row"
+                                / = render "devise/shared/error_messages", locals: {resource: @profile}
                                 div class="row mb-3 "
                                     div class="col-2 col-sm-4 col-form-label"
                                     div class="col-10 col-sm-8 input-group-sm text-primary form__title" Password
                                 div class="row mb-3"
                                     label for="currentPassword" class="col-2 col-sm-4 col-form-label text-end" Current Password
                                     div class="col-10 col-sm-8 input-group-sm"
-                                        input type="password" class="form-control" id="currentPassword" name="user[currentPassword]" value="" placeholder="Current Password"
+                                        input type="password" class="form-control" id="currentPassword" name="user[current_password]" value="" placeholder="Current Password"
                                 div class="row mb-3"
                                     label for="password" class="col-sm-4 col-form-label text-end" New Password
                                     div class="col-sm-8 input-group-sm"

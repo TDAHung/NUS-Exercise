@@ -19,7 +19,7 @@ div class="main__content__album bg-white mt-4 d-flex justify-content-around flex
                                     a href="#{discover_photos_path}/#{album.user.id}" class="d-flex align-items-center"
                                         div class="header-box__info__img" href="#"
                                             img src="#{album.user.img_url.present? ? album.user.img_url.url : '/assets/avatar.png'}" alt="courage-dog"
-                                        div class="photo__author__name ms-3 text-primary" = album.user.first_name.to_s + ' ' + album.user.last_name.to_s
+                                        div class="photo__author__name ms-3 text-primary" = album.user.first_name.to_s.humanize + ' ' + album.user.last_name.to_s.humanize
                                     = render partial: "shared/button/follow/discover", locals: { asset: album, followers: @followers, type_asset: "Album" }
                                 h5.photo__title.fw-bold = album["title"]
                                 p.photo__description.text-start = album["description"]

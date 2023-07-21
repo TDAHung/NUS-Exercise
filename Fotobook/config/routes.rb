@@ -32,11 +32,11 @@ Rails.application.routes.draw do
   #   get "unauthorized", to: "unauthorizations#index", as: "guest_unauthorizations"
   # end
 
-  namespace :guest do
-    get "authorizations", to: "authorizations#index"
-    get "unauthorized", to: "unauthorizations#index"
-  end
-    scope "discovers" do
+  # namespace :guest do
+  #   get "authorizations", to: "authorizations#index"
+  #   get "unauthorized", to: "unauthorizations#index"
+  # end
+  scope "discovers" do
     get "/", to: "albums#index_discover", as: "discover"
     get "/photos", to: "photos#index_discover", as: "discover_photos"
     get "/photos/:id", to: "photos#discover_user_photos_index", as: "discover_photo"

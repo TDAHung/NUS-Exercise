@@ -2,11 +2,7 @@ class FollowersController < ApplicationController
   before_action :check_user_status
 
   def index
-    @followees = Follower.where(following_user_id: current_user.id).includes(:follower).page(params[:page]).per(10)
-    @followers = Follower.where(follower_id: current_user.id).page(params[:page]).per(10)
-    @user = User.find(current_user.id)
-    @followees_navbar = Follower.where(following_user_id: current_user.id)
-    @followers_navbar = Follower.where(follower_id: current_user.id)
+    query(current_user.id)
   end
 
   def create
@@ -25,7 +21,6 @@ class FollowersController < ApplicationController
     when 'Photo'
       asset = Photo.where(user_id: follower_params[:following_user_id]).first
     end
-
     followers = Follower.where(follower_id: current_user.id)
     if @follower.save
       if !params[:type_asset].nil?
@@ -55,16 +50,20 @@ class FollowersController < ApplicationController
   end
 
   def discover_follower_index
-    @followees = Follower.where(following_user_id: params["id"]).includes(:follower).page(params[:page]).per(8)
-    @followers = Follower.where(follower_id: current_user.id).page(params[:page]).per(8)
-    @user = User.find(params["id"])
-    @followees_navbar = Follower.where(following_user_id: params["id"])
-    @followers_navbar = Follower.where(follower_id: params["id"])
+    query(params["id"])
     render "followers/discover_user_followers/index"
   end
 
   private
     def follower_params
       params.require(:follower).permit(:follower_id, :following_user_id)
+    end
+
+    def query(id)
+      @followees = Follower.where(following_user_id: id).includes(:follower).page(params[:page]).per(8)
+      @followers = Follower.where(follower_id: current_user.id).page(params[:page]).per(8)
+      @user = User.find(id)
+      @followees_navbar = Follower.where(following_user_id: id)
+      @followers_navbar = Follower.where(follower_id: id)
     end
 end

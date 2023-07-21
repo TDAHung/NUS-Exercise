@@ -32,15 +32,12 @@ const handleAddImg = (src, index) => {
 const removeImg = (imgID, index) => {
     const imgPreview = document.querySelector(`#${imgID}`);
     imgGroup.removeChild(imgPreview);
-    const data = new DataTransfer();
     for (let i = 0; i < fileInput.files.length; i++) {
         const file = fileInput.files[i]
         if (index !== i)
-            data.items.add(file)
+            dataGlobal.items.remove(file)
     }
-    dataGlobal.remove(index);
-    console.log(dataGlobal);
-    fileInput.files = data.files;
+    fileInput.files = dataGlobal.files;
 }
 
 const uploadFiles = files => {
@@ -48,8 +45,6 @@ const uploadFiles = files => {
         const file = files[i];
         dataGlobal.items.add(file);
     }
-    console.log(dataGlobal.files);
-
     fileInput.files = dataGlobal.files;
     if (fileInput.files.length > 0) {
         const srcs = Array.from(fileInput.files).map(file => URL.createObjectURL(file));

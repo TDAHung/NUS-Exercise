@@ -1,20 +1,20 @@
-    div.main__content__profile.bg-white.mt-4.d-flex.pt-3.flex-column.ps-5
+    div.main__content__profile.bg-white.mt-4.d-flex.pt-3.flex-column
         div.main__album.d-flex.flex-column
             div.container.content-wrapper
-                = render partial: "shared/navbar/user_navbar", locals: {user: @user, album_count: @user.albums.count,
-                    photo_count: @user.photos.count,
+                = render partial: "shared/navbar/user_navbar", locals: {user: @user, album_count: @user.albums.where(is_public: true).count,
+                    photo_count: @user.photos.where(is_public: true).count,
                     followees: @followees_navbar,
                     followers: @followers_navbar}
-                div.row.parent-node.w-100.ps-4.mt-2
-                    - @followees.each do |followee_info|
+                div.row.parent-node.w-100.ms-1
+                    - @followees.each do |follower_info|
+                        - user = follower_info.follower
                         / <!-- start template -->
-                        - user = followee_info.follower
-                        div.child-node.col-3.mx-2.my-1.shadow.follower.bg-body-tertiary
-                            div.follower__wrapper.d-flex.justify-content-between.flex-column
+                        div.child-node.col-lg-3.col-6.follower
+                            div.follower__wrapper.d-flex.justify-content-between.flex-column.m-1.bg-body-tertiary.shadow.p-3
                                 div.follower__img.mx-auto
                                     a href="#{discover_photos_path}/#{user.id}"
                                         img src="#{user.img_url.present? ? user.img_url.url : "/assets/avatar.png"}" alt=""
-                                div.follower__name.text-center = user.first_name.to_s + user.last_name.to_s
+                                a.follower__name.text-center href="#{discover_photos_path}/#{user.id}" = user.first_name.to_s.humanize + user.last_name.to_s.humanize
                                 div.follower__counter.d-flex.justify-content-between.text-primary
                                     div.follower__counter__photos.text-center
                                         div.follower__count.color-primary = user.photos.count
@@ -26,5 +26,5 @@
                                 div.w-100.d-flex.justify-content-center
                                     = render partial: "shared/button/follow/user", locals: {followees: @followers, user_id: user.id}
                         / <!-- end template -->
-            = render partial: "shared/pagination", locals: {asset: @followers}
+            = render partial: "shared/pagination", locals: {asset: @followees}
 

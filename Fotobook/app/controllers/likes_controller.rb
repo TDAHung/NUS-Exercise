@@ -34,9 +34,8 @@ class LikesController < ApplicationController
       likes = Like.where(likeable_type: 'Photo')
       asset = Photo.find(likeable_id)
     end
-
-    sql_query = "DELETE FROM likes WHERE user_id = #{like_id} AND likeable_type = '#{type_asset}' AND likeable_id = #{likeable_id}"
-    if ActiveRecord::Base.connection.execute(sql_query)
+    like = Like.where(user_id: like_id, likeable_type: type_asset, likeable_id: likeable_id).delete_all
+    if like
       respond_to do |format|
         format.turbo_stream { render turbo_stream: turbo_stream.replace("like-#{likeable_id}",
           partial: 'shared/button/like',
