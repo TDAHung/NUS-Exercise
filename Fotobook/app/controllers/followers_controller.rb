@@ -7,41 +7,27 @@ class FollowersController < ApplicationController
 
   def create
     @follower = Follower.new(follower_params)
-    url = URI.parse(request.referrer).path
-    desired_portion = url.split('/')[1]
-    discover_id = url.split('/')[3]
-    if desired_portion != "discovers"
-      followees_navbar = Follower.where(follower_id: current_user.id)
-    else
-      followees_navbar = Follower.where(following_user_id: discover_id)
-    end
-    case params[:type_asset]
-    when 'Album'
-      asset = Album.where(user_id: follower_params[:following_user_id]).first
-    when 'Photo'
-      asset = Photo.where(user_id: follower_params[:following_user_id]).first
-    end
-    followers = Follower.where(follower_id: current_user.id)
+    parameters = ParameterFollower.new(params[:type_asset], follower_params[:following_user_id], request.referrer, current_user)
     if @follower.save
-      if !params[:type_asset].nil?
+      if !parameters.type_asset.nil?
         respond_to do |format|
-          format.turbo_stream { render turbo_stream: turbo_stream.replace_all(".follow-#{follower_params[:following_user_id]}",
+          format.turbo_stream { render turbo_stream: turbo_stream.replace_all(".follow-#{parameters.follower_params}",
             partial: 'shared/button/follow/discover',
-            locals:{asset: asset, followers: followers, type_asset: params[:type_asset]}) }
+            locals:{asset: parameters.asset, followers: parameters.followers, type_asset: parameters.type_asset}) }
         end
       else
         respond_to do |format|
           format.turbo_stream do
             render turbo_stream: [
-              turbo_stream.replace("follow-#{follower_params[:following_user_id]}",
+              turbo_stream.replace("follow-#{parameters.follower_params}",
                 partial: 'shared/button/follow/user',
-                locals: { followees: followers, user_id: follower_params[:following_user_id] }),
+                locals: { followees: parameters.followers, user_id: parameters.follower_params }),
               turbo_stream.replace("followee_tab",
                 partial: "shared/navbar/followee_navbar",
-                locals: { followers_count: followers.count }),
+                locals: { followers_count: parameters.followers.count }),
               turbo_stream.replace("follower_tab",
                 partial: "shared/navbar/follower_navbar",
-                locals: { followees_count: followees_navbar.count })
+                locals: { followees_count: parameters.followees_navbar.count })
             ]
           end
         end

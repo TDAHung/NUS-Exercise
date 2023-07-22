@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   def index
     @photos = Photo.where(user_id: current_user.id).order(updated_at: :desc).page(params[:page]).per(8)
     query_navbar(current_user.id)
-    @albums = Album.where(user_id: params["id"])
+    @albums = Album.where(user_id: current_user.id)
   end
 
   def new
@@ -58,7 +58,10 @@ class PhotosController < ApplicationController
   end
 
   def index_feed
-    @photos = Photo.includes(:user).order(created_at: :desc).where(is_public: true).where(user_id: current_user.followees).page(params[:page]).per(4)
+    followees_ids = Follower.where(follower_id: current_user.id).pluck(:following_user_id)
+
+    @photos = Photo.includes(:user).order(created_at: :desc).where(is_public: true)
+    .where(user_id: followees_ids).page(params[:page]).per(4)
     @likes = Like.where(likeable_type: 'Photo')
     render "public/feed_photos/index"
   end

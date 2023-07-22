@@ -3,43 +3,25 @@ class LikesController < ApplicationController
 
   def create
     @like = Like.new(like_params)
-    likeable_id = params[:like][:likeable_id]
-    type_asset = params[:like][:likeable_type]
-    case type_asset
-    when 'Album'
-      likes = Like.where(likeable_type: 'Album')
-      asset = Album.find(likeable_id)
-    when 'Photo'
-      likes = Like.where(likeable_type: 'Photo')
-      asset = Photo.find(likeable_id)
-    end
+    like_service = LikeService.new(params[:like][:likeable_id], params[:like][:likeable_type])
     if @like.save
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("like-#{likeable_id}",
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("like-#{like_service.likeable_id}",
           partial: 'shared/button/like',
-          locals:{asset: asset, likes: likes, type_asset: type_asset}) }
+          locals:{asset: like_service.asset, likes: like_service.likes, type_asset: like_service.type_asset}) }
       end
     end
   end
 
   def destroy
     like_id = current_user.id
-    type_asset = params[:like][:likeable_type]
-    likeable_id = params[:like][:likeable_id]
-    case type_asset
-    when 'Album'
-      likes = Like.where(likeable_type: 'Album')
-      asset = Album.find(likeable_id)
-    when 'Photo'
-      likes = Like.where(likeable_type: 'Photo')
-      asset = Photo.find(likeable_id)
-    end
-    like = Like.where(user_id: like_id, likeable_type: type_asset, likeable_id: likeable_id).delete_all
+    like_service = LikeService.new(params[:like][:likeable_id], params[:like][:likeable_type])
+    like = Like.where(user_id: like_id, likeable_type: like_service.type_asset, likeable_id: like_service.likeable_id).delete_all
     if like
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("like-#{likeable_id}",
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("like-#{like_service.likeable_id}",
           partial: 'shared/button/like',
-          locals:{asset: asset, likes: likes, type_asset: type_asset}) }
+          locals:{asset: like_service.asset, likes: like_service.likes, type_asset: like_service.type_asset}) }
       end
     end
   end
