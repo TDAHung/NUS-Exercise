@@ -25,7 +25,7 @@ html
         = stylesheet_link_tag 'photo.css'
       - when "followees", "followers"
         = stylesheet_link_tag 'followee.css'
-      - when "profiles"
+      - when "registrations"
         = stylesheet_link_tag 'edit_user.css'
       - when "albums"
         - case controller.action_name
@@ -53,7 +53,7 @@ html
         = render partial: 'shared/navbar/index'
         = yield
     - case controller_name
-      - when "profiles"
+      - when "registrations"
         = javascript_include_tag 'edit_photo.js'
         = javascript_include_tag 'index.js'
 

@@ -42,6 +42,7 @@ en:
             password:
               blank: "nhap cai Password vao"
               too_short: "6 chu lan, nhap them di"
+
             password_confirmation:
               confirmation: "Password ko khop ne"
             first_name:

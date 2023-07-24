@@ -4,7 +4,7 @@ class PasswordsController < ApplicationController
   def update
     @profile = User.find(current_user.id)
     if @profile.update(user_params)
-      redirect_to discover_path
+      redirect_to new_session_user_path
     else
       render :edit
     end
@@ -14,5 +14,4 @@ class PasswordsController < ApplicationController
   def user_params
     params.require(:user).permit(:password)
   end
-end
 end

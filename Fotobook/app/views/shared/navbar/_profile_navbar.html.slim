@@ -3,7 +3,7 @@
             img src="#{user.img_url.present? ? user.img_url.url : '/assets/avatar.png'}" alt=""
         div class="profile__info d-flex flex-column justify-content-between ms-4"
             div
-                a class="btn btn-edit-profile btn-sm w-25" href="#{edit_profile_path(current_user.id)}" Edit Profile
+                a class="btn btn-edit-profile btn-sm w-25" href="#{edit_user_registration_path}" Edit Profile
                 - if current_user.user_type == 'admin'
                     a class="btn btn-edit-profile btn-sm w-25" href="#{admin_photos_path}" Adminitrative
             h1 = user.first_name.to_s.humanize + ' ' + user.last_name.to_s.humanize

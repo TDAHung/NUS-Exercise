@@ -8,10 +8,10 @@ Rails.application.routes.draw do
     registration: 'registration',
     sign_up: 'sign_up'
   }, controllers: {
-    sessions: 'sessions',
-    registrations: 'registrations',
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
     # passwords: 'custom_passwords',
-    # confirmations: 'custom_confirmations',
+    confirmations: 'users/confirmations',
     # unlocks: 'custom_unlocks'
   }
 
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   resources :followees, only: [:index, :create, :destroy]
   resources :followers, only: [:index, :create, :destroy]
   resources :profiles , only: [:edit, :update]
-  resources :password , only: [:edit, :update]
+  resources :passwords , only: [:edit, :update]
   resources :likes, only: [:create, :destroy]
 
   namespace :admin do
