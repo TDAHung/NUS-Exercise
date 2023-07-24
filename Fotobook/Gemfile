@@ -76,4 +76,3 @@ gem 'carrierwave', '~> 3.0'
 gem "devise", "~> 4.9"
 gem 'pry'
 gem 'kaminari'
-gem "sidekiq", "~> 7.1"
