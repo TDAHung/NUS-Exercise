@@ -54,3 +54,21 @@
 .form_password {
     margin-top: 23.5%;
 }
+
+.form__user__edit {
+    width: 50%;
+}
+
+@media screen and (max-width: 820px) {
+    .form__user__edit {
+        width: 100% !important;
+    }
+
+    .main__user__edit {
+        width: 75%;
+    }
+
+    .form__img {
+        margin-left: 85px;
+    }
+}

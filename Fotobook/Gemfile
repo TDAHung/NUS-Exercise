@@ -76,3 +76,8 @@ gem 'carrierwave', '~> 3.0'
 gem "devise", "~> 4.9"
 gem 'pry'
 gem 'kaminari'
+
+gem "dockerfile-rails", ">= 1.5", :group => :development
+
+gem "redis", "~> 5.0"
+gem "fog-aws"

@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable, :confirmable
-  has_many :albums, dependent: :destroy
-  has_many :photos, dependent: :destroy
+  has_many :albums, dependent: :destroy, dependent: :delete_all
+  has_many :photos, dependent: :destroy, dependent: :delete_all
 
   has_many :followers, foreign_key: 'follower_id', dependent: :delete_all
   has_many :followees,  foreign_key: 'following_user_id', dependent: :delete_all, class_name: 'Follower'

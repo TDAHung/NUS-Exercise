@@ -4,7 +4,7 @@
                 div class="user__tile" Edit User Profile
                 hr
                 div.d-flex
-                    form.w-50.mx-auto action="#{admin_user_path(@profile.id)}" method="post" enctype="multipart/form-data" accept-charset="UTF-8"
+                    form.mx-auto.form__user__edit action="#{admin_user_path(@profile.id)}" method="post" enctype="multipart/form-data" accept-charset="UTF-8"
                         input type="hidden" name="_method" value="patch" autocomplete="off"
                         = hidden_field_tag :authenticity_token, form_authenticity_token
                         div class="row mb-3"

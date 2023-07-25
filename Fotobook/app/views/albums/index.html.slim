@@ -6,6 +6,7 @@
                     followees: @followees_navbar,
                     followers: @followers_navbar}
                 = link_to "ADD NEW ALBUMS", new_album_path, class: "btn btn-success btn-new float-end"
+                input id="type" value="albums" type="hidden"
                 div class="row parent-node w-100"
                     - @albums.find_each do |album|
                         / <!-- start template -->

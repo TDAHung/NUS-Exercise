@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::AuthorizationsController
   def index
-    @users = User.where(user_type: 'user').page(params[:page]).per(15)
+    @users = User.includes(:photos).includes(:albums).includes(:followers).includes(:followees).where(user_type: 'user').page(params[:page]).per(15)
   end
 
   def destroy
