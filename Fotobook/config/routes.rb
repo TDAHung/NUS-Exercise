@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   resources :profiles , only: [:edit, :update]
   resources :passwords , only: [:edit, :update]
   resources :likes, only: [:create, :destroy]
+  get 'search', to: "search#index"
 
   namespace :admin do
     resources :photos, :albums, :users

@@ -7,4 +7,12 @@ class Album < ApplicationRecord
   validates :is_public, inclusion: { in: [true, false], allow_nil: true }
   validates :title, presence: { message: "Title of album is required" }
   validates :album_attachments, presence: { message: "Album is required"}
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["album_attachments", "description", "title", "updated_at"]
+  end
+  def self.ransackable_associations(auth_object = nil)
+    ["likes", "liking_users", "user"]
+  end
+
 end

@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     like_service = LikeService.new(params[:like][:likeable_id], params[:like][:likeable_type])
     if @like.save
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("like-#{like_service.likeable_id}",
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("like-#{like_service.likeable_id}-#{like_service.type_asset}",
           partial: 'shared/button/like',
           locals:{asset: like_service.asset, likes: like_service.likes, type_asset: like_service.type_asset}) }
       end
@@ -19,7 +19,7 @@ class LikesController < ApplicationController
     like = Like.where(user_id: like_id, likeable_type: like_service.type_asset, likeable_id: like_service.likeable_id).delete_all
     if like
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("like-#{like_service.likeable_id}",
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("like-#{like_service.likeable_id}-#{like_service.type_asset}",
           partial: 'shared/button/like',
           locals:{asset: like_service.asset, likes: like_service.likes, type_asset: like_service.type_asset}) }
       end

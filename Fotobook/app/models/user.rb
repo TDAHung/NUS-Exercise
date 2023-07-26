@@ -18,4 +18,9 @@ class User < ApplicationRecord
   mount_uploader :img_url, AvatarUploader
   enum user_type: { guest: 0, user: 1, admin: 2 }
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["email", "first_name", "last_name"]
+  end
+
+
 end

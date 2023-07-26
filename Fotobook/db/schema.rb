@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_022133) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.json "album_attachments"
+    t.jsonb "album_attachments"
     t.index ["user_id"], name: "index_albums_on_user_id"
   end
 

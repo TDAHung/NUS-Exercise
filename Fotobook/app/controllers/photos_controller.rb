@@ -1,4 +1,3 @@
-require 'pry'
 class PhotosController < ApplicationController
   before_action :check_user_status
   before_action :check_user
@@ -13,7 +12,6 @@ class PhotosController < ApplicationController
   end
 
   def create
-    binding.pry
     @photo = Photo.new(photo_params)
     if @photo.save
       redirect_to discover_photo_path(@photo.user_id), notice: "Photo created successfully"

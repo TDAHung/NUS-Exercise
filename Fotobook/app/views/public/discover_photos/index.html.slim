@@ -4,7 +4,6 @@ div class="main__content__album bg-white mt-4 rounded d-flex justify-content-aro
         div class="container d-flex flex-column justify-content-between"
             div class="row"
                 - @photos.each do |photo|
-                    - photo_url = Photo.find(photo["id"]).img_url.url
                     / <!-- start template -->
                     div class="col-sm-12 col-md-6 mx-3 my-2 album bg-body-tertiary shadow border-0 button-modal child-node" id="album_#{photo["id"]}"
                         / <!-- remember to add album_id-->
@@ -12,7 +11,7 @@ div class="main__content__album bg-white mt-4 rounded d-flex justify-content-aro
                             div class="photo__wrapper d-flex align-items-center col-md-4 p-0" id="photo_#{photo["id"]}" data-bs-toggle="modal" data-bs-target="#photoModal"
                                 / <!-- remember to add photo_id -->
                                 div class="photo"
-                                    img src="#{photo_url}" alt=""
+                                    img src="#{photo.img_url.url}" alt=""
                             div class="col-md-8 photo__info d-flex flex-column justify-content-between py-3"
                                 div class="photo__author d-flex align-items-center justify-content-between w-100"
                                     a href="#{discover_photos_path}/#{photo[:user_id]}" class="d-flex align-items-center"

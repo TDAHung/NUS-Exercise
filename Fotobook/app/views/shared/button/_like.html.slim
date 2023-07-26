@@ -1,4 +1,4 @@
-= turbo_frame_tag "like-#{asset["id"]}"
+= turbo_frame_tag "like-#{asset["id"]}-#{type_asset}"
     - like_found = likes.where(likeable_id: asset["id"])
     - if !current_user.nil?
         - is_found = likes.exists?(user_id: current_user.id, likeable_id: asset["id"])
