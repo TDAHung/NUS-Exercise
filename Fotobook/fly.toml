@@ -1,14 +1,11 @@
-# fly.toml app configuration file generated for fotobook-2609 on 2023-07-25T09:31:38+07:00
+# fly.toml app configuration file generated for rails-final-app on 2023-07-28T10:04:10+07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "fotobook-2609"
+app = "rails-final-app"
 primary_region = "sin"
 console_command = "/rails/bin/rails console"
-
-[deploy]
-  release_command = "./bin/rails db:prepare"
 
 [http_service]
   internal_port = 3000
